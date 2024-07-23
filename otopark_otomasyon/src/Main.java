@@ -44,9 +44,7 @@ class Car {
 
     public long getParkDurationInMinutes() {
         LocalDateTime endTime = (exitTime != null) ? exitTime : LocalDateTime.now();
-        //return java.time.Duration.between(entryTime, endTime).toMinutes();
-        //örnek olarak eklenmiştir
-        return 70; // 70 dk kaldı mesela 130 tl ödemesi gerekiyor.
+        return java.time.Duration.between(entryTime, endTime).toMinutes();
     }
 }
 
@@ -92,6 +90,8 @@ class ParkingLotSystem implements ParkingLot {
             Car car = carOptional.get();
             car.setExitTime(LocalDateTime.now()); // Çıkış zamanı ayarlandı
             System.out.println(licensePlate + " plakalı araç otoparktan çıkarıldı. Çıkış Zamanı: " + car.getExitTime());
+            cars.remove(car);
+            capacity++;
         } else {
             System.out.println(licensePlate + " plakalı araç otoparkta bulunamadı.");
         }
@@ -105,9 +105,12 @@ class ParkingLotSystem implements ParkingLot {
             System.out.println("Otoparktaki araçlar:");
             for (Car car : cars) {
                 String exitTime = (car.getExitTime() != null) ? car.getExitTime().toString() : "Henüz çıkış yapılmadı";
+                long duration = car.getParkDurationInMinutes();
+
                 System.out.println(car.getLicensePlate() + " - " + car.getBrand() + " " + car.getModel() + 
                                    " - Giriş Saati: " + car.getEntryTime() + 
-                                   ", Çıkış Saati: " + exitTime);
+                                   ", Çıkış Saati: " + exitTime + 
+                                   ", Otoparkta Kalma Süresi: " + duration + " dakika");
             }
         }
     }
@@ -129,7 +132,7 @@ class ParkingLotSystem implements ParkingLot {
         double firstEntry = 95.0; 
         double hourlyRate = 35.0;
         double hoursParked = Math.ceil(minutesParked / 60.0);
-        return ((hoursParked-1) * hourlyRate) + firstEntry;
+        return ((hoursParked - 1) * hourlyRate) + firstEntry;
     }
 }
 
@@ -140,7 +143,7 @@ public class Main {
         parkingLotSystem.addCar("34ABC123", "Toyota", "Corolla");
 
         try {
-            Thread.sleep(10 * 1000); // 10 saniye bekle
+            Thread.sleep(70 * 1000); // 10 saniye bekle
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

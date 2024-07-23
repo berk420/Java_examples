@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otopark Otomasyonu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="text"] {
+            ime-mode: disabled;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Otopark Otomasyonu</h1>
+
+        <!-- Form: Araç Ekleme -->
+        <div class="form-group">
+            <h2>Araç Ekle</h2>
+            <input type="text" id="licensePlate" placeholder="Plaka" pattern="[A-Za-z0-9]*" />
+            <input type="text" id="brand" placeholder="Marka" pattern="[A-Za-z0-9]*" />
+            <input type="text" id="model" placeholder="Model" pattern="[A-Za-z0-9]*" />
+            <button onclick="addCar()">Araç Ekle</button>
+        </div>
+
+        <!-- Form: Araç Çıkış Zamanı Güncelleme -->
+        <div class="form-group">
+            <h2>Araç Çıkış Zamanını Güncelle</h2>
+            <input type="text" id="exitCarPlate" placeholder="Plaka" />
+            <button onclick="updateCarExitTime()">Çıkış Zamanını Güncelle</button>
+        </div>
+
+        <!-- Form: Araç Silme -->
+        <div class="form-group">
+            <h2>Araç Sil</h2>
+            <input type="text" id="deleteCarPlate" placeholder="Plaka" />
+            <button onclick="deleteCar()">Araç Sil</button>
+        </div>
+
+        <!-- Form: Ücret Hesaplama -->
+        <div class="form-group">
+            <h2>Ücret Hesapla</h2>
+            <input type="text" id="feeCarPlate" placeholder="Plaka" />
+            <button onclick="calculateFee()">Ücreti Hesapla</button>
+            <div id="feeResult" class="result"></div>
+        </div>
+
+        <!-- Form: Araç Görüntüleme -->
+        <div class="form-group">
+            <h2>Araçları Görüntüle</h2>
+            <button onclick="getAllCars()">Araçları Getir</button>
+            <table id="carsTable">
+                <thead>
+                    <tr>
+                        <th>Plaka</th>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Giriş zamanı</th>
+                        <th>Çıkış zamanı </th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Form: Araç Detayları Görüntüleme -->
+        <div class="form-group">
+            <h2>Araç Detaylarını Görüntüle</h2>
+            <input type="text" id="carDetailsPlate" placeholder="Plaka" />
+            <button onclick="getCarByLicensePlate()">Araç Detaylarını Getir</button>
+            <div id="carDetails" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const apiBaseUrl = 'http://localhost:8080/api/cars';
+
+        async function addCar() {
+            const licensePlate = document.getElementById('licensePlate').value;
+            const brand = document.getElementById('brand').value;
+            const model = document.getElementById('model').value;
+
+            await fetch(apiBaseUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ licensePlate, brand, model })
+            });
+
+            alert('Araç eklendi!');
+            getAllCars();
+        }
+
+        async function updateCarExitTime() {
+            const licensePlate = document.getElementById('exitCarPlate').value;
+
+            const response = await fetch(`${apiBaseUrl}/${licensePlate}/exit`, {
+                method: 'PUT'
+            });
+
+            if (response.ok) {
+                alert('Araç çıkış zamanı güncellendi!');
+            } else {
+                alert('Araç bulunamadı!');
+            }
+        }
+
+
+        async function deleteCar() {
+            const licensePlate = document.getElementById('deleteCarPlate').value;
+
+            await fetch(`${apiBaseUrl}/${licensePlate}`, {
+                method: 'DELETE'
+            });
+
+            alert('Araç silindi!');
+            getAllCars();
+        }
+
+        async function calculateFee() {
+            const licensePlate = document.getElementById('feeCarPlate').value;
+
+            const response = await fetch(`${apiBaseUrl}/${licensePlate}/fee`);
+            const fee = await response.json();
+
+            document.getElementById('feeResult').innerText = `Ücret: ${fee} TL`;
+        }
+
+        async function getAllCars() {
+            const response = await fetch(apiBaseUrl);
+            const cars = await response.json();
+
+            const tbody = document.querySelector('#carsTable tbody');
+            tbody.innerHTML = '';
+
+            cars.forEach(car => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${car.licensePlate}</td>
+                    <td>${car.brand}</td>
+                    <td>${car.model}</td>
+                    <td>${car.entryTime}</td>
+                    <td>${car.exitTime}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function getCarByLicensePlate() {
+            const licensePlate = document.getElementById('carDetailsPlate').value;
+
+
+            const response = await fetch(`${apiBaseUrl}/${licensePlate}`);
+
+            console.log("licensePlate"+licensePlate);
+
+
+            if (response.ok) {
+                console.log("response"+response);
+
+                const car = await response.json();
+
+                document.getElementById('carDetails').innerHTML = `
+                    <p><strong>Plaka:</strong> ${car.licensePlate}</p>
+                    <p><strong>Marka:</strong> ${car.brand}</p>
+                    <p><strong>Model:</strong> ${car.model}</p>
+                    <p><strong>giriş zamanı:</strong> ${car.entryTime}</p>
+                    <p><strong>çıkış zamanı:</strong> ${car.exitTime}</p>
+
+                `;
+            } else {
+                document.getElementById('carDetails').innerText = 'Araç bulunamadı!';
+            }
+        }
+    </script>
+</body>
+</html>
