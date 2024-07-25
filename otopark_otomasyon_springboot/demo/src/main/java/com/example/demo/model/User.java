@@ -22,6 +22,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "license_plate")
+    private String license_plate;
+
     // Getter and Setter
     public Long getId() {
         return id;
@@ -45,5 +48,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getlicense_plate() {
+        return license_plate;
+    }
+
+    public void setlicense_plate(String license_plate) {
+        this.license_plate = license_plate;
     }
 }

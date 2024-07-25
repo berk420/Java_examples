@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Car;
+import com.example.demo.model.User;
 import com.example.demo.repository.CarRepository;
+import com.example.demo.repository.UserRepository;
 
 @Service
 public class ParkingLotService {
 
     @Autowired
     private CarRepository carRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public List<Car> getAllCars() {
         return carRepository.findAll();
@@ -24,11 +29,20 @@ public class ParkingLotService {
         return carRepository.findByLicensePlate(licensePlate);
     }
 
-    public Car addCar(String licensePlate, String brand, String model) {
-        Car car = new Car();
-        car.setLicensePlate(licensePlate);
-        car.setBrand(brand);
-        car.setModel(model);
+    public Car save(Car car) {
+        return carRepository.save(car);
+    }
+
+    public Car addCar(String licensePlate, String brand, String model, String userName, String userEmail) {
+        User user = userRepository.findByEmail(userEmail).orElseGet(() -> {
+            User newUser = new User();
+            newUser.setName(userName);
+            newUser.setEmail(userEmail);
+            newUser.setlicense_plate(licensePlate);
+            return userRepository.save(newUser);
+        });
+
+        Car car = new Car(licensePlate, brand, model,user);
         car.setEntryTime(LocalDateTime.now());
         return carRepository.save(car);
     }
@@ -53,8 +67,6 @@ public class ParkingLotService {
         Optional<Car> carOptional = carRepository.findByLicensePlate(licensePlate);
         if (carOptional.isPresent()) {
             Car car = carOptional.get();
-            // Ücret hesaplama mantığı
-            // Örneğin, her saat başına 10 TL
             long hours = java.time.Duration.between(car.getEntryTime(), car.getExitTime()).toHours();
             return hours * 10;
         } else {

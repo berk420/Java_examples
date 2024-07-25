@@ -52,6 +52,18 @@
 <body>
     <div class="container">
         <h1>Otopark Otomasyonu</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Capacity</th>
+                    <th>Car Number</th>
+                </tr>
+            </thead>
+            <tbody id="ownerTableBody">
+            </tbody>
+        </table>
+
 
         <!-- Form: Araç Ekleme -->
         <div class="form-group">
@@ -59,6 +71,8 @@
             <input type="text" id="licensePlate" placeholder="Plaka" pattern="[A-Za-z0-9]*" />
             <input type="text" id="brand" placeholder="Marka" pattern="[A-Za-z0-9]*" />
             <input type="text" id="model" placeholder="Model" pattern="[A-Za-z0-9]*" />
+            <input type="text" id="userName" placeholder="Kullanıcı Adı" />
+            <input type="email" id="userEmail" placeholder="Kullanıcı E-posta" />
             <button onclick="addCar()">Araç Ekle</button>
         </div>
 
@@ -84,7 +98,7 @@
             <div id="feeResult" class="result"></div>
         </div>
 
-        <!-- Form: Araç Görüntüleme -->
+        <!-- Form: Araçları Görüntüleme -->
         <div class="form-group">
             <h2>Araçları Görüntüle</h2>
             <button onclick="getAllCars()">Araçları Getir</button>
@@ -94,8 +108,10 @@
                         <th>Plaka</th>
                         <th>Marka</th>
                         <th>Model</th>
-                        <th>Giriş zamanı</th>
-                        <th>Çıkış zamanı </th>
+                        <th>Giriş Zamanı</th>
+                        <th>Çıkış Zamanı</th>
+                        <th>Araç sahibinin adı</th>
+                        <th>Araç sahibinin email adresi</th>
 
                     </tr>
                 </thead>
@@ -103,27 +119,110 @@
             </table>
         </div>
 
-        <!-- Form: Araç Detayları Görüntüleme -->
+        <!-- Form: Araç Detaylarını Görüntüle ve Güncelle -->
         <div class="form-group">
-            <h2>Araç Detaylarını Görüntüle</h2>
+            <h2>Araç Detaylarını Görüntüle ve Güncelle</h2>
             <input type="text" id="carDetailsPlate" placeholder="Plaka" />
             <button onclick="getCarByLicensePlate()">Araç Detaylarını Getir</button>
-            <div id="carDetails" class="result"></div>
+            <div id="carDetails" class="result">
+                <!-- Araç bilgilerini burada göstereceğiz -->
+            </div>
         </div>
+
+        <!-- Form: Araç Bilgilerini Güncelleme -->
+        <div class="form-group" id="updateForm" style="display: none;">
+            <h2>Araç Bilgilerini Güncelle</h2>
+            <input type="text" id="updateBrand" placeholder="Marka" />
+            <input type="text" id="updateModel" placeholder="Model" />
+            <input type="text" id="updateUserName" placeholder="Kullanıcı Adı" />
+            <input type="email" id="updateUserEmail" placeholder="Kullanıcı E-posta" />
+            <button onclick="updateCarDetails()">Bilgileri Güncelle</button>
+            <div id="updateResult" class="result"></div>
+        </div>
+
     </div>
 
     <script>
+
+        let totalCarsElement=0;
+        let capasity=0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            getAllCars();
+            setCarNumber();
+
+            setTimeout(() => {
+                showCapasity();
+            }, 1000);
+            checkConditionsAndUpdateButton();
+
+        });
+
+        function checkConditionsAndUpdateButton() {
+
+            const addCarButton = document.querySelector('button[onclick="addCar()"]');
+            if (totalCarsElement >= capasity) {
+                addCarButton.disabled = false;
+            } else {
+                addCarButton.disabled = true;
+            }
+        }
+
+ 
+        async function showCapasity() {
+            fetch('http://localhost:8080/api/owners')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('ownerTableBody');
+                    data.forEach(owner => {
+                        capasity=owner.capacity;
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${owner.companyName}</td>
+                            <td>${owner.capacity}</td>
+                            <td>${totalCarsElement}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching owner data:', error));
+        }
+
+        async function setCarNumber() {
+            const companyname = "gümüşler_oto";
+            const capasity = 5;
+
+
+            const response = await fetch(`http://localhost:8080/api/owners`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ companyname, capasity}),
+                mode: 'no-cors'
+
+            });
+
+            if (response.ok) {
+                console.log("daha önce eklendi");
+            } else {
+                console.log("daha önce eklendi");
+
+            }
+        }
+
         const apiBaseUrl = 'http://localhost:8080/api/cars';
 
         async function addCar() {
             const licensePlate = document.getElementById('licensePlate').value;
             const brand = document.getElementById('brand').value;
             const model = document.getElementById('model').value;
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
 
             await fetch(apiBaseUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ licensePlate, brand, model })
+                body: new URLSearchParams({ licensePlate, brand, model, userName, userEmail })
             });
 
             alert('Araç eklendi!');
@@ -143,7 +242,6 @@
                 alert('Araç bulunamadı!');
             }
         }
-
 
         async function deleteCar() {
             const licensePlate = document.getElementById('deleteCarPlate').value;
@@ -169,10 +267,13 @@
             const response = await fetch(apiBaseUrl);
             const cars = await response.json();
 
+
             const tbody = document.querySelector('#carsTable tbody');
             tbody.innerHTML = '';
 
             cars.forEach(car => {
+                totalCarsElement++;
+                console.log(car);
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${car.licensePlate}</td>
@@ -180,37 +281,66 @@
                     <td>${car.model}</td>
                     <td>${car.entryTime}</td>
                     <td>${car.exitTime}</td>
+
+                    <td>${car.user ? car.user.name : 'bu aracın sahibinin bilgisi girlmemiştir'}</td>
+                    <td>${car.user ? car.user.email : 'bu aracın sahibinin bilgisi girlmemiştir'}</td>
                 `;
                 tbody.appendChild(row);
             });
+
+
+
         }
 
         async function getCarByLicensePlate() {
             const licensePlate = document.getElementById('carDetailsPlate').value;
-
-
             const response = await fetch(`${apiBaseUrl}/${licensePlate}`);
 
-            console.log("licensePlate"+licensePlate);
-
-
             if (response.ok) {
-                console.log("response"+response);
-
                 const car = await response.json();
-
                 document.getElementById('carDetails').innerHTML = `
                     <p><strong>Plaka:</strong> ${car.licensePlate}</p>
                     <p><strong>Marka:</strong> ${car.brand}</p>
                     <p><strong>Model:</strong> ${car.model}</p>
-                    <p><strong>giriş zamanı:</strong> ${car.entryTime}</p>
-                    <p><strong>çıkış zamanı:</strong> ${car.exitTime}</p>
-
+                    <p><strong>Giriş Zamanı:</strong> ${car.entryTime}</p>
+                    <p><strong>Çıkış Zamanı:</strong> ${car.exitTime}</p>
                 `;
+                // Güncelleme formuna mevcut bilgileri aktar
+                document.getElementById('updateBrand').value = car.brand;
+                document.getElementById('updateModel').value = car.model;
+
+                // Güncelleme formunu göster
+                document.getElementById('updateForm').style.display = 'block';
             } else {
                 document.getElementById('carDetails').innerText = 'Araç bulunamadı!';
+                // Güncelleme formunu gizle
+                document.getElementById('updateForm').style.display = 'none';
             }
         }
+
+        async function updateCarDetails() {
+            const licensePlate = document.getElementById('carDetailsPlate').value;
+            const brand = document.getElementById('updateBrand').value;
+            const model = document.getElementById('updateModel').value;
+            const name = document.getElementById('updateUserName').value;
+            const email = document.getElementById('updateUserEmail').value;
+
+            const response = await fetch(`${apiBaseUrl}/${licensePlate}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ brand, model, userName: name, userEmail: email })
+            });
+
+            if (response.ok) {
+                console.log("------", response.ok);
+                document.getElementById('updateResult').innerText = 'Araç bilgileri güncellendi!';
+                getCarByLicensePlate();
+            } else {
+                document.getElementById('updateResult').innerText = 'Güncelleme başarısız!';
+            }
+        }
+
+
     </script>
 </body>
 </html>

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,16 +34,21 @@ public class Car {
     @Column(name = "exit_time")
     private LocalDateTime exitTime;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false) 
+    private User user;
+
     // Constructors, getters, and setters
 
     public Car() {}
 
-    public Car(String licensePlate, String brand, String model) {
+    public Car(String licensePlate, String brand, String model, User user) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.model = model;
         this.entryTime = LocalDateTime.now();
-        this.exitTime = null; // Araç henüz çıkış yapmadı
+        this.exitTime = null; 
+        this.user = user;
     }
 
     public Long getId() {
@@ -90,6 +97,14 @@ public class Car {
 
     public void setExitTime(LocalDateTime exitTime) {
         this.exitTime = exitTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public long getParkDurationInMinutes() {

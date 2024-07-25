@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Car;
+import com.example.demo.model.User;
+import com.example.demo.repository.CarRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.ParkingLotService;
 
 @RestController
@@ -25,6 +28,12 @@ public class ParkingLotController {
 
     @Autowired
     private ParkingLotService parkingLotService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CarRepository carRepository;
 
     @GetMapping
     public List<Car> getAllCars() {
@@ -38,8 +47,10 @@ public class ParkingLotController {
     }
 
     @PostMapping
-    public Car addCar(@RequestParam String licensePlate, @RequestParam String brand, @RequestParam String model) {
-        return parkingLotService.addCar(licensePlate, brand, model);
+    public Car addCar(@RequestParam String licensePlate, @RequestParam String brand,
+                      @RequestParam String model, @RequestParam String userName,
+                      @RequestParam String userEmail) {
+        return parkingLotService.addCar(licensePlate, brand, model, userName, userEmail);
     }
 
     @PutMapping("/{licensePlate}/exit")
@@ -67,4 +78,34 @@ public class ParkingLotController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/{licensePlate}")
+    public ResponseEntity<Car> updateCar(
+            @PathVariable String licensePlate, 
+            @RequestParam String brand, 
+            @RequestParam String model, 
+            @RequestParam String userName, 
+            @RequestParam String userEmail) {
+
+        Optional<Car> carOptional = parkingLotService.getCarByLicensePlate(licensePlate);
+        if (carOptional.isPresent()) {
+            Car car = carOptional.get();
+            car.setBrand(brand);
+            car.setModel(model);
+
+            Optional<User> userOptional = userRepository.findByEmail(userEmail);
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                user.setName(userName);
+                userRepository.save(user);
+                car.setUser(user);
+            }
+
+            Car updatedCar = carRepository.save(car);
+            return ResponseEntity.ok(updatedCar);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
 }
