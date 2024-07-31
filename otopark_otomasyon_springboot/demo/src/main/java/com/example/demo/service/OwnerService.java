@@ -10,6 +10,7 @@ import com.example.demo.repository.OwnerRepository;
 
 @Service
 public class OwnerService {
+    
     @Autowired
     private OwnerRepository ownerRepository;
 

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import com.example.demo.repository.UserRepository;
 
 @Service
 public class ParkingLotService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ParkingLotService.class);
 
     @Autowired
     private CarRepository carRepository;
@@ -30,20 +34,23 @@ public class ParkingLotService {
     }
 
     public Car save(Car car) {
+        logger.info("Saving car: " + car.toString());
         return carRepository.save(car);
     }
 
     public Car addCar(String licensePlate, String brand, String model, String userName, String userEmail) {
         User user = userRepository.findByEmail(userEmail).orElseGet(() -> {
-            User newUser = new User();
+            User newUser = new User(); 
             newUser.setName(userName);
             newUser.setEmail(userEmail);
-            newUser.setlicense_plate(licensePlate);
             return userRepository.save(newUser);
         });
 
-        Car car = new Car(licensePlate, brand, model,user);
+        Car car = new Car(licensePlate, brand, model, user);
         car.setEntryTime(LocalDateTime.now());
+
+        logger.info("Adding car: " + car.toString());
+        System.out.println("test");
         return carRepository.save(car);
     }
 
@@ -52,6 +59,7 @@ public class ParkingLotService {
         if (carOptional.isPresent()) {
             Car car = carOptional.get();
             car.setExitTime(LocalDateTime.now());
+            logger.info("Updating exit time for car: " + car.toString());
             return carRepository.save(car);
         } else {
             throw new RuntimeException("Car not found");
@@ -60,7 +68,11 @@ public class ParkingLotService {
 
     public void deleteCar(String licensePlate) {
         Optional<Car> carOptional = carRepository.findByLicensePlate(licensePlate);
-        carOptional.ifPresent(carRepository::delete);
+        if (carOptional.isPresent()) {
+            Car car = carOptional.get();
+            logger.info("Deleting car: " + car.toString());
+            carRepository.delete(car);
+        }
     }
 
     public double calculateFee(String licensePlate) {

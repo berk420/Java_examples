@@ -2,6 +2,14 @@ package com.example.demo.model;
 
 import java.time.LocalDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +19,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
+@Component
 @Entity
 @Table(name = "car")
-public class Car {
+public class Car implements InitializingBean, DisposableBean {
+
+    private static final Logger logger = LoggerFactory.getLogger(Car.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -110,5 +122,35 @@ public class Car {
     public long getParkDurationInMinutes() {
         LocalDateTime endTime = (exitTime != null) ? exitTime : LocalDateTime.now();
         return java.time.Duration.between(entryTime, endTime).toMinutes();
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        logger.info("Car bean postConstruct: " + this.toString());
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        logger.info("Car bean afterPropertiesSet: " + this.toString());
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        logger.info("Car bean preDestroy: " + this.toString());
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        logger.info("Car bean destroy: " + this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "licensePlate='" + licensePlate + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", user=" + user +
+                '}';
     }
 }
