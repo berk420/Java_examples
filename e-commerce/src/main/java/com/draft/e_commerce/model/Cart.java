@@ -35,7 +35,6 @@ public class Cart extends BaseEntity {
         this.customer = customer;
     }
 
-    
     public Set<Product> getProducts() {
         return products;
     }

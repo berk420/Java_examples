@@ -17,17 +17,21 @@ public class Product extends BaseEntity {
     @Column(name = "price", nullable = false)
     private long price;
 
+    @Column(name = "stock")
+    private long stock;
+
     // Default constructor
     public Product() {
     }
 
     // Parameterized constructor
-    public Product(String name, String description, long price) {
+    public Product(String name, String description, long price, long stock) {
         this.name = name;
         this.description = description;
         this.price = price;
-    }
+        this.stock = stock;
 
+    }
 
     public String getName() {
         return name;
@@ -51,6 +55,14 @@ public class Product extends BaseEntity {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    public long getStock() {
+        return stock;
+    }
+
+    public void setStock(long stock) {
+        this.stock = stock;
     }
 
     @Override
