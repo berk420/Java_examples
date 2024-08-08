@@ -88,9 +88,9 @@ public class OrderService {
             cartRepository.save(cart);
 
 
-                        // Cart'ı ve CartProduct'ları sil
-            cartProductRepository.deleteByCartId(cartId); // Tüm cartProduct'ları silmek için
-            cartRepository.deleteById(cartId); // Cart'ı silmek için
+            // Cart'ı ve CartProduct'ları sil
+            //cartProductRepository.deleteByCartId(cartId); // Tüm cartProduct'ları silmek için
+            //cartRepository.deleteById(cartId); // Cart'ı silmek için
 
             return orderRepository.save(order);
         } catch (IllegalStateException e) {
@@ -111,6 +111,13 @@ public class OrderService {
     }
 
     public Order getOrderById(Long id) {
-        return orderRepository.findById(id).orElse(null);
+        Order order = orderRepository.findById(id).orElse(null);
+        if (order == null) {
+            System.out.println("Order not found for id: " + id);
+        } else {
+            System.out.println("Order found: " + order);
+        }
+        return order;
     }
+    
 }

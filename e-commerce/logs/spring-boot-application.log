@@ -1,0 +1,12 @@
+2024-08-08T21:42:27.793+03:00  INFO 7528 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 7528 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-08T21:42:27.796+03:00  INFO 7528 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-08T21:42:30.024+03:00  INFO 7528 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-08T21:42:30.025+03:00  INFO 7528 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-08T21:42:30.145+03:00  INFO 7528 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-08T21:42:30.981+03:00  INFO 7528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-08T21:42:32.891+03:00  INFO 7528 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1fba3fd6
+2024-08-08T21:42:32.893+03:00  INFO 7528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-08T21:42:32.989+03:00  WARN 7528 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-08T21:42:36.232+03:00  INFO 7528 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-08T21:42:37.901+03:00  INFO 7528 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.468 seconds (process running for 10.884)
+2024-08-08T21:42:38.481+03:00  INFO 7528 --- [e-commerce] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'

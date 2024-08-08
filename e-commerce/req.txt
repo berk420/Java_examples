@@ -1,0 +1,76 @@
+CartProduct ve Cart İlişkisi:
+
+Mevcut Durum: CartProduct ve Cart arasında ManyToMany bir ilişki tanımlanmış.
+Önerilen Değişiklik: Bu ilişkinin aslında OneToMany olması gerekir. Bir Cart (sepet), birden fazla CartProduct (sepet ürünü) içerebilir, ancak her CartProduct yalnızca bir Carta bağlı olmalıdır.
+(ben doğru yaptığımı düşündüm) TEKRAR AÇIKLA
+
+CartProductId ve CartProduct Ayrımı:
+
+Mevcut Durum: CartProductId ve CartProduct ayrı sınıflar olarak tanımlanmış ve CartProduct yalnızca quantity (miktar) bilgisini tutuyor.
+Önerilen Değişiklik: Bu bilgilerin hepsi CartProduct içinde birleştirilebilir, böylece ayrı bir CartProductId sınıfına ihtiyaç kalmaz. Bu, sınıf yapısını sadeleştirir ve yönetimi kolaylaştırır.
+(evet sadeleştirilebilri fakat cartproduct many to many ilişkisinden meydana gelen bir tablo olduğu için repository katmanına embeded bir id verebilmek için CartProductId oluşturuldu)
+
+Order ve Cart İlişkisi:
+
+Mevcut Durum: Order (sipariş) ve Cart arasında bir ilişki tanımlanmış.
+Sorun: Bir Order oluşturulduğunda Cart (sepet) ne olacak? Cart'ın hala var olup olmayacağı belirsiz.
+Önerilen Değişiklik: Sipariş oluşturulduktan sonra Cartun silinmesi veya inaktif hale getirilmesi değerlendirilmeli.
+(order_state false olduğunda sipariş verilmiş oluyor, basit şekilde böyle yapıldı old_order adında bir tabloya da aktarılabilir )
+(Ufak bir eksiği var, daha önce sipariş verilmiş sepeti tekrar sipariş verildiğinde fronta hata kodu yani "already ordered" bigi bir mesaj gönderebiliriz) Görev jiraya eklendi SB-29
+
+Order'daki TotalPrice Hesaplaması:
+
+Mevcut Durum: Order içindeki totalPrice (toplam fiyat), tüm ürünlerin fiyatlarını göstermek için yeterli değil.
+Önerilen Değişiklik: Order için de OrderProduct gibi bir yapı oluşturulmalı. Bu, her bir ürünün siparişteki fiyatını ve miktarını daha doğru bir şekilde takip etmenizi sağlar.
+(getorder endpointinin cevabı 
+{
+    "id": 7,
+    "createdAt": "2024-08-08T17:18:12.354076",
+    "updatedAt": "2024-08-08T17:18:12.354076",
+    "orderCode": "62786bdc-0668-4676-852a-a49914c19db9",
+    "totalPrice": 800,
+    "customer": {
+        "id": 2,
+        "createdAt": "2024-08-01T13:46:07.847114",
+        "updatedAt": "2024-08-01T13:46:07.847114",
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com"
+    },
+    "cart": {
+        "id": 8,
+        "createdAt": "2024-08-07T15:03:05.697883",
+        "updatedAt": "2024-08-08T17:18:12.362081",
+        "customer": {
+            "id": 2,
+            "createdAt": "2024-08-01T13:46:07.847114",
+            "updatedAt": "2024-08-01T13:46:07.847114",
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com"
+        },
+        "products": [
+            {
+                "id": 2,
+                "createdAt": "2024-08-01T13:46:12.268748",
+                "updatedAt": "2024-08-08T17:18:12.137074",
+                "name": "Smartphone",
+                "description": "Latest model smartphone",
+                "price": 800,
+                "stock": 4
+            }
+        ],
+        "orderState": true
+    }
+}
+tüm bilgileri içeriyor fakat front tarafının işini kolaylaşitırmak için OrderProduct eklenebilir.) Görev jiraya eklenmedi??
+(getOrdersProduct adında bir endpoint oluştursam oradan da halledebilirim bu gereksinimi ama OrderProduct ile yapabiliirm )
+
+
+Cart ve Order İçin Ortak Bir Base Abstract Tablo:
+
+Öneri: Cart ve Order için ortak bir Base abstract tablo oluşturulabilir. Bu sayede, her iki yapı arasındaki ortak özellikler ve fonksiyonlar tek bir yerde toplanabilir.
+(getOrder ile oreder içerisindeki tüm bilgilere ulaşabiliryorum, sadece bir cart'ta 2 tane product eklenmiş ise onun biligisini göremiyorum ) Görev jiraya eklendi SB-28
+
+CartProduct ve OrderProduct İçin Ortak Tablo:
+
+Öneri: CartProduct ve OrderProduct için de ortak bir tablo oluşturulabilir. Bu, iki yapı arasındaki benzerlikleri daha iyi yönetmeyi sağlar ve kod tekrarını azaltır.
+(OrderProduct daha oluşturmadığım için bu durumu anlayamadım)
