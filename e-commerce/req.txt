@@ -65,7 +65,7 @@ tüm bilgileri içeriyor fakat front tarafının işini kolaylaşitırmak için 
 (getOrdersProduct adında bir endpoint oluştursam oradan da halledebilirim bu gereksinimi ama OrderProduct ile yapabiliirm )
 
 
-Cart ve Order İçin Ortak Bir Base Abstract Tablo:
+Cart ve Order İçin Ortak Bir Base Abstract Tablo:(base entity)
 
 Öneri: Cart ve Order için ortak bir Base abstract tablo oluşturulabilir. Bu sayede, her iki yapı arasındaki ortak özellikler ve fonksiyonlar tek bir yerde toplanabilir.
 (getOrder ile oreder içerisindeki tüm bilgilere ulaşabiliryorum, sadece bir cart'ta 2 tane product eklenmiş ise onun biligisini göremiyorum ) Görev jiraya eklendi SB-28

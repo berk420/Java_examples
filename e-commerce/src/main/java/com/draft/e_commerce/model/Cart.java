@@ -2,12 +2,14 @@ package com.draft.e_commerce.model;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Cart extends BaseEntity {
@@ -16,16 +18,23 @@ public class Cart extends BaseEntity {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToMany
-    @JoinTable(
-        name = "cartproduct",
-        joinColumns = @JoinColumn(name = "cart_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
+ 
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CartEntry> cartEntries;
+    
     private Set<Product> products;
 
     @Column(name = "order_state", nullable = false)
     private boolean orderState = false;
+
+
+    public Set<CartEntry> getCartEntries() {
+        return cartEntries;
+    }
+
+    public void setCartEntries(Set<CartEntry> cartEntries) {
+        this.cartEntries = cartEntries;
+    }
 
     public Customer getCustomer() {
         return customer;

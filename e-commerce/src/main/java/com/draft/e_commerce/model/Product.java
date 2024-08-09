@@ -1,5 +1,10 @@
 package com.draft.e_commerce.model;
 
+import java.util.Set;
+
+import org.hibernate.annotations.CascadeType;
+
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -20,6 +25,9 @@ public class Product extends BaseEntity {
     @Column(name = "stock")
     private long stock;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CartEntry> cartEntries;
+
     // Default constructor
     public Product() {
     }
@@ -31,6 +39,14 @@ public class Product extends BaseEntity {
         this.price = price;
         this.stock = stock;
 
+    }
+
+    public Set<CartEntry> getCartEntries() {
+        return cartEntries;
+    }
+
+    public void setCartEntries(Set<CartEntry> cartEntries) {
+        this.cartEntries = cartEntries;
     }
 
     public String getName() {
