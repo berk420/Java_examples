@@ -1,35 +1,44 @@
 package com.draft.e_commerce.model;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class CartProduct {
+@Table(name = "cart_entry")
+public class CartEntry extends BaseEntity {
 
-    @EmbeddedId
-    private CartProductId id; // Bileşik anahtar
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", insertable = false, updatable = false)
+    @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Column(name = "quantity",nullable = false)
-    private Integer quantity = 1; // Varsayılan değer 1
+    @Column(name = "quantity")
+    private Integer quantity = 1;
 
-    public CartProductId getId() {
+    
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(CartProductId id) {
+    @Override
+    public void setId(Long id) {
         this.id = id;
     }
+
 
     public Cart getCart() {
         return cart;
@@ -47,15 +56,12 @@ public class CartProduct {
         this.product = product;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
     public void setQuantity(Integer quantity) {
-        if (quantity == null) {
-            this.quantity = 1; // Varsayılan değer 1
-        } else {
-            this.quantity = quantity;
-        }
+        this.quantity = quantity;
     }
+
 }

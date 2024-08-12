@@ -29,7 +29,6 @@ public class CartController {
 
     @PutMapping("/{id}")
     public Cart updateCart(@PathVariable Long id, @RequestBody Cart cart) {
-        // burada product oluşturulmayacak eklenmeyecek 
         cart.setId(id);
         return cartService.updateCart(cart);
     }

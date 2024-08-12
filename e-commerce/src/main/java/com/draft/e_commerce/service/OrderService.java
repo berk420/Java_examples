@@ -1,6 +1,5 @@
 package com.draft.e_commerce.service;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -10,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.draft.e_commerce.model.Cart;
-import com.draft.e_commerce.model.CartProduct;
+import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.Order;
 import com.draft.e_commerce.model.Product;
-import com.draft.e_commerce.repository.CartProductRepository;
+import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.OrderRepository;
 import com.draft.e_commerce.repository.ProductRepository;
@@ -33,46 +32,25 @@ public class OrderService {
     private ProductRepository productRepository;
 
     @Autowired
-    private CartProductRepository cartProductRepository;
-
-
+    private CartEntryRepository cartEntryRepository;
 
     public Order placeOrder(Long cartId) {
         try {
             // Cart'ı bul
             Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-            if (cart.isOrderState()) {
-                throw new IllegalStateException("This cart is already associated with an order.");
-            }
-
-            //Liste gerek yok sadece 1 tane olacak zaten
-
-            // CartProduct'ları bul
-            Optional<CartProduct> cartProductOptional = cartProductRepository.findByIdCartId(cartId);
-            Optional<Cart> cartOptional = cartRepository.findById(cartId);
 
 
-            if (cartProductOptional.isPresent() && cartOptional.isPresent()) {
+            // CartEntry'leri bul
+            Set<CartEntry> cartEntries = cart.getCartEntries();
 
-                Set<Product> products = cart.getProducts();
-                CartProduct cartProduct;
+            // Her bir CartEntry için işlem yap
+            for (CartEntry cartEntry : cartEntries) {
+                Product product = cartEntry.getProduct();
+                int quantity = cartEntry.getQuantity();
 
-                for (Product product : products) {
-                    System.out.println(product); // veya ürün bilgilerini detaylı bir şekilde yazdırabilirsiniz
-                    // Örneğin, ürünün adını ve fiyatını yazdırmak:
-                    System.out.println("Product Name: " + product.getName());
-                    System.out.println("Product Price: " + product.getPrice());
-                    cartProduct = cartProductOptional.get();
-
-                    Integer quantity = cartProduct.getQuantity();
-
-                    // Product stoklarını güncelle
-                    product.setStock(product.getStock() - quantity); // Assuming Product class has a setStock method
-                    // Product'ı kaydet
-                    productRepository.save(product); // Eğer bir ProductRepository'niz varsa
-                }
-                
-
+                // Ürün stoklarını güncelle
+                product.setStock(product.getStock() - quantity);
+                productRepository.save(product);
             }
 
             // Order oluştur
@@ -81,16 +59,12 @@ public class OrderService {
             order.setCart(cart);
             order.setCustomer(cart.getCustomer());
 
-            long totalPrice = calculateTotalPrice(cart);
+            long totalPrice = calculateTotalPrice(cartEntries);
             order.setTotalPrice(totalPrice);
 
-            cart.setOrderState(true);
             cartRepository.save(cart);
 
-
-            // Cart'ı ve CartProduct'ları sil
-            //cartProductRepository.deleteByCartId(cartId); // Tüm cartProduct'ları silmek için
-            //cartRepository.deleteById(cartId); // Cart'ı silmek için
+            
 
             return orderRepository.save(order);
         } catch (IllegalStateException e) {
@@ -99,11 +73,10 @@ public class OrderService {
         }
     }
 
-    private long calculateTotalPrice(Cart cart) {
-        return cart.getProducts()
-                   .stream()
-                   .mapToLong(product -> product.getPrice())
-                   .sum();
+    private long calculateTotalPrice(Set<CartEntry> cartEntries) {
+        return cartEntries.stream()
+                          .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())
+                          .sum();
     }
 
     private String generateOrderCode() {
@@ -113,11 +86,10 @@ public class OrderService {
     public Order getOrderById(Long id) {
         Order order = orderRepository.findById(id).orElse(null);
         if (order == null) {
-            System.out.println("Order not found for id: " + id);
+            logger.warn("Order not found for id: " + id);
         } else {
-            System.out.println("Order found: " + order);
+            logger.info("Order found: " + order);
         }
         return order;
     }
-    
 }

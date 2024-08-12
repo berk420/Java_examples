@@ -2,11 +2,10 @@ package com.draft.e_commerce.model;
 
 import java.util.Set;
 
-import org.hibernate.annotations.CascadeType;
-
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,7 +27,6 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartEntry> cartEntries;
 
-    // Default constructor
     public Product() {
     }
 
@@ -38,7 +36,6 @@ public class Product extends BaseEntity {
         this.description = description;
         this.price = price;
         this.stock = stock;
-
     }
 
     public Set<CartEntry> getCartEntries() {
@@ -84,9 +81,11 @@ public class Product extends BaseEntity {
     @Override
     public String toString() {
         return "Product{" +
+               "id=" + getId() +  // `getId()` is inherited from BaseEntity
                ", name='" + name + '\'' +
                ", description='" + description + '\'' +
                ", price=" + price +
+               ", stock=" + stock +
                '}';
     }
 }
