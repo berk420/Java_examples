@@ -406,3 +406,15 @@ Caused by: org.postgresql.util.PSQLException: ERROR: null value in column "id" o
 2024-08-12T17:08:50.341+03:00  INFO 41680 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
 2024-08-12T17:08:52.581+03:00  INFO 41680 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.318 seconds (process running for 10.807)
 2024-08-12T17:08:54.566+03:00  INFO 41680 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-12T17:35:10.497+03:00  INFO 7408 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 7408 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-12T17:35:10.502+03:00  INFO 7408 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-12T17:35:13.506+03:00  INFO 7408 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-12T17:35:13.507+03:00  INFO 7408 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-12T17:35:13.627+03:00  INFO 7408 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-12T17:35:14.637+03:00  INFO 7408 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-12T17:35:15.719+03:00  INFO 7408 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6fefc5ea
+2024-08-12T17:35:15.721+03:00  INFO 7408 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-12T17:35:15.830+03:00  WARN 7408 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-12T17:35:19.405+03:00  INFO 7408 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-12T17:35:22.064+03:00  INFO 7408 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 12.047 seconds (process running for 12.624)
+2024-08-12T17:35:22.360+03:00  INFO 7408 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
