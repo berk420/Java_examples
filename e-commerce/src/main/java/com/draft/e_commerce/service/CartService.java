@@ -99,6 +99,7 @@ public class CartService {
             }
         }
     }
+    
     private long calculateTotalPrice(Set<CartEntry> cartEntries) {
         return cartEntries.stream()
                           .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())

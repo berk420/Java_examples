@@ -26,7 +26,7 @@ public class CartEntry extends BaseEntity {
     private Product product;
 
     @Column(name = "quantity")
-    private Integer quantity = 1;
+    private int  quantity;
 
     
     @Override
@@ -38,7 +38,6 @@ public class CartEntry extends BaseEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public Cart getCart() {
         return cart;
@@ -56,11 +55,11 @@ public class CartEntry extends BaseEntity {
         this.product = product;
     }
 
-    public Integer getQuantity() {
+    public int  getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

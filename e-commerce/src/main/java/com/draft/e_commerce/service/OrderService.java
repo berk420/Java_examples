@@ -7,15 +7,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.Order;
-import com.draft.e_commerce.model.Product;
+import com.draft.e_commerce.model.OrderEntry;
 import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.OrderRepository;
 import com.draft.e_commerce.repository.ProductRepository;
+
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
@@ -34,49 +40,55 @@ public class OrderService {
     @Autowired
     private CartEntryRepository cartEntryRepository;
 
+
+    @Transactional
     public Order placeOrder(Long cartId) {
         try {
-            // Cart'ı bul
-            Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-
-
-            // CartEntry'leri bul
-            Set<CartEntry> cartEntries = cart.getCartEntries();
-
-            // Her bir CartEntry için işlem yap
-            for (CartEntry cartEntry : cartEntries) {
-                Product product = cartEntry.getProduct();
-                int quantity = cartEntry.getQuantity();
-
-                // Ürün stoklarını güncelle
-                product.setStock(product.getStock() - quantity);
-                productRepository.save(product);
+            boolean orderExists = orderRepository.existsByCart_Id(cartId);
+            if (orderExists) {
+                throw new IllegalStateException("Order with this cart already exists");
             }
+            Cart cart = cartRepository.findById(cartId)
+                                    .orElseThrow(() -> new IllegalArgumentException("Cart not found"));
 
-            // Order oluştur
             Order order = new Order();
             order.setOrderCode(generateOrderCode());
             order.setCart(cart);
             order.setCustomer(cart.getCustomer());
 
-            long totalPrice = calculateTotalPrice(cartEntries);
+            Set<CartEntry> cartEntries = cart.getCartEntries();
+            Set<OrderEntry> orderEntries = new HashSet<>();
+
+            long totalPrice = 0;
+
+            for (CartEntry cartEntry : cartEntries) {
+                // Create a new OrderEntry for each CartEntry
+                OrderEntry orderEntry = new OrderEntry();
+                orderEntry.setOrder(order);
+                orderEntry.setQuantity(cartEntry.getQuantity());
+
+                // Set the base price as the current product price
+                BigDecimal basePrice = BigDecimal.valueOf(cartEntry.getProduct().getPrice());
+                orderEntry.setBasePrice(basePrice);
+
+                // Calculate the total price
+                totalPrice += basePrice.longValue() * cartEntry.getQuantity();
+
+                // Add OrderEntry to the set
+                orderEntries.add(orderEntry);
+            }
+
+            // Set the total price for the order
             order.setTotalPrice(totalPrice);
+            order.setOrderEntries(orderEntries);
 
-            cartRepository.save(cart);
-
-            
-
+            // Save the order and cascade the order entries
             return orderRepository.save(order);
+
         } catch (IllegalStateException e) {
             logger.error("Error placing order: ", e);
             throw e;
         }
-    }
-
-    private long calculateTotalPrice(Set<CartEntry> cartEntries) {
-        return cartEntries.stream()
-                          .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())
-                          .sum();
     }
 
     private String generateOrderCode() {
@@ -92,4 +104,5 @@ public class OrderService {
         }
         return order;
     }
+        
 }

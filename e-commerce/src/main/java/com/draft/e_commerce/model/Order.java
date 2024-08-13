@@ -1,9 +1,13 @@
 package com.draft.e_commerce.model;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +27,9 @@ public class Order extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<OrderEntry> orderEntries;
 
     // Getters and setters
     public String getOrderCode() {
@@ -55,5 +62,13 @@ public class Order extends BaseEntity {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public Set<OrderEntry> getOrderEntries() {
+        return orderEntries;
+    }
+
+    public void setOrderEntries(Set<OrderEntry> orderEntries) {
+        this.orderEntries = orderEntries;
     }
 }
