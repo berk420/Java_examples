@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.draft.e_commerce.model.OrderEntry;
 import com.draft.e_commerce.repository.OrderEntryRepository;
+import com.draft.e_commerce.service.interf.OrderEntryServiceInterface;
 
 @Service
-public class OrderEntryService {
+public class OrderEntryService implements OrderEntryServiceInterface{
 
     @Autowired
     private OrderEntryRepository orderEntryRepository;

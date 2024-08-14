@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.ProductRepository;
+import com.draft.e_commerce.service.interf.ProductServiceInterface;
 
 @Service
-public class ProductService {
+public class ProductService implements ProductServiceInterface{
 
     @Autowired
     private ProductRepository productRepository;
@@ -28,9 +29,26 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Product product) {
-        return productRepository.save(product);
+    public Product updateProduct(Long id, Product updatedProduct) {
+        Product existingProduct = getProduct(id);
+        if (existingProduct == null) {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
+    
+        // Mevcut ürünü güncelle
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setDescription(updatedProduct.getDescription());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setStock(updatedProduct.getStock());
+    
+        // `cartEntries` alanını güncellemeyi atla
+        // existingProduct.setCartEntries(updatedProduct.getCartEntries()); satırını kaldırın veya şartlı hale getirin.
+    
+        // Güncellenmiş ürünü kaydet ve geri dön
+        return productRepository.save(existingProduct);
     }
+    
+    
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);

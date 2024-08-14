@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.draft.e_commerce.model.Customer;
 import com.draft.e_commerce.repository.CustomerRepository;
+import com.draft.e_commerce.service.interf.CustomerServiceInterface;
 
 
 @Service
-public class CustomerService {
+public class CustomerService implements CustomerServiceInterface {
     @Autowired
     private CustomerRepository customerRepository;
 

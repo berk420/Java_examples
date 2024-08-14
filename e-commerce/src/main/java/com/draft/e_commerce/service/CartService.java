@@ -1,5 +1,6 @@
 package com.draft.e_commerce.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -11,14 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
+import com.draft.e_commerce.model.Customer;
 import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.ProductRepository;
+import com.draft.e_commerce.service.interf.CustomerServiceInterface;
 
 
 @Service
-public class CartService {
+public class CartService implements CustomerServiceInterface{
 
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
@@ -32,14 +35,32 @@ public class CartService {
     @Autowired
     private CartEntryRepository cartEntryRepository;
 
+    @Transactional
     public Cart getCart(Long id) {
-        return cartRepository.findById(id).orElse(null);
+        Cart cart = cartRepository.findById(id).orElse(null);
+        
+        if (cart != null) {
+            // Cart içindeki CartEntry'leri alın
+            Set<CartEntry> cartEntries = cart.getCartEntries();
+            
+            // Total price'ı hesaplayın
+            long totalPrice = cartEntries.stream()
+                                         .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())
+                                         .sum();
+            
+            // Eğer Cart nesnesinde totalPrice alanı varsa, onu set edebilirsiniz
+            cart.setTotalPrice((int)totalPrice);
+        }
+        
+        return cart;
     }
+    
 
     public Cart updateCart(Cart cart) {
         return cartRepository.save(cart);
     }
-
+    
+    @Transactional
     public void emptyCart(Long id) {
         Optional<Cart> cartOptional = cartRepository.findById(id);
 
@@ -106,7 +127,9 @@ public class CartService {
                           .sum();
     }
 
+    @Transactional
     public void removeProductFromCart(Long cartId, Long productId) {
+
         Optional<Cart> cartOptional = cartRepository.findById(cartId);
         Optional<Product> productOptional = productRepository.findById(productId);
 
@@ -132,5 +155,19 @@ public class CartService {
                 cartRepository.save(cart);
             }
         }
+    }
+
+
+    @Override
+    public Customer addCustomer(Customer customer) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addCustomer'");
+    }
+
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllCustomers'");
     }
 }

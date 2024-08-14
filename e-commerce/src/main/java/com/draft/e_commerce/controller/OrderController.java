@@ -24,7 +24,6 @@ public class OrderController {
         return orderService.placeOrder(cartId);
     }
     
-
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable Long id) {
         Order order = orderService.getOrderById(id);
@@ -34,5 +33,4 @@ public class OrderController {
             return ResponseEntity.ok(order);
         }
     }
-
 }

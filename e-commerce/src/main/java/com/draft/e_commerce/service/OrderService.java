@@ -1,5 +1,7 @@
 package com.draft.e_commerce.service;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -17,14 +19,10 @@ import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.OrderRepository;
 import com.draft.e_commerce.repository.ProductRepository;
-
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-import org.springframework.transaction.annotation.Transactional;
+import com.draft.e_commerce.service.interf.OrderServiceInterface;
 
 @Service
-public class OrderService {
+public class OrderService implements OrderServiceInterface{
 
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
@@ -95,6 +93,7 @@ public class OrderService {
         return UUID.randomUUID().toString();
     }
 
+    @Transactional
     public Order getOrderById(Long id) {
         Order order = orderRepository.findById(id).orElse(null);
         if (order == null) {
