@@ -51,49 +51,65 @@ public class OrderService implements OrderServiceInterface {
             }
             Cart cart = cartRepository.findById(cartId)
                     .orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-
+    
             Order order = new Order();
             order.setOrderCode(generateOrderCode());
             order.setCart(cart);
             order.setCustomer(cart.getCustomer());
-
+    
             Set<CartEntry> cartEntries = cart.getCartEntries();
             Set<OrderEntry> orderEntries = new HashSet<>();
-
+    
             long totalPrice = 0;
-
+    
             for (CartEntry cartEntry : cartEntries) {
                 // Create a new OrderEntry for each CartEntry
                 OrderEntry orderEntry = new OrderEntry();
                 orderEntry.setOrder(order);
                 orderEntry.setProduct(cartEntry.getProduct()); // Product ilişkisinin doğru set edilmesi
                 orderEntry.setQuantity(cartEntry.getQuantity());
-
+    
                 // Set the base price as the current product price
                 BigDecimal basePrice = BigDecimal.valueOf(cartEntry.getProduct().getPrice());
                 orderEntry.setBasePrice(basePrice);
-
+    
                 // Calculate the total price
                 totalPrice += basePrice.longValue() * cartEntry.getQuantity();
-
+    
                 // Add OrderEntry to the set
                 orderEntries.add(orderEntry);
             }
-
+    
             // Set the total price for the order
             order.setTotalPrice(totalPrice);
             order.setOrderEntries(orderEntries);
-
+    
             // Save the order and cascade the order entries
             order = orderRepository.save(order);
+    
+            // CartEntry'leri silmeden önce Cart ID'yi kaydedin
+            Long savedCartId = cart.getId();
+    
+            // Order'ın Cart referansını null yap
+            order.setCart(null);
+            orderRepository.save(order); // Order'ı tekrar kaydedin
+    
+            // CartEntry'leri sil
 
-            return mapOrderToDTO(order);
+            cartEntryRepository.deleteAll(cartEntries);
+    
+            // Cart'ı sil
+            cartRepository.deleteById(savedCartId);
 
+            return mapOrderToDTO(order,savedCartId);
+    
+    
         } catch (IllegalStateException e) {
             logger.error("Error placing order: ", e);
             throw e;
         }
     }
+    
 
     @Transactional
     @Override
@@ -104,14 +120,16 @@ public class OrderService implements OrderServiceInterface {
         } else {
             logger.info("Order found: " + order);
         }
-        return mapOrderToDTO(order);
+        //return mapOrderToDTO(order);
+        return mapOrderToDTO(order,order.getCart().getId());
+
     }
 
     private String generateOrderCode() {
         return UUID.randomUUID().toString();
     }
 
-    private OrderDTO mapOrderToDTO(Order order) {
+    private OrderDTO mapOrderToDTO(Order order,long savedCartId) {
         if (order == null) {
             return null;
         }
@@ -120,7 +138,7 @@ public class OrderService implements OrderServiceInterface {
         orderDTO.setId(order.getId());
         orderDTO.setOrderCode(order.getOrderCode());
         orderDTO.setCustomerId(order.getCustomer().getId());
-        orderDTO.setCartId(order.getCart().getId());
+        orderDTO.setCartId(savedCartId);
         orderDTO.setTotalPrice(order.getTotalPrice());
 
         // Düzeltilmiş DTO mapping
