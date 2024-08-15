@@ -1,10 +1,10 @@
 
 package com.draft.e_commerce.service.interf;
 
-import com.draft.e_commerce.model.Order;
+import com.draft.e_commerce.model.DTO.OrderDTO;
 
 public interface OrderServiceInterface
 {
-    Order placeOrder(Long cartId);
-    Order getOrderById(Long id);
+    OrderDTO placeOrder(Long cartId);
+    OrderDTO getOrderById(Long id);
 }

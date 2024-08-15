@@ -13,10 +13,12 @@ public class CustomerService implements CustomerServiceInterface {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Override
     public Customer addCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
+    @Override
     public java.util.List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }

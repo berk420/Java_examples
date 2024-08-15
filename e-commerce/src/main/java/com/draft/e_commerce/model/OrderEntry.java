@@ -16,6 +16,11 @@ public class OrderEntry extends BaseEntity {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
@@ -53,6 +58,14 @@ public class OrderEntry extends BaseEntity {
 
     public void setBasePrice(BigDecimal base_price) {
         this.base_price = base_price;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+    
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
 
