@@ -1,12 +1,13 @@
 package com.draft.e_commerce.service.interf;
 
-import com.draft.e_commerce.model.Cart;
+
+import com.draft.e_commerce.model.DTO.CartDTO;
 
 public interface CartServiceInterface {
 
-    Cart getCart(Long id);
+    CartDTO getCart(Long id);
 
-    Cart updateCart(Cart cart);
+    CartDTO updateCart(CartDTO cartDTO);
 
     void emptyCart(Long id);
 

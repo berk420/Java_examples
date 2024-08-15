@@ -1,8 +1,7 @@
 package com.draft.e_commerce.service;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,18 +12,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.Customer;
-import com.draft.e_commerce.model.Product;
+import com.draft.e_commerce.model.DTO.CartDTO;
+import com.draft.e_commerce.model.DTO.CartEntryDTO;
 import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.ProductRepository;
-import com.draft.e_commerce.service.interf.CustomerServiceInterface;
-
+import com.draft.e_commerce.service.interf.CartServiceInterface;
 
 @Service
-public class CartService implements CustomerServiceInterface{
+public class CartService implements CartServiceInterface {
 
-    private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(CartService.class);
 
     @Autowired
     private CartRepository cartRepository;
@@ -36,138 +34,138 @@ public class CartService implements CustomerServiceInterface{
     private CartEntryRepository cartEntryRepository;
 
     @Transactional
-    public Cart getCart(Long id) {
+    @Override
+    public CartDTO getCart(Long id) {
         Cart cart = cartRepository.findById(id).orElse(null);
-        
-        if (cart != null) {
-            // Cart içindeki CartEntry'leri alın
-            Set<CartEntry> cartEntries = cart.getCartEntries();
-            
-            // Total price'ı hesaplayın
-            long totalPrice = cartEntries.stream()
-                                         .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())
-                                         .sum();
-            
-            // Eğer Cart nesnesinde totalPrice alanı varsa, onu set edebilirsiniz
-            cart.setTotalPrice((int)totalPrice);
-        }
-        
-        return cart;
+        return mapCartToDTO(cart);
     }
-    
 
-    public Cart updateCart(Cart cart) {
-        return cartRepository.save(cart);
-    }
-    
     @Transactional
+    @Override
+    public CartDTO updateCart(CartDTO cart) {
+        Cart updatedCart = cartRepository.save(mapDTOToCart(cart));
+        return mapCartToDTO(updatedCart);
+    }
+
+    @Transactional
+    @Override
     public void emptyCart(Long id) {
-        Optional<Cart> cartOptional = cartRepository.findById(id);
-
-        cartOptional.ifPresent(cart -> {
-            // CartEntry'leri temizle
-            Set<CartEntry> cartEntries = cart.getCartEntries();
-            cartEntries.clear();
-            cart.setCartEntries(cartEntries);
-
+        cartRepository.findById(id).ifPresent(cart -> {
+            cart.getCartEntries().clear();
+            cart.setTotalPrice(0);
             cartRepository.save(cart);
         });
-
     }
+
     @Transactional
+    @Override
     public void addProductToCart(Long cartId, Long productId) {
-        // Cart ve Product nesnelerini veritabanından al
-        Optional<Cart> cartOptional = cartRepository.findById(cartId);
-        Optional<Product> productOptional = productRepository.findById(productId);
-    
-        // Her iki nesne de mevcutsa işleme devam et
-        if (cartOptional.isPresent() && productOptional.isPresent()) {
-            Cart cart = cartOptional.get();
-            Product product = productOptional.get();
-    
-            // Cart içinde mevcut CartEntry'yi bul
-            Optional<CartEntry> cartEntryOptional = cart.getCartEntries().stream()
-                .filter(entry -> entry.getProduct().equals(product))
-                .findFirst();
-    
-            CartEntry cartEntry;
-    
-            if (cartEntryOptional.isPresent()) {
-                // Eğer ürün zaten sepette varsa, miktarını artır
-                cartEntry = cartEntryOptional.get();
-                cartEntry.setQuantity(cartEntry.getQuantity() + 1); // Miktarı artır
-            } else {
-                // Eğer ürün sepette yoksa, yeni bir CartEntry oluştur
-                cartEntry = new CartEntry();
+        cartRepository.findById(cartId).ifPresent(cart -> {
+            productRepository.findById(productId).ifPresent(product -> {
+                CartEntry cartEntry = cart.getCartEntries().stream()
+                    .filter(entry -> entry.getProduct().equals(product))
+                    .findFirst()
+                    .orElse(new CartEntry());
+
                 cartEntry.setCart(cart);
                 cartEntry.setProduct(product);
-                cartEntry.setQuantity(1); // Yeni CartEntry için varsayılan miktar
-            }
-    
-            try {
-                cartEntryRepository.save(cartEntry);
+                cartEntry.setQuantity(cartEntry.getQuantity() + 1);
+
                 cart.getCartEntries().add(cartEntry);
-    
-                // Yeni toplam fiyatı hesapla
-                long newTotalPrice = calculateTotalPrice(cart.getCartEntries());
-                cart.setTotalPrice((int) newTotalPrice);
-    
-                cartRepository.save(cart);
-            } catch (Exception e) {
-                logger.info("ATTENTION");
-                logger.info("Error occurred while saving CartEntry or Cart", e);
-                throw e; // Exception'u tekrar fırlatmak önemli olabilir
-            }
-        }
-    }
-    
-    private long calculateTotalPrice(Set<CartEntry> cartEntries) {
-        return cartEntries.stream()
-                          .mapToLong(cartEntry -> cartEntry.getProduct().getPrice() * cartEntry.getQuantity())
-                          .sum();
+                cartEntryRepository.save(cartEntry);
+
+                updateTotalPrice(cart);
+            });
+        });
     }
 
     @Transactional
+    @Override
     public void removeProductFromCart(Long cartId, Long productId) {
+        cartRepository.findById(cartId).ifPresent(cart -> {
+            CartEntry cartEntry = cart.getCartEntries().stream()
+                .filter(entry -> entry.getProduct().getId().equals(productId))
+                .findFirst()
+                .orElse(null);
 
-        Optional<Cart> cartOptional = cartRepository.findById(cartId);
-        Optional<Product> productOptional = productRepository.findById(productId);
-
-        if (cartOptional.isPresent() && productOptional.isPresent()) {
-            Cart cart = cartOptional.get();
-            Product product = productOptional.get();
-
-            Optional<CartEntry> cartEntryOptional = cart.getCartEntries().stream()
-                .filter(entry -> entry.getProduct().equals(product))
-                .findFirst();
-
-            if (cartEntryOptional.isPresent()) {
-                CartEntry cartEntry = cartEntryOptional.get();
-
+            if (cartEntry != null) {
                 if (cartEntry.getQuantity() > 1) {
-                    cartEntry.setQuantity(cartEntry.getQuantity() - 1); // Miktarı azalt
+                    cartEntry.setQuantity(cartEntry.getQuantity() - 1);
                     cartEntryRepository.save(cartEntry);
                 } else {
-                    cart.getCartEntries().remove(cartEntry); // Eğer miktar 1 ise, entry'yi kaldır
+                    cart.getCartEntries().remove(cartEntry);
                     cartEntryRepository.delete(cartEntry);
                 }
-
-                cartRepository.save(cart);
+                updateTotalPrice(cart);
             }
+        });
+    }
+
+    private CartDTO mapCartToDTO(Cart cart) {
+        if (cart == null) {
+            return null;
         }
+
+        CartDTO cartDTO = new CartDTO();
+        cartDTO.setId(cart.getId());
+        cartDTO.setCustomerId(cart.getCustomer().getId());
+        cartDTO.setTotalPrice(cart.getTotalPrice());
+
+        Set<CartEntryDTO> cartEntryDTOs = cart.getCartEntries().stream()
+            .map(entry -> {
+                CartEntryDTO dto = new CartEntryDTO();
+                dto.setProductId(entry.getProduct().getId());
+                dto.setQuantity(entry.getQuantity());
+                return dto;
+            })
+            .collect(Collectors.toSet());
+
+        cartDTO.setCartEntries(cartEntryDTOs);
+        return cartDTO;
     }
 
+    private Cart mapDTOToCart(CartDTO cartDTO) {
+        if (cartDTO == null) {
+            return null;
+        }
 
-    @Override
-    public Customer addCustomer(Customer customer) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addCustomer'");
+        Cart cart = new Cart();
+        cart.setId(cartDTO.getId());
+
+        // Assuming that you have a method to find a customer by id
+        Customer customer = findCustomerById(cartDTO.getCustomerId());
+        cart.setCustomer(customer);
+
+        cart.setTotalPrice(cartDTO.getTotalPrice());
+
+        Set<CartEntry> cartEntries = cartDTO.getCartEntries().stream()
+            .map(dto -> {
+                CartEntry entry = new CartEntry();
+                entry.setProduct(productRepository.findById(dto.getProductId()).orElse(null));
+                entry.setQuantity(dto.getQuantity());
+                entry.setCart(cart);
+                return entry;
+            })
+            .collect(Collectors.toSet());
+
+        cart.setCartEntries(cartEntries);
+        return cart;
     }
 
+    private Customer findCustomerById(Long customerId) {
+        // Implement your logic to find a Customer by ID.
+        // This could involve calling a CustomerRepository or another service.
+        return null; // Replace with actual implementation
+    }
 
-    @Override
-    public List<Customer> getAllCustomers() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllCustomers'");
+    private void updateTotalPrice(Cart cart) {
+
+        int totalPrice = (int) cart.getCartEntries().stream()
+        .mapToLong(entry -> entry.getProduct().getPrice() * entry.getQuantity())
+        .sum();
+    
+
+        cart.setTotalPrice(totalPrice);
+        cartRepository.save(cart);
     }
 }

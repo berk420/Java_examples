@@ -1,11 +1,11 @@
 package com.draft.e_commerce.service.interf;
 
-import com.draft.e_commerce.model.Product;
+import com.draft.e_commerce.model.DTO.ProductDTO;
 
 public interface ProductServiceInterface {
-    Product getProduct(Long id);
-    Product createProduct(Product product);
-    Product updateProduct(Long id, Product updatedProduct);
+    ProductDTO getProduct(Long id);
+    ProductDTO createProduct(ProductDTO productDTO);
+    ProductDTO updateProduct(Long id, ProductDTO updatedProduct);
     void deleteProduct(Long id);
     void listBeans();
 }

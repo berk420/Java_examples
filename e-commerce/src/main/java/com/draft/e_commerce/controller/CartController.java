@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.draft.e_commerce.model.Cart;
+import com.draft.e_commerce.model.DTO.CartDTO;
 import com.draft.e_commerce.service.CartService;
+
 
 @RestController
 @RequestMapping("/api/carts")
@@ -23,12 +25,12 @@ public class CartController {
 
     
     @GetMapping("/{id}")
-    public Cart getCart(@PathVariable Long id) {
+    public CartDTO  getCart(@PathVariable Long id) {
         return cartService.getCart(id);
     }
 
     @PutMapping("/{id}")
-    public Cart updateCart(@PathVariable Long id, @RequestBody Cart cart) {
+    public CartDTO updateCart(@PathVariable Long id, @RequestBody CartDTO cart) {
         cart.setId(id);
         return cartService.updateCart(cart);
     }

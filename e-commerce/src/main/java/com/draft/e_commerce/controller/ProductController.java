@@ -10,38 +10,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.draft.e_commerce.model.Product;
-import com.draft.e_commerce.service.ProductService;
+import com.draft.e_commerce.model.DTO.ProductDTO;
+import com.draft.e_commerce.service.interf.ProductServiceInterface;
+
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("api/products")
 public class ProductController {
+
     @Autowired
-    private ProductService productService;
+    private ProductServiceInterface productService;
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable Long id) {
+    public ProductDTO getProduct(@PathVariable Long id) {
         return productService.getProduct(id);
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
+    public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
+        return productService.createProduct(productDTO);
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        product.setId(id);
-        return productService.updateProduct(id,product);
+    public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
+        return productService.updateProduct(id, productDTO);
     }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
-    }
-
-    @GetMapping("/list-beans")
-    public void listBeans() {
-        productService.listBeans();
     }
 }

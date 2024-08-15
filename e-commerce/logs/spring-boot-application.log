@@ -1,773 +1,136 @@
-2024-08-14T13:51:27.130+03:00  INFO 26332 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 26332 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T13:51:27.137+03:00  INFO 26332 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T13:51:29.711+03:00  INFO 26332 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T13:51:29.713+03:00  INFO 26332 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T13:51:29.859+03:00  INFO 26332 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T13:51:31.086+03:00  INFO 26332 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T13:51:32.316+03:00  INFO 26332 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@38ba8b45
-2024-08-14T13:51:32.327+03:00  INFO 26332 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T13:51:32.537+03:00  WARN 26332 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T13:51:36.631+03:00  INFO 26332 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T13:51:39.769+03:00  INFO 26332 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 13.068 seconds (process running for 13.622)
-2024-08-14T13:51:42.030+03:00  INFO 26332 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T13:52:43.877+03:00  INFO 15916 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 15916 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T13:52:43.881+03:00  INFO 15916 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T13:52:46.938+03:00  INFO 15916 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T13:52:46.938+03:00  INFO 15916 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T13:52:47.016+03:00  INFO 15916 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T13:52:48.083+03:00  INFO 15916 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T13:52:49.347+03:00  INFO 15916 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6fefc5ea
-2024-08-14T13:52:49.349+03:00  INFO 15916 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T13:52:49.449+03:00  WARN 15916 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T13:52:53.056+03:00  INFO 15916 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T13:52:55.173+03:00  INFO 15916 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.766 seconds (process running for 12.516)
-2024-08-14T13:52:55.503+03:00  INFO 15916 --- [e-commerce] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T15:51:06.651+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@108bc89c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.654+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6224ce50 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.656+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1cab68fc (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.657+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@25dd860b (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.658+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@614f8aae (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.659+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@26e4e2f3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.660+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@20ae4e96 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:51:06.662+03:00  WARN 15916 --- [e-commerce] [http-nio-8080-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@690a6956 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T15:53:34.946+03:00  INFO 1984 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 1984 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T15:53:34.950+03:00  INFO 1984 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T15:53:37.085+03:00  INFO 1984 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T15:53:37.086+03:00  INFO 1984 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T15:53:37.156+03:00  INFO 1984 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T15:53:38.134+03:00  INFO 1984 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T15:53:39.300+03:00  INFO 1984 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1031c1a0
-2024-08-14T15:53:39.302+03:00  INFO 1984 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T15:53:39.411+03:00  WARN 1984 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T15:53:42.787+03:00  INFO 1984 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T15:53:44.753+03:00  INFO 1984 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.187 seconds (process running for 10.807)
-2024-08-14T15:53:46.783+03:00  INFO 1984 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T15:55:32.356+03:00  INFO 24628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 24628 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T15:55:32.360+03:00  INFO 24628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T15:55:34.981+03:00  INFO 24628 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T15:55:34.984+03:00  INFO 24628 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T15:55:35.095+03:00  INFO 24628 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T15:55:36.998+03:00  INFO 24628 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T15:55:38.071+03:00  INFO 24628 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4888d1ea
-2024-08-14T15:55:38.073+03:00  INFO 24628 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T15:55:38.164+03:00  WARN 24628 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T15:55:41.667+03:00  INFO 24628 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T15:55:44.073+03:00  INFO 24628 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T15:55:44.087+03:00  INFO 24628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 12.257 seconds (process running for 12.956)
-2024-08-14T16:07:48.974+03:00  INFO 17180 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 17180 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T16:07:48.977+03:00  INFO 17180 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T16:07:51.899+03:00  INFO 17180 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T16:07:51.900+03:00  INFO 17180 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T16:07:51.972+03:00  INFO 17180 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T16:07:52.971+03:00  INFO 17180 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T16:07:54.690+03:00  INFO 17180 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5c13af01
-2024-08-14T16:07:54.692+03:00  INFO 17180 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T16:07:54.808+03:00  WARN 17180 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T16:07:58.132+03:00  INFO 17180 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T16:08:00.084+03:00  INFO 17180 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.557 seconds (process running for 11.999)
-2024-08-14T16:08:00.830+03:00  INFO 17180 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T16:21:09.565+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5c13af01 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.570+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@451a6939 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.572+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@52a8f3cd (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.575+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@16560341 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.578+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5b7a35b5 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.580+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4d3fcc42 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.582+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@589c68b3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.586+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7e7634ea (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.590+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@742b710c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:21:09.593+03:00  WARN 17180 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@47c5ee17 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T16:25:04.246+03:00  INFO 22196 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 22196 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T16:25:04.250+03:00  INFO 22196 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T16:25:06.350+03:00  INFO 22196 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T16:25:06.351+03:00  INFO 22196 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T16:25:06.432+03:00  INFO 22196 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T16:25:07.265+03:00  INFO 22196 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T16:25:08.145+03:00  INFO 22196 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1f19d423
-2024-08-14T16:25:08.147+03:00  INFO 22196 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T16:25:08.245+03:00  WARN 22196 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T16:25:11.716+03:00  INFO 22196 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T16:25:13.893+03:00  INFO 22196 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.072 seconds (process running for 10.501)
-2024-08-14T16:25:16.134+03:00  INFO 22196 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T16:25:37.776+03:00  INFO 15352 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 15352 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T16:25:37.781+03:00  INFO 15352 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T16:25:40.102+03:00  INFO 15352 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T16:25:40.103+03:00  INFO 15352 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T16:25:40.174+03:00  INFO 15352 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T16:25:41.167+03:00  INFO 15352 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T16:25:42.124+03:00  INFO 15352 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1031c1a0
-2024-08-14T16:25:42.126+03:00  INFO 15352 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T16:25:42.225+03:00  WARN 15352 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T16:25:45.735+03:00  INFO 15352 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T16:25:47.860+03:00  INFO 15352 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.536 seconds (process running for 11.156)
-2024-08-14T16:25:49.534+03:00  INFO 15352 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T16:32:30.885+03:00  INFO 19532 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 19532 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T16:32:30.890+03:00  INFO 19532 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T16:32:33.079+03:00  INFO 19532 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T16:32:33.080+03:00  INFO 19532 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T16:32:33.148+03:00  INFO 19532 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T16:32:34.036+03:00  INFO 19532 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T16:32:35.346+03:00  INFO 19532 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@519b0f00
-2024-08-14T16:32:35.347+03:00  INFO 19532 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T16:32:35.460+03:00  WARN 19532 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T16:32:38.834+03:00  INFO 19532 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T16:32:40.911+03:00  INFO 19532 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.501 seconds (process running for 11.007)
-2024-08-14T16:32:42.659+03:00  INFO 19532 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T16:40:20.770+03:00  INFO 2644 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 2644 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T16:40:20.773+03:00  INFO 2644 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T16:40:22.723+03:00  INFO 2644 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T16:40:22.724+03:00  INFO 2644 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T16:40:22.789+03:00  INFO 2644 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T16:40:23.665+03:00  INFO 2644 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T16:40:24.972+03:00  INFO 2644 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@47c5cbf2
-2024-08-14T16:40:24.974+03:00  INFO 2644 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T16:40:25.063+03:00  WARN 2644 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T16:40:28.281+03:00  INFO 2644 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T16:40:29.927+03:00  INFO 2644 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.558 seconds (process running for 9.997)
-2024-08-14T16:40:32.698+03:00  INFO 2644 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T16:46:08.284+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : ---------------------------------------------------
-2024-08-14T16:46:08.285+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : Beans in ApplicationContext:
-2024-08-14T16:46:08.286+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.annotation.internalConfigurationAnnotationProcessor
-2024-08-14T16:46:08.286+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.annotation.internalAutowiredAnnotationProcessor
-2024-08-14T16:46:08.286+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.annotation.internalCommonAnnotationProcessor
-2024-08-14T16:46:08.286+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.annotation.internalPersistenceAnnotationProcessor
-2024-08-14T16:46:08.286+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.event.internalEventListenerProcessor
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.context.event.internalEventListenerFactory
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : ECommerceApplication
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : beanLifecycleManager
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : cartController
-2024-08-14T16:46:08.287+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : customerController
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : orderController
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : productController
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : globalExceptionHandler
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : cartService
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : customerService
-2024-08-14T16:46:08.288+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : orderEntryService
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : orderService
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : productService
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.AutoConfigurationPackages
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : propertySourcesPlaceholderConfigurer
-2024-08-14T16:46:08.289+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration
-2024-08-14T16:46:08.290+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : fileWatcher
-2024-08-14T16:46:08.290+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : sslPropertiesSslBundleRegistrar
-2024-08-14T16:46:08.290+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : sslBundleRegistry
-2024-08-14T16:46:08.290+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
-2024-08-14T16:46:08.290+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.context.internalConfigurationPropertiesBinder
-2024-08-14T16:46:08.291+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.context.properties.BoundConfigurationProperties
-2024-08-14T16:46:08.291+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
-2024-08-14T16:46:08.292+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.ssl-org.springframework.boot.autoconfigure.ssl.SslProperties
-2024-08-14T16:46:08.292+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration$TomcatWebSocketConfiguration
-2024-08-14T16:46:08.292+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : websocketServletWebServerCustomizer
-2024-08-14T16:46:08.292+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration
-2024-08-14T16:46:08.293+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration$EmbeddedTomcat
-2024-08-14T16:46:08.293+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : tomcatServletWebServerFactory
-2024-08-14T16:46:08.293+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration
-2024-08-14T16:46:08.293+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletWebServerFactoryCustomizer
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : tomcatServletWebServerFactoryCustomizer
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : server-org.springframework.boot.autoconfigure.web.ServerProperties
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webServerFactoryCustomizerBeanPostProcessor
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : errorPageRegistrarBeanPostProcessor
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletConfiguration
-2024-08-14T16:46:08.294+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dispatcherServlet
-2024-08-14T16:46:08.295+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties
-2024-08-14T16:46:08.295+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration
-2024-08-14T16:46:08.295+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dispatcherServletRegistration
-2024-08-14T16:46:08.295+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration
-2024-08-14T16:46:08.295+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$ThreadPoolTaskExecutorBuilderConfiguration
-2024-08-14T16:46:08.296+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : threadPoolTaskExecutorBuilder
-2024-08-14T16:46:08.296+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorBuilderConfiguration
-2024-08-14T16:46:08.296+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : taskExecutorBuilder
-2024-08-14T16:46:08.296+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$SimpleAsyncTaskExecutorBuilderConfiguration
-2024-08-14T16:46:08.296+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : simpleAsyncTaskExecutorBuilder
-2024-08-14T16:46:08.297+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorConfiguration
-2024-08-14T16:46:08.297+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : applicationTaskExecutor
-2024-08-14T16:46:08.297+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
-2024-08-14T16:46:08.297+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
-2024-08-14T16:46:08.297+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : defaultValidator
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : methodValidationPostProcessor
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : error
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : beanNameViewResolver
-2024-08-14T16:46:08.298+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$DefaultErrorViewResolverConfiguration
-2024-08-14T16:46:08.299+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : conventionErrorViewResolver
-2024-08-14T16:46:08.299+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.web-org.springframework.boot.autoconfigure.web.WebProperties
-2024-08-14T16:46:08.299+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
-2024-08-14T16:46:08.299+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : errorAttributes
-2024-08-14T16:46:08.299+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : basicErrorController
-2024-08-14T16:46:08.300+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : errorPageCustomizer
-2024-08-14T16:46:08.300+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : preserveErrorControllerTargetClassPostProcessor
-2024-08-14T16:46:08.300+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration
-2024-08-14T16:46:08.300+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : welcomePageHandlerMapping
-2024-08-14T16:46:08.300+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : welcomePageNotAcceptableHandlerMapping
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : localeResolver
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : themeResolver
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : flashMapManager
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcConversionService
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcValidator
-2024-08-14T16:46:08.301+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcContentNegotiationManager
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : requestMappingHandlerMapping
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcPatternParser
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcUrlPathHelper
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcPathMatcher
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : viewControllerHandlerMapping
-2024-08-14T16:46:08.302+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : beanNameHandlerMapping
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : routerFunctionMapping
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : resourceHandlerMapping
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcResourceUrlProvider
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : defaultServletHandlerMapping
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : requestMappingHandlerAdapter
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : handlerFunctionAdapter
-2024-08-14T16:46:08.303+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcUriComponentsContributor
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : httpRequestHandlerAdapter
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : simpleControllerHandlerAdapter
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : handlerExceptionResolver
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcViewResolver
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mvcHandlerMappingIntrospector
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : viewNameTranslator
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter
-2024-08-14T16:46:08.304+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : defaultViewResolver
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : viewResolver
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : requestContextFilter
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : formContentFilter
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.audit.AuditEventsEndpointAutoConfiguration
-2024-08-14T16:46:08.305+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : applicationAvailability
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.availability.AvailabilityHealthContributorAutoConfiguration
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.beans.BeansEndpointAutoConfiguration
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : beansEndpoint
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration
-2024-08-14T16:46:08.306+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari
-2024-08-14T16:46:08.307+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jdbcConnectionDetailsHikariBeanPostProcessor
-2024-08-14T16:46:08.307+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dataSource
-2024-08-14T16:46:08.307+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration$Hikari
-2024-08-14T16:46:08.308+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration
-2024-08-14T16:46:08.308+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration
-2024-08-14T16:46:08.308+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jdbcConnectionDetails
-2024-08-14T16:46:08.309+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration
-2024-08-14T16:46:08.309+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : hikariPoolDataSourceMetadataProvider
-2024-08-14T16:46:08.309+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration
-2024-08-14T16:46:08.310+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-2024-08-14T16:46:08.310+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties
-2024-08-14T16:46:08.310+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizationAutoConfiguration
-2024-08-14T16:46:08.310+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : platformTransactionManagerCustomizers
-2024-08-14T16:46:08.311+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : transactionExecutionListeners
-2024-08-14T16:46:08.311+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties
-2024-08-14T16:46:08.311+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$PersistenceManagedTypesConfiguration
-2024-08-14T16:46:08.311+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : persistenceManagedTypes
-2024-08-14T16:46:08.311+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : transactionManager
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpaVendorAdapter
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : entityManagerFactoryBuilder
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : entityManagerFactory
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties
-2024-08-14T16:46:08.312+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : standardJacksonObjectMapperBuilderCustomizer
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jacksonObjectMapperBuilder
-2024-08-14T16:46:08.313+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$ParameterNamesModuleConfiguration
-2024-08-14T16:46:08.314+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : parameterNamesModule
-2024-08-14T16:46:08.314+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration
-2024-08-14T16:46:08.314+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jacksonObjectMapper
-2024-08-14T16:46:08.314+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonMixinConfiguration
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jsonMixinModuleEntries
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jsonMixinModule
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jsonComponentModule
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.cache.CachesEndpointAutoConfiguration
-2024-08-14T16:46:08.315+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : cachesEndpoint
-2024-08-14T16:46:08.316+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration
-2024-08-14T16:46:08.316+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthStatusAggregator
-2024-08-14T16:46:08.316+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthHttpCodeStatusMapper
-2024-08-14T16:46:08.316+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpointGroups
-2024-08-14T16:46:08.316+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthContributorRegistry
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpointGroupMembershipValidator
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpoint
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpointGroupsBeanPostProcessor
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.health.HealthEndpointWebExtensionConfiguration$MvcAdditionalHealthEndpointPathsConfiguration
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpointWebMvcHandlerMapping
-2024-08-14T16:46:08.317+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.health.HealthEndpointWebExtensionConfiguration
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : healthEndpointWebExtension
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.health.HealthEndpointAutoConfiguration
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoint.health-org.springframework.boot.actuate.autoconfigure.health.HealthEndpointProperties
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
-2024-08-14T16:46:08.318+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.info.InfoContributorAutoConfiguration
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.info-org.springframework.boot.actuate.autoconfigure.info.InfoContributorProperties
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.info.InfoEndpointAutoConfiguration
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : infoEndpoint
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.servlet.ServletManagementContextAutoConfiguration
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletWebChildContextFactory
-2024-08-14T16:46:08.319+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : managementServletContext
-2024-08-14T16:46:08.320+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.condition.ConditionsReportEndpointAutoConfiguration
-2024-08-14T16:46:08.320+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : conditionsReportEndpoint
-2024-08-14T16:46:08.320+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.context.properties.ConfigurationPropertiesReportEndpointAutoConfiguration
-2024-08-14T16:46:08.320+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : configurationPropertiesReportEndpoint
-2024-08-14T16:46:08.320+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoint.configprops-org.springframework.boot.actuate.autoconfigure.context.properties.ConfigurationPropertiesReportEndpointProperties
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.EndpointAutoConfiguration
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointOperationParameterMapper
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointCachingOperationInvokerAdvisor
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.jackson.JacksonEndpointAutoConfiguration
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointObjectMapper
-2024-08-14T16:46:08.321+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mbeanExporter
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : objectNamingStrategy
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mbeanServer
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.jmx-org.springframework.boot.autoconfigure.jmx.JmxProperties
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.jmx.JmxEndpointAutoConfiguration
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jmxAnnotationEndpointDiscoverer
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointObjectNameFactory
-2024-08-14T16:46:08.322+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jmxMBeanExporter
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jmxIncludeExcludePropertyEndpointFilter
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : eagerlyInitializeJmxEndpointExporter
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoints.jmx-org.springframework.boot.actuate.autoconfigure.endpoint.jmx.JmxEndpointProperties
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration$WebEndpointServletConfiguration
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletEndpointDiscoverer
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration
-2024-08-14T16:46:08.323+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webEndpointPathMapper
-2024-08-14T16:46:08.324+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointMediaTypes
-2024-08-14T16:46:08.324+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webEndpointDiscoverer
-2024-08-14T16:46:08.324+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : controllerEndpointDiscoverer
-2024-08-14T16:46:08.324+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : pathMappedEndpoints
-2024-08-14T16:46:08.325+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webExposeExcludePropertyEndpointFilter
-2024-08-14T16:46:08.325+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : controllerExposeExcludePropertyEndpointFilter
-2024-08-14T16:46:08.326+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoints.web-org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties
-2024-08-14T16:46:08.326+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.env.EnvironmentEndpointAutoConfiguration
-2024-08-14T16:46:08.327+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : environmentEndpoint
-2024-08-14T16:46:08.328+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoint.env-org.springframework.boot.actuate.autoconfigure.env.EnvironmentEndpointProperties
-2024-08-14T16:46:08.329+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.system.DiskSpaceHealthContributorAutoConfiguration
-2024-08-14T16:46:08.329+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : diskSpaceHealthIndicator
-2024-08-14T16:46:08.329+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.health.diskspace-org.springframework.boot.actuate.autoconfigure.system.DiskSpaceHealthIndicatorProperties
-2024-08-14T16:46:08.330+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.health.HealthContributorAutoConfiguration
-2024-08-14T16:46:08.330+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : pingHealthContributor
-2024-08-14T16:46:08.330+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dbHealthContributor
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.health.db-org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthIndicatorProperties
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.logging.LogFileWebEndpointAutoConfiguration
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : logFileWebEndpoint
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoint.logfile-org.springframework.boot.actuate.autoconfigure.logging.LogFileWebEndpointProperties
-2024-08-14T16:46:08.331+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.logging.LoggersEndpointAutoConfiguration
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : loggersEndpoint
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.management.HeapDumpWebEndpointAutoConfiguration
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : heapDumpWebEndpoint
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.management.ThreadDumpEndpointAutoConfiguration
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dumpEndpoint
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration
-2024-08-14T16:46:08.332+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : micrometerClock
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : meterRegistryPostProcessor
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : propertiesMeterFilter
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : meterRegistryCloser
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.metrics-org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration
-2024-08-14T16:46:08.333+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : simpleMeterRegistry
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : simpleConfig
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.simple.metrics.export-org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleProperties
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.JvmMetricsAutoConfiguration
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmGcMetrics
-2024-08-14T16:46:08.334+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmHeapPressureMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmMemoryMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmThreadMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : classLoaderMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmInfoMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jvmCompilationMetrics
-2024-08-14T16:46:08.335+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.LogbackMetricsAutoConfiguration
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : logbackMetrics
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.MetricsEndpointAutoConfiguration
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsEndpoint
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.SystemMetricsAutoConfiguration
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : uptimeMetrics
-2024-08-14T16:46:08.336+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : processorMetrics
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : fileDescriptorMetrics
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : diskSpaceMetrics
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : repositoryTagsProvider
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsRepositoryMethodInvocationListener
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsRepositoryMethodInvocationListenerBeanPostProcessor
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.integration.IntegrationMetricsAutoConfiguration
-2024-08-14T16:46:08.337+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.jdbc.DataSourcePoolMetricsAutoConfiguration$HikariDataSourceMetricsConfiguration
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : hikariDataSourceMeterBinder
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.jdbc.DataSourcePoolMetricsAutoConfiguration$DataSourcePoolMetadataMetricsConfiguration
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dataSourcePoolMetadataMeterBinder
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.jdbc.DataSourcePoolMetricsAutoConfiguration
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.startup.StartupTimeMetricsListenerAutoConfiguration
-2024-08-14T16:46:08.338+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : startupTimeMetrics
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$ThreadPoolTaskSchedulerBuilderConfiguration
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : threadPoolTaskSchedulerBuilder
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$TaskSchedulerBuilderConfiguration
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : taskSchedulerBuilder
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$SimpleAsyncTaskSchedulerBuilderConfiguration
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : simpleAsyncTaskSchedulerBuilder
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
-2024-08-14T16:46:08.339+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
-2024-08-14T16:46:08.340+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.task.TaskExecutorMetricsAutoConfiguration
-2024-08-14T16:46:08.340+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : eagerTaskExecutorMetrics
-2024-08-14T16:46:08.340+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.metrics.web.tomcat.TomcatMetricsAutoConfiguration
-2024-08-14T16:46:08.340+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : tomcatMetricsBinder
-2024-08-14T16:46:08.341+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.ObservationAutoConfiguration$ObservedAspectConfiguration
-2024-08-14T16:46:08.341+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observedAspect
-2024-08-14T16:46:08.341+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.ObservationAutoConfiguration$MeterObservationHandlerConfiguration$OnlyMetricsMeterObservationHandlerConfiguration
-2024-08-14T16:46:08.341+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : defaultMeterObservationHandler
-2024-08-14T16:46:08.342+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.ObservationAutoConfiguration$MeterObservationHandlerConfiguration
-2024-08-14T16:46:08.342+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.ObservationAutoConfiguration$OnlyMetricsConfiguration
-2024-08-14T16:46:08.343+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsObservationHandlerGrouping
-2024-08-14T16:46:08.343+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.ObservationAutoConfiguration
-2024-08-14T16:46:08.343+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observationRegistryPostProcessor
-2024-08-14T16:46:08.344+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observationRegistry
-2024-08-14T16:46:08.344+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : propertiesObservationFilter
-2024-08-14T16:46:08.344+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.observations-org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties
-2024-08-14T16:46:08.344+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration
-2024-08-14T16:46:08.345+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : stringHttpMessageConverter
-2024-08-14T16:46:08.345+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration
-2024-08-14T16:46:08.345+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mappingJackson2HttpMessageConverter
-2024-08-14T16:46:08.345+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration
-2024-08-14T16:46:08.346+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration
-2024-08-14T16:46:08.346+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : messageConverters
-2024-08-14T16:46:08.346+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.client.RestClientAutoConfiguration
-2024-08-14T16:46:08.346+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : httpMessageConvertersRestClientCustomizer
-2024-08-14T16:46:08.346+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : restClientSsl
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : restClientBuilderConfigurer
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : restClientBuilder
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : restTemplateBuilderConfigurer
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : restTemplateBuilder
-2024-08-14T16:46:08.347+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.client.HttpClientObservationsAutoConfiguration$MeterFilterConfiguration
-2024-08-14T16:46:08.348+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsHttpClientUriTagFilter
-2024-08-14T16:46:08.348+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.client.RestTemplateObservationConfiguration
-2024-08-14T16:46:08.348+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observationRestTemplateCustomizer
-2024-08-14T16:46:08.348+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.client.RestClientObservationConfiguration
-2024-08-14T16:46:08.349+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observationRestClientCustomizer
-2024-08-14T16:46:08.349+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.client.HttpClientObservationsAutoConfiguration
-2024-08-14T16:46:08.349+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.servlet.WebMvcObservationAutoConfiguration$MeterFilterConfiguration
-2024-08-14T16:46:08.349+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : metricsHttpServerUriTagFilter
-2024-08-14T16:46:08.349+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.observation.web.servlet.WebMvcObservationAutoConfiguration
-2024-08-14T16:46:08.350+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webMvcObservationFilter
-2024-08-14T16:46:08.350+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.sbom.SbomEndpointAutoConfiguration
-2024-08-14T16:46:08.350+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : sbomEndpoint
-2024-08-14T16:46:08.350+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoint.sbom-org.springframework.boot.actuate.sbom.SbomProperties
-2024-08-14T16:46:08.351+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.scheduling.ScheduledTasksEndpointAutoConfiguration
-2024-08-14T16:46:08.351+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : scheduledTasksEndpoint
-2024-08-14T16:46:08.351+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.scheduling.ScheduledTasksObservabilityAutoConfiguration
-2024-08-14T16:46:08.351+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : observabilitySchedulingConfigurer
-2024-08-14T16:46:08.351+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.exchanges.HttpExchangesEndpointAutoConfiguration
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.mappings.MappingsEndpointAutoConfiguration$ServletWebConfiguration$SpringMvcConfiguration
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dispatcherServletMappingDescriptionProvider
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.mappings.MappingsEndpointAutoConfiguration$ServletWebConfiguration
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletMappingDescriptionProvider
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : filterMappingDescriptionProvider
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.mappings.MappingsEndpointAutoConfiguration
-2024-08-14T16:46:08.352+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : mappingsEndpoint
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : springApplicationAdminRegistrar
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$AspectJAutoProxyingConfiguration$CglibAutoProxyConfiguration
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.aop.config.internalAutoProxyCreator
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$AspectJAutoProxyingConfiguration
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
-2024-08-14T16:46:08.353+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : lifecycleProcessor
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : persistenceExceptionTranslationPostProcessor
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpaSharedEM_entityManagerFactory
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : emBeanDefinitionRegistrarPostProcessor
-2024-08-14T16:46:08.354+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpaMappingContext
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpaContext
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.jpa.util.JpaMetamodelCacheCleanup
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.jpa.repository.support.JpaEvaluationContextExtension
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#0
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.OrderEntryRepository.fragments#0
-2024-08-14T16:46:08.355+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : orderEntryRepository
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#1
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.CartRepository.fragments#0
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : cartRepository
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#2
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.CartEntryRepository.fragments#0
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : cartEntryRepository
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#3
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.CustomerRepository.fragments#0
-2024-08-14T16:46:08.356+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : customerRepository
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#4
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.ProductRepository.fragments#0
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : productRepository
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.named-queries#5
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpa.OrderRepository.fragments#0
-2024-08-14T16:46:08.357+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : orderRepository
-2024-08-14T16:46:08.358+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : data-jpa.repository-aot-processor#0
-2024-08-14T16:46:08.358+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.web.config.ProjectingArgumentResolverRegistrar
-2024-08-14T16:46:08.358+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : projectingArgumentResolverBeanPostProcessor
-2024-08-14T16:46:08.358+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.web.config.SpringDataWebConfiguration
-2024-08-14T16:46:08.359+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : pageableResolver
-2024-08-14T16:46:08.359+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : sortResolver
-2024-08-14T16:46:08.359+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : offsetResolver
-2024-08-14T16:46:08.360+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.web.config.SpringDataJacksonConfiguration
-2024-08-14T16:46:08.360+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jacksonGeoModule
-2024-08-14T16:46:08.360+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : pageModule
-2024-08-14T16:46:08.361+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration
-2024-08-14T16:46:08.361+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : pageableCustomizer
-2024-08-14T16:46:08.361+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : sortCustomizer
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.data.web.config.SpringDataWebSettings
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.data.web-org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.JdbcTemplateConfiguration
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jdbcTemplate
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.NamedParameterJdbcTemplateConfiguration
-2024-08-14T16:46:08.362+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : namedParameterJdbcTemplate
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.jdbc-org.springframework.boot.autoconfigure.jdbc.JdbcProperties
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.JdbcClientAutoConfiguration
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jdbcClient
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.sql.init.DataSourceInitializationConfiguration
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : dataSourceScriptDatabaseInitializer
-2024-08-14T16:46:08.363+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
-2024-08-14T16:46:08.364+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
-2024-08-14T16:46:08.364+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration
-2024-08-14T16:46:08.364+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
-2024-08-14T16:46:08.364+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration
-2024-08-14T16:46:08.364+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.transaction.config.internalTransactionAdvisor
-2024-08-14T16:46:08.365+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : transactionAttributeSource
-2024-08-14T16:46:08.365+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : transactionInterceptor
-2024-08-14T16:46:08.365+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.transaction.config.internalTransactionalEventListenerFactory
-2024-08-14T16:46:08.365+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration
-2024-08-14T16:46:08.365+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$TransactionTemplateConfiguration
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : transactionTemplate
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration$TomcatWebServerFactoryCustomizerConfiguration
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : tomcatWebServerFactoryCustomizer
-2024-08-14T16:46:08.366+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration
-2024-08-14T16:46:08.367+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration
-2024-08-14T16:46:08.367+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : characterEncodingFilter
-2024-08-14T16:46:08.367+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : localeCharsetMappingsCustomizer
-2024-08-14T16:46:08.367+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration
-2024-08-14T16:46:08.367+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : multipartConfigElement
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : multipartResolver
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : spring.servlet.multipart-org.springframework.boot.autoconfigure.web.servlet.MultipartProperties
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletEndpointRegistrar
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration
-2024-08-14T16:46:08.368+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : servletExposeExcludePropertyEndpointFilter
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.endpoint.web.servlet.WebMvcEndpointManagementContextConfiguration
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : webEndpointServletHandlerMapping
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : controllerEndpointHandlerMapping
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : endpointObjectMapperWebMvcConfigurer
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.endpoints.web.cors-org.springframework.boot.actuate.autoconfigure.endpoint.web.CorsEndpointProperties
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.server.ManagementContextAutoConfiguration$SameManagementContextConfiguration$EnableSameManagementContextConfiguration
-2024-08-14T16:46:08.369+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.server.ManagementContextAutoConfiguration$SameManagementContextConfiguration
-2024-08-14T16:46:08.370+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : org.springframework.boot.actuate.autoconfigure.web.server.ManagementContextAutoConfiguration
-2024-08-14T16:46:08.370+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : management.server-org.springframework.boot.actuate.autoconfigure.web.server.ManagementServerProperties
-2024-08-14T16:46:08.370+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : jpaSharedEM_AWC_entityManagerFactory
-2024-08-14T16:46:08.370+03:00  INFO 2644 --- [e-commerce] [http-nio-8080-exec-5] c.d.e_commerce.service.ProductService    : ---------------------------------------------------
-2024-08-14T17:10:10.537+03:00  WARN 2644 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@47c5cbf2 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:10:10.539+03:00  WARN 2644 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4a4ef80a (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:10:10.540+03:00  WARN 2644 --- [e-commerce] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@72705752 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:11:00.602+03:00  INFO 9636 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 9636 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:11:00.606+03:00  INFO 9636 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:11:02.682+03:00  INFO 9636 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:11:02.683+03:00  INFO 9636 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:11:02.781+03:00  INFO 9636 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:11:03.912+03:00  INFO 9636 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:11:04.874+03:00  INFO 9636 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4d0abb23
-2024-08-14T17:11:04.878+03:00  INFO 9636 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:11:04.984+03:00  WARN 9636 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:11:09.159+03:00  INFO 2572 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 2572 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:11:09.166+03:00  INFO 2572 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:11:11.809+03:00  INFO 2572 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:11:11.810+03:00  INFO 2572 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:11:11.893+03:00  INFO 2572 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:11:13.059+03:00  INFO 2572 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:11:14.018+03:00  INFO 2572 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19c1f6f4
-2024-08-14T17:11:14.023+03:00  INFO 2572 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:11:14.125+03:00  WARN 2572 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:11:17.696+03:00  INFO 2572 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:11:19.757+03:00  INFO 2572 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.125 seconds (process running for 11.884)
-2024-08-14T17:11:20.754+03:00  INFO 2572 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:21:10.294+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@19c1f6f4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.298+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4d12a566 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.300+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@8857375 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.302+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@160c1224 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.303+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4271715d (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.304+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1a10c5e0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.305+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@39ad130c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.306+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4fc6bb2f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.310+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@674c013 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:10.312+03:00  WARN 2572 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1a572af8 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:21:26.196+03:00  INFO 27548 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27548 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:21:26.199+03:00  INFO 27548 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:21:28.869+03:00  INFO 27548 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:21:28.871+03:00  INFO 27548 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:21:28.961+03:00  INFO 27548 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:21:29.824+03:00  INFO 27548 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:21:30.763+03:00  INFO 27548 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1f19d423
-2024-08-14T17:21:30.765+03:00  INFO 27548 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:21:30.870+03:00  WARN 27548 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:21:34.325+03:00  INFO 27548 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:21:36.288+03:00  INFO 27548 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.544 seconds (process running for 11.43)
-2024-08-14T17:21:37.772+03:00  INFO 27548 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:25:09.948+03:00  INFO 27548 --- [e-commerce] [http-nio-8080-exec-9] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@3f3dc775
-2024-08-14T17:25:31.063+03:00  INFO 16860 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 16860 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:25:31.067+03:00  INFO 16860 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:25:33.450+03:00  INFO 16860 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:25:33.451+03:00  INFO 16860 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:25:33.563+03:00  INFO 16860 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:25:34.469+03:00  INFO 16860 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:25:35.379+03:00  INFO 16860 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@37142579
-2024-08-14T17:25:35.381+03:00  INFO 16860 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:25:35.472+03:00  WARN 16860 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:25:38.945+03:00  INFO 16860 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:25:41.592+03:00  INFO 16860 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.191 seconds (process running for 11.963)
-2024-08-14T17:25:42.268+03:00  INFO 16860 --- [e-commerce] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:25:42.628+03:00  INFO 16860 --- [e-commerce] [http-nio-8080-exec-4] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@59e47a8d
-2024-08-14T17:26:09.107+03:00  INFO 16860 --- [e-commerce] [http-nio-8080-exec-5] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@736df4af
-2024-08-14T17:27:35.652+03:00  INFO 6424 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 6424 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:27:35.655+03:00  INFO 6424 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:27:37.871+03:00  INFO 6424 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:27:37.872+03:00  INFO 6424 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:27:37.951+03:00  INFO 6424 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:27:39.001+03:00  INFO 6424 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:27:40.081+03:00  INFO 6424 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@41f23499
-2024-08-14T17:27:40.083+03:00  INFO 6424 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:27:40.184+03:00  WARN 6424 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:27:43.796+03:00  INFO 6424 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:27:46.093+03:00  INFO 6424 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.852 seconds (process running for 11.303)
-2024-08-14T17:27:46.683+03:00  INFO 6424 --- [e-commerce] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:27:46.958+03:00  INFO 6424 --- [e-commerce] [http-nio-8080-exec-4] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@6edd158b
-2024-08-14T17:39:20.883+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@41f23499 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.885+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@777a5ad4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.886+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4b1ae177 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.886+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@436ed1f1 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.888+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@18872c9a (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.888+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3d0e69a4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.889+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2103362b (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.890+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@14579aa3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.891+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3515874f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:20.892+03:00  WARN 6424 --- [e-commerce] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7b989b00 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-14T17:39:21.957+03:00  INFO 6424 --- [e-commerce] [http-nio-8080-exec-3] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@33844218
-2024-08-14T17:39:28.306+03:00 ERROR 6424 --- [e-commerce] [http-nio-8080-exec-6] c.draft.e_commerce.service.OrderService  : Error placing order: 
+2024-08-15T11:52:29.893+03:00  INFO 18276 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 18276 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T11:52:29.913+03:00  INFO 18276 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T11:52:32.266+03:00  INFO 18276 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T11:52:32.268+03:00  INFO 18276 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T11:52:32.349+03:00  INFO 18276 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T11:52:33.289+03:00  INFO 18276 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T11:52:34.833+03:00  INFO 18276 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@68f79b7c
+2024-08-15T11:52:34.835+03:00  INFO 18276 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T11:52:34.943+03:00  WARN 18276 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T11:52:38.436+03:00  INFO 18276 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T11:52:39.405+03:00  WARN 18276 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': No qualifying bean of type 'com.draft.e_commerce.service.ProductService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-08-15T11:52:39.409+03:00  INFO 18276 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
+2024-08-15T11:52:39.412+03:00  INFO 18276 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T11:52:39.972+03:00  INFO 18276 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T11:52:39.975+03:00  INFO 18276 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-15T11:52:40.008+03:00 ERROR 18276 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
-java.lang.IllegalStateException: Order with this cart already exists
-	at com.draft.e_commerce.service.OrderService.placeOrder(OrderService.java:46) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.11.jar:6.1.11]
-	at com.draft.e_commerce.service.OrderService$$SpringCGLIB$$0.placeOrder(<generated>) ~[classes/:na]
-	at com.draft.e_commerce.controller.OrderController.placeOrder(OrderController.java:25) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.11.jar:6.1.11]
-	at com.draft.e_commerce.controller.OrderController$$SpringCGLIB$$0.placeOrder(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
-	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+***************************
+APPLICATION FAILED TO START
+***************************
 
-2024-08-14T17:39:42.351+03:00  INFO 6424 --- [e-commerce] [http-nio-8080-exec-7] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@2e0f11df
-2024-08-14T17:41:15.278+03:00  INFO 6424 --- [e-commerce] [http-nio-8080-exec-9] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@3fbe5506
-2024-08-14T17:41:42.545+03:00  INFO 6272 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 6272 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:41:42.549+03:00  INFO 6272 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:41:44.534+03:00  INFO 6272 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:41:44.534+03:00  INFO 6272 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:41:44.614+03:00  INFO 6272 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:41:45.425+03:00  INFO 6272 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:41:46.300+03:00  INFO 6272 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e19b30
-2024-08-14T17:41:46.302+03:00  INFO 6272 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:41:46.412+03:00  WARN 6272 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:41:49.827+03:00  INFO 6272 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:41:51.899+03:00  INFO 6272 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.815 seconds (process running for 10.33)
-2024-08-14T17:41:54.319+03:00  INFO 6272 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:41:55.112+03:00  INFO 6272 --- [e-commerce] [http-nio-8080-exec-3] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@2deea612
-2024-08-14T17:43:46.159+03:00  INFO 30988 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 30988 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:43:46.165+03:00  INFO 30988 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:43:49.202+03:00  INFO 30988 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:43:49.203+03:00  INFO 30988 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:43:49.308+03:00  INFO 30988 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:43:50.389+03:00  INFO 30988 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:43:51.360+03:00  INFO 30988 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4888d1ea
-2024-08-14T17:43:51.364+03:00  INFO 30988 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:43:51.476+03:00  WARN 30988 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:43:54.950+03:00  INFO 30988 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:43:57.242+03:00  INFO 30988 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.681 seconds (process running for 12.312)
-2024-08-14T17:43:57.761+03:00  INFO 30988 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:44:44.946+03:00  INFO 30988 --- [e-commerce] [http-nio-8080-exec-1] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@41e11321
-2024-08-14T17:49:58.923+03:00  INFO 31416 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 31416 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-14T17:49:58.928+03:00  INFO 31416 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T17:50:01.491+03:00  INFO 31416 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-14T17:50:01.493+03:00  INFO 31416 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-14T17:50:01.586+03:00  INFO 31416 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-14T17:50:02.747+03:00  INFO 31416 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T17:50:03.994+03:00  INFO 31416 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@519b0f00
-2024-08-14T17:50:03.997+03:00  INFO 31416 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T17:50:04.110+03:00  WARN 31416 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T17:50:07.967+03:00  INFO 31416 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-14T17:50:12.785+03:00  INFO 31416 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 14.358 seconds (process running for 15.073)
-2024-08-14T17:50:13.652+03:00  INFO 31416 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-14T17:50:20.821+03:00  INFO 31416 --- [e-commerce] [http-nio-8080-exec-3] c.draft.e_commerce.service.OrderService  : Order found: com.draft.e_commerce.model.Order@3458f1ee
+Description:
+
+Field productService in com.draft.e_commerce.controller.ProductController required a bean of type 'com.draft.e_commerce.service.ProductService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.draft.e_commerce.service.ProductService' in your configuration.
+
+2024-08-15T11:58:18.092+03:00  INFO 18360 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 18360 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T11:58:18.095+03:00  INFO 18360 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T11:58:20.332+03:00  INFO 18360 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T11:58:20.333+03:00  INFO 18360 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T11:58:20.412+03:00  INFO 18360 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T11:58:21.428+03:00  INFO 18360 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T11:58:22.932+03:00  INFO 18360 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6fefc5ea
+2024-08-15T11:58:22.933+03:00  INFO 18360 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T11:58:23.053+03:00  WARN 18360 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T11:58:26.734+03:00  INFO 18360 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T11:58:28.535+03:00  INFO 18360 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.911 seconds (process running for 11.4)
+2024-08-15T11:58:29.927+03:00  INFO 18360 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-15T13:54:53.608+03:00  INFO 23652 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 23652 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T13:54:53.611+03:00  INFO 23652 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T13:54:56.541+03:00  INFO 23652 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T13:54:56.542+03:00  INFO 23652 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T13:54:56.613+03:00  INFO 23652 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T13:54:58.207+03:00  INFO 23652 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T13:54:59.855+03:00  INFO 23652 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2052f095
+2024-08-15T13:54:59.858+03:00  INFO 23652 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T13:54:59.977+03:00  WARN 23652 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T13:55:03.652+03:00  INFO 23652 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T13:55:05.151+03:00  WARN 23652 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': No qualifying bean of type 'com.draft.e_commerce.service.interf.ProductServiceInterface' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-08-15T13:55:05.154+03:00  INFO 23652 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
+2024-08-15T13:55:05.167+03:00  INFO 23652 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T13:55:05.841+03:00  INFO 23652 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T13:55:05.851+03:00  INFO 23652 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-15T13:55:05.922+03:00 ERROR 23652 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field productService in com.draft.e_commerce.controller.ProductController required a bean of type 'com.draft.e_commerce.service.interf.ProductServiceInterface' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.draft.e_commerce.service.interf.ProductServiceInterface' in your configuration.
+
+2024-08-15T14:34:34.917+03:00  INFO 25664 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 25664 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T14:34:34.922+03:00  INFO 25664 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T14:34:37.264+03:00  INFO 25664 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T14:34:37.265+03:00  INFO 25664 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T14:34:37.397+03:00  INFO 25664 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T14:34:38.490+03:00  INFO 25664 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T14:34:39.995+03:00  INFO 25664 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@41f23499
+2024-08-15T14:34:39.999+03:00  INFO 25664 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T14:34:40.111+03:00  WARN 25664 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T14:34:44.140+03:00  INFO 25664 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T14:34:59.392+03:00  INFO 16740 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 16740 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T14:34:59.397+03:00  INFO 16740 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T14:35:01.268+03:00  INFO 16740 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T14:35:01.269+03:00  INFO 16740 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T14:35:01.329+03:00  INFO 16740 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T14:35:02.109+03:00  INFO 16740 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T14:35:02.968+03:00  INFO 16740 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b7e4b20
+2024-08-15T14:35:02.970+03:00  INFO 16740 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T14:35:03.060+03:00  WARN 16740 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T14:35:06.243+03:00  INFO 16740 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T14:35:08.347+03:00  INFO 16740 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-15T14:35:08.356+03:00  INFO 16740 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.338 seconds (process running for 9.758)
+2024-08-15T14:36:23.941+03:00  INFO 13256 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 13256 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T14:36:23.945+03:00  INFO 13256 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T14:36:25.940+03:00  INFO 13256 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T14:36:25.941+03:00  INFO 13256 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T14:36:26.059+03:00  INFO 13256 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T14:36:27.132+03:00  INFO 13256 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T14:36:28.012+03:00  INFO 13256 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@41f23499
+2024-08-15T14:36:28.014+03:00  INFO 13256 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T14:36:28.106+03:00  WARN 13256 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T14:36:31.412+03:00  INFO 13256 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T14:36:33.287+03:00  INFO 13256 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.748 seconds (process running for 10.205)
+2024-08-15T14:36:35.822+03:00  INFO 13256 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-15T14:36:47.131+03:00  INFO 27556 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27556 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T14:36:47.135+03:00  INFO 27556 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T14:36:49.269+03:00  INFO 27556 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T14:36:49.271+03:00  INFO 27556 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T14:36:49.344+03:00  INFO 27556 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T14:36:50.331+03:00  INFO 27556 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T14:36:51.324+03:00  INFO 27556 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36330be8
+2024-08-15T14:36:51.326+03:00  INFO 27556 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T14:36:51.421+03:00  WARN 27556 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T14:36:55.112+03:00  INFO 27556 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T14:36:57.005+03:00  INFO 27556 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.281 seconds (process running for 10.861)
+2024-08-15T14:36:58.946+03:00  INFO 27556 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-15T14:38:01.140+03:00  INFO 28068 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 28068 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-15T14:38:01.142+03:00  INFO 28068 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T14:38:03.435+03:00  INFO 28068 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T14:38:03.436+03:00  INFO 28068 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T14:38:03.498+03:00  INFO 28068 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T14:38:04.315+03:00  INFO 28068 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T14:38:05.275+03:00  INFO 28068 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6338afe2
+2024-08-15T14:38:05.278+03:00  INFO 28068 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T14:38:05.373+03:00  WARN 28068 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T14:38:08.711+03:00  INFO 28068 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-15T14:38:10.703+03:00  INFO 28068 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.046 seconds (process running for 10.62)
+2024-08-15T14:38:12.980+03:00  INFO 28068 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
