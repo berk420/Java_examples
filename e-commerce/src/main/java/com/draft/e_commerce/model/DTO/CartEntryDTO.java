@@ -6,6 +6,7 @@ public class CartEntryDTO {
     private Long productId;
     private Integer quantity;
 
+
     // Getters and Setters
     public Long getProductId() {
         return productId;
@@ -22,4 +23,5 @@ public class CartEntryDTO {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
 }

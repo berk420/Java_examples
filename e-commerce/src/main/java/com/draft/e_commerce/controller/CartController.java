@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.DTO.CartDTO;
 import com.draft.e_commerce.service.CartService;
 
@@ -22,8 +21,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-
-    
     @GetMapping("/{id}")
     public CartDTO  getCart(@PathVariable Long id) {
         return cartService.getCart(id);
@@ -32,7 +29,7 @@ public class CartController {
     @PutMapping("/{id}")
     public CartDTO updateCart(@PathVariable Long id, @RequestBody CartDTO cart) {
         cart.setId(id);
-        return cartService.updateCart(cart);
+        return cartService.updateCart(cart,id);
     }
 
     @DeleteMapping("/{id}/empty")
