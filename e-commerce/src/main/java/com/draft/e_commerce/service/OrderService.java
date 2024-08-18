@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.draft.e_commerce.exception.CustomException;
+import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.DTO.OrderDTO;
@@ -47,11 +49,12 @@ public class OrderService implements OrderServiceInterface {
         try {
             boolean orderExists = orderRepository.existsByCart_Id(cartId);
             if (orderExists) {
-                throw new IllegalStateException("Order with this cart already exists");
+                throw new CustomException(ErrorCode.ORDER_ALREADY_EXISTS,null);
             }
+
             Cart cart = cartRepository.findById(cartId)
-                    .orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-    
+                .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND,null));
+
             Order order = new Order();
             order.setOrderCode(generateOrderCode());
             order.setCart(cart);
@@ -105,13 +108,13 @@ public class OrderService implements OrderServiceInterface {
     
     
         } catch (IllegalStateException e) {
-            logger.error("Error placing order: ", e);
-            throw e;
+        logger.error("Error placing order: ", e);
+        throw new CustomException(ErrorCode.ORDER_PLACEMENT_FAILED, e);
+    }   
         }
-    }
+    
     
 
-    @Transactional
     @Override
     public OrderDTO getOrderById(Long id) {
         Order order = orderRepository.findById(id).orElse(null);

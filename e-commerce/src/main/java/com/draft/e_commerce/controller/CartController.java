@@ -27,9 +27,9 @@ public class CartController {
     }
 
     @PutMapping("/{id}")
-    public CartDTO updateCart(@PathVariable Long id, @RequestBody CartDTO cart) {
+    public CartDTO createCart(@PathVariable Long id, @RequestBody CartDTO cart) {
         cart.setId(id);
-        return cartService.updateCart(cart,id);
+        return cartService.createCart(cart,id);
     }
 
     @DeleteMapping("/{id}/empty")

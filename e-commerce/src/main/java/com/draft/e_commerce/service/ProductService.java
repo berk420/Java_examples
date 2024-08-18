@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import com.draft.e_commerce.exception.CustomException;
+import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.DTO.ProductDTO;
 import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.ProductRepository;
@@ -45,8 +47,9 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     public ProductDTO getProduct(Long id) {
-        Product product = productRepository.findById(id).orElse(null);
-        return product != null ? convertToDTO(product) : null;
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND,null));
+        return convertToDTO(product);
     }
 
     @Override
@@ -58,21 +61,22 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     public ProductDTO updateProduct(Long id, ProductDTO productDTO) {
-        Product existingProduct = productRepository.findById(id).orElse(null);
-        if (existingProduct == null) {
-            throw new RuntimeException("Product not found with id: " + id);
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND,null));
+        
+        if (productDTO.getStock() < 0) {
+            throw new CustomException(ErrorCode.INVALID_PRODUCT_DATA,null);
         }
-
+        
         existingProduct.setName(productDTO.getName());
         existingProduct.setDescription(productDTO.getDescription());
         existingProduct.setPrice(productDTO.getPrice());
         existingProduct.setStock(productDTO.getStock());
-
-        // `cartEntries` güncellemeyi atla
-
+    
         Product updatedProduct = productRepository.save(existingProduct);
         return convertToDTO(updatedProduct);
     }
+    
 
     @Override
     public void deleteProduct(Long id) {

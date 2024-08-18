@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.draft.e_commerce.exception.CustomException;
+import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.Customer;
@@ -35,73 +37,76 @@ public class CartService implements CartServiceInterface {
     @Autowired
     private CartEntryRepository cartEntryRepository;
 
-    @Transactional
     @Override
     public CartDTO getCart(Long id) {
-        Cart cart = cartRepository.findById(id).orElse(null);
+        Cart cart = cartRepository.findById(id).orElseThrow(() -> 
+        new CustomException(ErrorCode.CART_NOT_FOUND,null));
         return mapCartToDTO(cart);
     }
 
-    @Transactional
     @Override
-    public CartDTO updateCart(CartDTO cart, Long id) {
-        Cart updatedCart = cartRepository.save(mapDTOToCart(cart,id));
-        return mapCartToDTO(updatedCart);
+    public CartDTO createCart(CartDTO cart, Long id) {
+        try {
+            Cart updatedCart = cartRepository.save(mapDTOToCart(cart, id));
+            return mapCartToDTO(updatedCart);
+        } catch (Exception e) {
+            logger.error("Error creating cart: ", e);
+            throw new CustomException(ErrorCode.CART_CREATION_FAILED, e);
+        }
     }
-
-    @Transactional
     @Override
     public void emptyCart(Long id) {
-        cartRepository.findById(id).ifPresent(cart -> {
-            cart.getCartEntries().clear();
-            cart.setTotalPrice(0);
-            cartRepository.save(cart);
-        });
+        Cart cart = cartRepository.findById(id).orElseThrow(() -> 
+            new CustomException(ErrorCode.CART_NOT_FOUND,null));
+        cart.getCartEntries().clear();
+        cart.setTotalPrice(0);
+        cartRepository.save(cart);
     }
-
+    
     @Transactional
     @Override
     public void addProductToCart(Long cartId, Long productId) {
-        cartRepository.findById(cartId).ifPresent(cart -> {
-            productRepository.findById(productId).ifPresent(product -> {
-                CartEntry cartEntry = cart.getCartEntries().stream()
-                    .filter(entry -> entry.getProduct().equals(product))
-                    .findFirst()
-                    .orElse(new CartEntry());
-
-                cartEntry.setCart(cart);
-                cartEntry.setProduct(product);
-                cartEntry.setQuantity(cartEntry.getQuantity() + 1);
-
-                cart.getCartEntries().add(cartEntry);
-                cartEntryRepository.save(cartEntry);
-
-                updateTotalPrice(cart);
-            });
+        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> 
+            new CustomException(ErrorCode.CART_NOT_FOUND,null));
+        productRepository.findById(productId).ifPresentOrElse(product -> {
+            CartEntry cartEntry = cart.getCartEntries().stream()
+                .filter(entry -> entry.getProduct().equals(product))
+                .findFirst()
+                .orElse(new CartEntry());
+    
+            cartEntry.setCart(cart);
+            cartEntry.setProduct(product);
+            cartEntry.setQuantity(cartEntry.getQuantity() + 1);
+    
+            cart.getCartEntries().add(cartEntry);
+            cartEntryRepository.save(cartEntry);
+    
+            updateTotalPrice(cart);
+        }, () -> {
+            throw new CustomException(ErrorCode.PRODUCT_NOT_FOUND,null);
         });
     }
-
+    
     @Transactional
     @Override
     public void removeProductFromCart(Long cartId, Long productId) {
-        cartRepository.findById(cartId).ifPresent(cart -> {
-            CartEntry cartEntry = cart.getCartEntries().stream()
-                .filter(entry -> entry.getProduct().getId().equals(productId))
-                .findFirst()
-                .orElse(null);
-
-            if (cartEntry != null) {
-                if (cartEntry.getQuantity() > 1) {
-                    cartEntry.setQuantity(cartEntry.getQuantity() - 1);
-                    cartEntryRepository.save(cartEntry);
-                } else {
-                    cart.getCartEntries().remove(cartEntry);
-                    cartEntryRepository.delete(cartEntry);
-                }
-                updateTotalPrice(cart);
-            }
-        });
+        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> 
+            new CustomException(ErrorCode.CART_NOT_FOUND,null));
+        CartEntry cartEntry = cart.getCartEntries().stream()
+            .filter(entry -> entry.getProduct().getId().equals(productId))
+            .findFirst()
+            .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_IN_CART,null));
+    
+        if (cartEntry.getQuantity() > 1) {
+            cartEntry.setQuantity(cartEntry.getQuantity() - 1);
+            cartEntryRepository.save(cartEntry);
+        } else {
+            cart.getCartEntries().remove(cartEntry);
+            cartEntryRepository.delete(cartEntry);
+        }
+        updateTotalPrice(cart);
     }
+    
 
     private CartDTO mapCartToDTO(Cart cart) {
         if (cart == null) {
