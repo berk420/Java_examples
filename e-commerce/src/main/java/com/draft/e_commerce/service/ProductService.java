@@ -33,15 +33,23 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     public ProductDTO getProduct(Long id) {
-        Product product = productRepository.findById(id)
+
+        Product product = productRepository
+                .findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+                
+        //return DTOMappers.convertToDTO(product);
         return DTOMappers.convertToDTO(product);
+
+
     }
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
-        Product product = DTOMappers.convertToEntity(productDTO);
-        Product savedProduct = productRepository.save(product);
+
+        Product product =       DTOMappers.convertToEntity(productDTO);
+        Product savedProduct =  productRepository.save(product);
+
         return DTOMappers.convertToDTO(savedProduct);
     }
 
@@ -54,10 +62,10 @@ public class ProductService implements ProductServiceInterface {
             throw new CustomException(ErrorCode.INVALID_PRODUCT_DATA, null);
         }
 
-        existingProduct.setName(productDTO.getName());
-        existingProduct.setDescription(productDTO.getDescription());
-        existingProduct.setPrice(productDTO.getPrice());
-        existingProduct.setStock(productDTO.getStock());
+        existingProduct.setName         (productDTO.getName());
+        existingProduct.setDescription  (productDTO.getDescription());
+        existingProduct.setPrice        (productDTO.getPrice());
+        existingProduct.setStock        (productDTO.getStock());
 
         Product updatedProduct = productRepository.save(existingProduct);
         return DTOMappers.convertToDTO(updatedProduct);
@@ -65,7 +73,8 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+        productRepository.  deleteById    (id);
     }
 
     @Override
@@ -87,6 +96,34 @@ public class ProductService implements ProductServiceInterface {
     //#endregion
 
     //#region Functions
+
+    public  ProductDTO convertToDTO(Product product) {
+
+
+        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+
+        return new ProductDTO(
+            product.getId           (),
+            product.getName         (),
+            product.getDescription  (),
+            product.getPrice        (),
+            product.getStock        ()
+        );
+    }
+
+    public  Product convertToEntity(ProductDTO productDTO) {
+
+        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+
+
+        return new Product(
+            productDTO.getName          (),
+            productDTO.getDescription   (),
+            productDTO.getPrice         (),
+            productDTO.getStock         ()
+        );
+    }
+
 
     //#endregion
 

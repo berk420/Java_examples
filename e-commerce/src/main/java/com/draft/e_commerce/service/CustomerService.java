@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.draft.e_commerce.exception.CustomException;
 import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Customer;
-import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.CustomerRepository;
 import com.draft.e_commerce.service.interf.CustomerServiceInterface;
 
@@ -37,7 +36,7 @@ public class CustomerService implements CustomerServiceInterface {
             throw new CustomException(ErrorCode.CUSTOMER_CREATION_FAILED, e);
         }
     }
-
+ 
     @Override
     public java.util.List<Customer> getAllCustomers() {
         try {

@@ -132,6 +132,9 @@ public class DTOMappers {
     }
 
     public static ProductDTO convertToDTO(Product product) {
+
+
+
         return new ProductDTO(
             product.getId           (),
             product.getName         (),
@@ -142,6 +145,8 @@ public class DTOMappers {
     }
 
     public static Product convertToEntity(ProductDTO productDTO) {
+
+
         return new Product(
             productDTO.getName          (),
             productDTO.getDescription   (),
