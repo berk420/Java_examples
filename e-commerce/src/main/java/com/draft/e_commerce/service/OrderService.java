@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,18 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.draft.e_commerce.Mapper.DTOMappers;
 import com.draft.e_commerce.exception.CustomException;
 import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.DTO.OrderDTO;
-import com.draft.e_commerce.model.DTO.OrderEntryDTO;
 import com.draft.e_commerce.model.Order;
 import com.draft.e_commerce.model.OrderEntry;
-import com.draft.e_commerce.repository.CartEntryRepository;
 import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.OrderRepository;
-import com.draft.e_commerce.repository.ProductRepository;
 import com.draft.e_commerce.service.interf.OrderServiceInterface;
 
 @Service
@@ -31,134 +28,133 @@ public class OrderService implements OrderServiceInterface {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
+    //#region Dependencies
+
     @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private CartEntryService cartEntryService;
+
+    
+    @Autowired
     private CartRepository cartRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
 
-    @Autowired
-    private CartEntryRepository cartEntryRepository;
+    //#endregion
+
+    //#region Methods
 
     @Transactional
     @Override
     public OrderDTO placeOrder(Long cartId) {
         try {
-            boolean orderExists = orderRepository.existsByCart_Id(cartId);
-            if (orderExists) {
-                throw new CustomException(ErrorCode.ORDER_ALREADY_EXISTS,null);
-            }
+            //validateOrderNotExists(cartId);
 
-            Cart cart = cartRepository.findById(cartId)
-                .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND,null));
+            Cart cart = cartService.findById(cartId);
 
-            Order order = new Order();
-            order.setOrderCode(generateOrderCode());
-            order.setCart(cart);
-            order.setCustomer(cart.getCustomer());
-    
-            Set<CartEntry> cartEntries = cart.getCartEntries();
-            Set<OrderEntry> orderEntries = new HashSet<>();
-    
-            long totalPrice = 0;
-    
-            for (CartEntry cartEntry : cartEntries) {
-                // Create a new OrderEntry for each CartEntry
-                OrderEntry orderEntry = new OrderEntry();
-                orderEntry.setOrder(order);
-                orderEntry.setProduct(cartEntry.getProduct()); // Product ilişkisinin doğru set edilmesi
-                orderEntry.setQuantity(cartEntry.getQuantity());
-    
-                // Set the base price as the current product price
-                BigDecimal basePrice = BigDecimal.valueOf(cartEntry.getProduct().getPrice());
-                orderEntry.setBasePrice(basePrice);
-    
-                // Calculate the total price
-                totalPrice += basePrice.longValue() * cartEntry.getQuantity();
-    
-                // Add OrderEntry to the set
-                orderEntries.add(orderEntry);
-            }
-    
-            // Set the total price for the order
-            order.setTotalPrice(totalPrice);
-            order.setOrderEntries(orderEntries);
-    
-            // Save the order and cascade the order entries
-            order = orderRepository.save(order);
-    
-            // CartEntry'leri silmeden önce Cart ID'yi kaydedin
-            Long savedCartId = cart.getId();
-    
-            // Order'ın Cart referansını null yap
-            order.setCart(null);
-            orderRepository.save(order); // Order'ı tekrar kaydedin
-    
-            // CartEntry'leri sil
+            Order order = createOrder(cart);
 
-            cartEntryRepository.deleteAll(cartEntries);
-    
-            // Cart'ı sil
-            cartRepository.deleteById(savedCartId);
+            Set<OrderEntry> orderEntries = processCartEntries(cart, order);
 
-            return mapOrderToDTO(order,savedCartId);
-    
-    
+            long totalPrice = calculateTotalPrice(orderEntries);
+
+            finalizeOrder(order, orderEntries, totalPrice);
+
+            cleanUpCart(cart, cart.getCartEntries());
+
+            return DTOMappers.mapOrderToDTO(order, cart.getId());
+
         } catch (IllegalStateException e) {
-        logger.error("Error placing order: ", e);
-        throw new CustomException(ErrorCode.ORDER_PLACEMENT_FAILED, e);
-    }   
+            logger.error("Error placing order: ", e);
+            throw new CustomException(ErrorCode.ORDER_PLACEMENT_FAILED, e);
         }
-    
-    
+    }
+
+
 
     @Override
-    public OrderDTO getOrderById(Long id) {
-        Order order = orderRepository.findById(id).orElse(null);
+    public OrderDTO getOrderById(Long orderId, Long customerId) {
+        Order order = orderRepository.findById(orderId).orElse(null);
         if (order == null) {
-            logger.warn("Order not found for id: " + id);
+            logger.warn("Order not found for id: " + orderId);
         } else {
             logger.info("Order found: " + order);
         }
-        //return mapOrderToDTO(order);
-        return mapOrderToDTO(order,order.getCart().getId());
+        
+        Long cartId = cartService.getCartIdByCustomerId(customerId);
+        return DTOMappers.mapOrderToDTO(order,cartId);
 
     }
+    //#endregion
 
+    //#region Functions
+    public Long getCartIdByCustomerId(Long customerId) {
+        return cartRepository.findCartIdByCustomerId(customerId);
+    }
+
+
+    private BigDecimal calculateBasePrice(CartEntry cartEntry) {
+        return BigDecimal.valueOf(cartEntry.getProduct().getPrice());
+    }
+    
     private String generateOrderCode() {
         return UUID.randomUUID().toString();
     }
 
-    private OrderDTO mapOrderToDTO(Order order,long savedCartId) {
-        if (order == null) {
-            return null;
+    
+
+
+    private Order createOrder(Cart cart) {
+
+        Order order = new Order();
+        order.setOrderCode  (generateOrderCode());
+        //order.setCart       (cartId);
+        order.setCustomer   (cart.getCustomer());
+        return order;
+    }
+
+    private Set<OrderEntry> processCartEntries(Cart cart, Order order) {
+        Set<CartEntry> cartEntries = cart.getCartEntries();
+        Set<OrderEntry> orderEntries = new HashSet<>();
+
+        for (CartEntry cartEntry : cartEntries) {
+            OrderEntry orderEntry = createOrderEntry(cartEntry, order);
+            orderEntries.add(orderEntry);
         }
 
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(order.getId());
-        orderDTO.setOrderCode(order.getOrderCode());
-        orderDTO.setCustomerId(order.getCustomer().getId());
-        orderDTO.setCartId(savedCartId);
-        orderDTO.setTotalPrice(order.getTotalPrice());
-
-        // Düzeltilmiş DTO mapping
-        Set<OrderEntryDTO> orderEntryDTOs = order.getOrderEntries().stream()
-                .map(entry -> {
-                    OrderEntryDTO dto = new OrderEntryDTO();
-                    dto.setId(entry.getId());
-                    dto.setOrderId(entry.getOrder().getId());
-                    dto.setProductId(entry.getProduct().getId()); // Product ID'yi doğru bir şekilde alıyoruz
-                    dto.setQuantity(entry.getQuantity());
-                    dto.setBasePrice(entry.getBasePrice());
-                    return dto;
-                })
-                .collect(Collectors.toSet());
-
-        orderDTO.setOrderEntries(orderEntryDTOs);
-
-        return orderDTO;
+        return orderEntries;
     }
+
+    private OrderEntry createOrderEntry(CartEntry cartEntry, Order order) {
+        OrderEntry orderEntry = new OrderEntry();
+        orderEntry.setOrder(order);
+        orderEntry.setProduct(cartEntry.getProduct());
+        orderEntry.setQuantity(cartEntry.getQuantity());
+        orderEntry.setBasePrice(calculateBasePrice(cartEntry));
+        return orderEntry;
+    }
+
+    private long calculateTotalPrice(Set<OrderEntry> orderEntries) {
+        return orderEntries.stream()
+                .mapToLong(orderEntry -> orderEntry.getBasePrice().longValue() * orderEntry.getQuantity())
+                .sum();
+    }
+
+    private void finalizeOrder(Order order, Set<OrderEntry> orderEntries, long totalPrice) {
+        order.setTotalPrice(totalPrice);
+        order.setOrderEntries(orderEntries);
+        //order.setCart(null);
+        orderRepository.save(order);
+    }
+
+    private void cleanUpCart(Cart cart, Set<CartEntry> cartEntries) {
+        cartEntryService.deleteAll(cartEntries);
+        cartService.deleteById(cart.getId());
+    }
+    //#endregion
+
 }

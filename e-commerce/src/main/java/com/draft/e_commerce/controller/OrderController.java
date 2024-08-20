@@ -24,9 +24,9 @@ public class OrderController {
         return orderService.placeOrder(cartId);
     }
     
-    @GetMapping("/{id}")
-    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
-        OrderDTO order = orderService.getOrderById(id);
+    @GetMapping("{orderId}/customer/{customerId}")    
+    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long OrderId,@PathVariable Long CustomerId) {
+        OrderDTO order = orderService.getOrderById(OrderId,CustomerId);
         if (order == null) {
             return ResponseEntity.notFound().build();
         } else {

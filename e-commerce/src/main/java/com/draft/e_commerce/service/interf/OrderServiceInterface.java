@@ -6,5 +6,5 @@ import com.draft.e_commerce.model.DTO.OrderDTO;
 public interface OrderServiceInterface
 {
     OrderDTO placeOrder(Long cartId);
-    OrderDTO getOrderById(Long id);
+    OrderDTO getOrderById(Long orderId,Long custoemrId);
 }

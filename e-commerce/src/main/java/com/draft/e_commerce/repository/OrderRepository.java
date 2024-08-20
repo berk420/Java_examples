@@ -6,5 +6,4 @@ import com.draft.e_commerce.model.Order;
 
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    boolean existsByCart_Id(Long cartId);
 }

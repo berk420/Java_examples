@@ -21,29 +21,29 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @GetMapping("/{id}")
-    public CartDTO  getCart(@PathVariable Long id) {
-        return cartService.getCart(id);
+    @GetMapping("/{cartId}/customer/{customerId}")
+    public CartDTO  getCart(@PathVariable Long cartId, @PathVariable Long customerId) {
+        return cartService.getCart(cartId,customerId);
     }
 
-    @PutMapping("/{id}")
-    public CartDTO createCart(@PathVariable Long id, @RequestBody CartDTO cart) {
-        cart.setId(id);
-        return cartService.createCart(cart,id);
+    @PutMapping("/{cartId}/customer/{customerId}")
+    public CartDTO createCart(@PathVariable Long cartId, @PathVariable Long customerId, @RequestBody CartDTO cart) {
+        cart.setId(cartId);
+        return cartService.createCart(cart,cartId,customerId);
     }
 
-    @DeleteMapping("/{id}/empty")
-    public void emptyCart(@PathVariable Long id) {
-        cartService.emptyCart(id);
+    @DeleteMapping("/{cartId}/customer/{customerId}/empty")
+    public void emptyCart(@PathVariable Long cartId, @PathVariable Long customerId) {
+        cartService.emptyCart(cartId,customerId);
     }
 
-    @PostMapping("/{cartId}/products/{productId}")
-    public void addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
-        cartService.addProductToCart(cartId, productId);
+    @PostMapping("/{cartId}/products/{productId}/customer/{customerId}")
+    public void addProductToCart(@PathVariable Long cartId, @PathVariable Long customerId, @PathVariable Long productId) {
+        cartService.addProductToCart(cartId, productId,customerId);
     }
 
-    @DeleteMapping("/{cartId}/products/{productId}")
-    public void removeProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
-        cartService.removeProductFromCart(cartId, productId);
+    @DeleteMapping("/{cartId}/products/{productId}/customer/{customerId}")
+    public void removeProductFromCart(@PathVariable Long cartId, @PathVariable Long customerId, @PathVariable Long productId) {
+        cartService.removeProductFromCart(cartId, productId,customerId);
     }
 }

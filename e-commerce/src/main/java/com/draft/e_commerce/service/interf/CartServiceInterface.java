@@ -5,13 +5,13 @@ import com.draft.e_commerce.model.DTO.CartDTO;
 
 public interface CartServiceInterface {
 
-    CartDTO getCart(Long id);
+    CartDTO getCart(Long cartId,Long customerId);
 
-    CartDTO createCart(CartDTO cartDTO,Long id);
+    CartDTO createCart(CartDTO cartDTO,Long cartId,Long customerId);
 
-    void emptyCart(Long id);
+    CartDTO emptyCart(Long cartId,Long customerId);
 
-    void addProductToCart(Long cartId, Long productId);
+    CartDTO addProductToCart(Long cartId, Long productId,Long customerId);
 
-    void removeProductFromCart(Long cartId, Long productId);
+    CartDTO removeProductFromCart(Long cartId, Long productId,Long customerId);
 }

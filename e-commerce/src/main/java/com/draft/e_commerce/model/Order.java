@@ -24,10 +24,6 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderEntry> orderEntries;
 
@@ -56,13 +52,6 @@ public class Order extends BaseEntity {
         this.customer = customer;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 
     public Set<OrderEntry> getOrderEntries() {
         return orderEntries;
