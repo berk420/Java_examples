@@ -7,7 +7,7 @@ public interface CartServiceInterface {
 
     CartDTO getCart(Long cartId,Long customerId);
 
-    CartDTO createCart(CartDTO cartDTO,Long cartId,Long customerId);
+    CartDTO createCart(CartDTO cartDTO,Long customerId);
 
     CartDTO emptyCart(Long cartId,Long customerId);
 

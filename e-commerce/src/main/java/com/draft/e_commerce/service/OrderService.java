@@ -2,6 +2,7 @@ package com.draft.e_commerce.service;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,7 +20,6 @@ import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.DTO.OrderDTO;
 import com.draft.e_commerce.model.Order;
 import com.draft.e_commerce.model.OrderEntry;
-import com.draft.e_commerce.repository.CartRepository;
 import com.draft.e_commerce.repository.OrderRepository;
 import com.draft.e_commerce.service.interf.OrderServiceInterface;
 
@@ -38,11 +38,9 @@ public class OrderService implements OrderServiceInterface {
 
     @Autowired
     private CartEntryService cartEntryService;
-
     
     @Autowired
-    private CartRepository cartRepository;
-
+    private DTOMappers               dTOMappers;
 
     //#endregion
 
@@ -52,21 +50,22 @@ public class OrderService implements OrderServiceInterface {
     @Override
     public OrderDTO placeOrder(Long cartId) {
         try {
-            //validateOrderNotExists(cartId);
 
             Cart cart = cartService.findById(cartId);
+            Optional.ofNullable(cart).orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
+
 
             Order order = createOrder(cart);
+            Optional.ofNullable(order).orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
+    
 
             Set<OrderEntry> orderEntries = processCartEntries(cart, order);
 
-            long totalPrice = calculateTotalPrice(orderEntries);
-
-            finalizeOrder(order, orderEntries, totalPrice);
+            finalizeOrder(order, orderEntries, calculateTotalPrice(orderEntries));
 
             cleanUpCart(cart, cart.getCartEntries());
 
-            return DTOMappers.mapOrderToDTO(order, cart.getId());
+            return dTOMappers.mapOrderToDTO(order, cart.getId());
 
         } catch (IllegalStateException e) {
             logger.error("Error placing order: ", e);
@@ -78,24 +77,19 @@ public class OrderService implements OrderServiceInterface {
 
     @Override
     public OrderDTO getOrderById(Long orderId, Long customerId) {
-        Order order = orderRepository.findById(orderId).orElse(null);
-        if (order == null) {
-            logger.warn("Order not found for id: " + orderId);
-        } else {
-            logger.info("Order found: " + order);
-        }
-        
-        Long cartId = cartService.getCartIdByCustomerId(customerId);
-        return DTOMappers.mapOrderToDTO(order,cartId);
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> 
+            new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
+
+        return dTOMappers.mapOrderToDTO(order,cartService.getCartIdByCustomerId(customerId));
 
     }
     //#endregion
 
     //#region Functions
     public Long getCartIdByCustomerId(Long customerId) {
-        return cartRepository.findCartIdByCustomerId(customerId);
+        return cartService.findCartIdByCustomerId(customerId);
     }
-
 
     private BigDecimal calculateBasePrice(CartEntry cartEntry) {
         return BigDecimal.valueOf(cartEntry.getProduct().getPrice());
@@ -104,8 +98,6 @@ public class OrderService implements OrderServiceInterface {
     private String generateOrderCode() {
         return UUID.randomUUID().toString();
     }
-
-    
 
 
     private Order createOrder(Cart cart) {

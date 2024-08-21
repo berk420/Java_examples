@@ -26,10 +26,9 @@ public class CartController {
         return cartService.getCart(cartId,customerId);
     }
 
-    @PutMapping("/{cartId}/customer/{customerId}")
-    public CartDTO createCart(@PathVariable Long cartId, @PathVariable Long customerId, @RequestBody CartDTO cart) {
-        cart.setId(cartId);
-        return cartService.createCart(cart,cartId,customerId);
+    @PutMapping("/customer/{customerId}")
+    public CartDTO createCart(@PathVariable Long customerId, @RequestBody CartDTO cart) {
+        return cartService.createCart(cart,customerId);
     }
 
     @DeleteMapping("/{cartId}/customer/{customerId}/empty")

@@ -27,6 +27,9 @@ public class ProductService implements ProductServiceInterface {
 
     @Autowired
     private ApplicationContext applicationContext;
+
+    @Autowired
+    private DTOMappers DTOMappers;
     //#endregion
 
     //#region Methods
@@ -96,11 +99,9 @@ public class ProductService implements ProductServiceInterface {
     //#endregion
 
     //#region Functions
-
     public  ProductDTO convertToDTO(Product product) {
 
-
-        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+        productRepository.  findById      (product.getId()).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
 
         return new ProductDTO(
             product.getId           (),
@@ -113,8 +114,7 @@ public class ProductService implements ProductServiceInterface {
 
     public  Product convertToEntity(ProductDTO productDTO) {
 
-        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-
+        productRepository.  findById      (productDTO.getId()).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
 
         return new Product(
             productDTO.getName          (),
@@ -123,8 +123,5 @@ public class ProductService implements ProductServiceInterface {
             productDTO.getStock         ()
         );
     }
-
-
     //#endregion
-
 }
