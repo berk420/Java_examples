@@ -18,7 +18,9 @@ public enum ErrorCode {
     ORDER_PLACEMENT_FAILED          ("ORDER_PLACEMENT_FAILED"),
     ORDER_NOT_FOUND                 ("ORDER_NOT_FOUND"),
     INTERNAL_SERVER_ERROR           ("INTERNAL_SERVER_ERROR"),
-    CART_ALREADY_EXISTS             ("CART_ALREADY_EXISTS");
+    CART_ALREADY_EXISTS             ("CART_ALREADY_EXISTS"),
+    PRODUCT_NOT_FOUND_IN_CART       ("PRODUCT_NOT_FOUND_IN_CART"),
+    INSUFFICIENT_STOCK              ("INSUFFICIENT_STOCK");
     
 
     private final String message;

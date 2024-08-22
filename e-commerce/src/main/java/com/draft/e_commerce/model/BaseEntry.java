@@ -24,7 +24,7 @@ public abstract class BaseEntry extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @Column(name = "base_price", nullable = false)
+    @Column(name = "base_price")
     private BigDecimal basePrice;
 
     // Getters and Setters

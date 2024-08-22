@@ -71,4 +71,9 @@ public class OrderDTO {
                ", orderEntries=" + orderEntries +
                '}';
     }
+
+    public OrderDTO orElseThrow(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
 }

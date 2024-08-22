@@ -22,7 +22,7 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping("/{cartId}/customer/{customerId}")
-    public CartDTO  getCart(@PathVariable Long cartId, @PathVariable Long customerId) {
+    public CartDTO getCart(@PathVariable Long cartId, @PathVariable Long customerId) {
         return cartService.getCart(cartId,customerId);
     }
 

@@ -16,12 +16,6 @@ import com.draft.e_commerce.model.Product;
 @Component
 public class DTOMappers {
 
-
-    //#region Repositories
-
-    //#endregion
-
-    //#region Methods
     public CartDTO mapCartToDTO(Cart cart) {
         if (cart == null) {
             return null;
@@ -29,9 +23,9 @@ public class DTOMappers {
 
         CartDTO cartDTO = new CartDTO();
 
-        cartDTO.setId(cart.getId());
-        cartDTO.setCustomerId(cart.getCustomer().getId());
-        cartDTO.setTotalPrice(cart.getTotalPrice());
+        cartDTO.setId           (cart.getId());
+        cartDTO.setCustomerId   (cart.getCustomer().getId());
+        cartDTO.setTotalPrice   (cart.getTotalPrice());
 
         Set<CartEntryDTO> cartEntryDTOs = null;
 
@@ -39,17 +33,17 @@ public class DTOMappers {
             cartEntryDTOs = cart.getCartEntries().stream()
                 .map(entry -> {
                     CartEntryDTO dto = new CartEntryDTO();
-                    dto.setProductId(entry.getProduct().getId());
-                    dto.setQuantity(entry.getQuantity());
+                    dto.setProductId    (entry.getProduct().getId());
+                    dto.setQuantity     (entry.getQuantity());
                     return dto;
                 })
                 .collect(Collectors.toSet());
         }
 
         cartDTO.setCartEntries(cartEntryDTOs);
+
         return cartDTO;
     }
-
 
         public  OrderDTO mapOrderToDTO(Order order,long savedCartId) {
         if (order == null) {
@@ -58,21 +52,22 @@ public class DTOMappers {
 
         OrderDTO orderDTO = new OrderDTO();
 
-        orderDTO.setId(order.getId());
-        orderDTO.setOrderCode(order.getOrderCode());
-        orderDTO.setCustomerId(order.getCustomer().getId());
-        orderDTO.setCartId(savedCartId);
-        orderDTO.setTotalPrice(order.getTotalPrice());
+        orderDTO.setId              (order.getId());
+        orderDTO.setOrderCode       (order.getOrderCode());
+        orderDTO.setCustomerId      (order.getCustomer().getId());
+        orderDTO.setCartId          (savedCartId);
+        orderDTO.setTotalPrice      (order.getTotalPrice());
 
-        // Düzeltilmiş DTO mapping
-        Set<OrderEntryDTO> orderEntryDTOs = order.getOrderEntries().stream()
+        Set<OrderEntryDTO> orderEntryDTOs = order
+                .getOrderEntries()  
+                .stream()
                 .map(entry -> {
                     OrderEntryDTO dto = new OrderEntryDTO();
-                    dto.setId(entry.getId());
-                    dto.setOrderId(entry.getOrder().getId());
-                    dto.setProductId(entry.getProduct().getId()); // Product ID'yi doğru bir şekilde alıyoruz
-                    dto.setQuantity(entry.getQuantity());
-                    dto.setBasePrice(entry.getBasePrice());
+                    dto.setId           (entry.getId());
+                    dto.setOrderId      (entry.getOrder().getId());
+                    dto.setProductId    (entry.getProduct().getId());
+                    dto.setQuantity     (entry.getQuantity());
+                    dto.setBasePrice    (entry.getBasePrice());
                     return dto;
                 })
                 .collect(Collectors.toSet());
@@ -111,10 +106,5 @@ public class DTOMappers {
         );
     }
     
-    //#endregion
-
-    //#region Functions
-
-
 
 }

@@ -24,13 +24,16 @@ public class OrderController {
         return orderService.placeOrder(cartId);
     }
     
-    @GetMapping("{orderId}/customer/{customerId}")    
-    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long OrderId,@PathVariable Long CustomerId) {
-        OrderDTO order = orderService.getOrderById(OrderId,CustomerId);
+    @GetMapping("/{orderId}/customer/{customerId}")
+    public ResponseEntity<OrderDTO> getOrder(@PathVariable("orderId") Long orderId, @PathVariable("customerId") Long customerId) {
+    
+        OrderDTO order = orderService.getOrderById(orderId, customerId);
+    
         if (order == null) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(order);
         }
     }
+    
 }

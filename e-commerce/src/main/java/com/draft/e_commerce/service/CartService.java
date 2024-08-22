@@ -144,30 +144,32 @@ public class CartService implements CartServiceInterface {
 
     //#region Functions
     @Transactional
-    private CartDTO updateCartWithProduct(Long cartId, Long productId, Long customerId,boolean isAdding) {
+    private CartDTO updateCartWithProduct(Long cartId, Long productId, Long customerId, boolean isAdding) {
         Cart cart = cartRepository
             .findById(cartId)
             .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
-
-            customerService.findById(customerId).orElseThrow(() -> 
-            new CustomException(ErrorCode.CART_NOT_FOUND, null));
     
-
-        // productRepository.findById yerine productService.findById kullanılıyor
+        customerService.findById(customerId)
+            .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
+    
         productService.findById(productId).ifPresentOrElse(product -> {
-            CartEntry cartEntry = cart
-                .getCartEntries()
-                .stream()
-                .filter(entry -> entry.getProduct().equals(product))
+            CartEntry cartEntry = cart.getCartEntries().stream()
+                .filter(entry -> entry.getProduct().getId().equals(product.getId())) // ID bazlı karşılaştırma
                 .findFirst()
-                .orElse(new CartEntry());
-
+                .orElseGet(() -> { 
+                    // Eğer CartEntry bulunamazsa yeni bir CartEntry oluşturur
+                    CartEntry newEntry = new CartEntry();
+                    newEntry.setCart(cart);
+                    newEntry.setProduct(product);
+                    newEntry.setQuantity(0); // İlk başta quantity 0 olarak ayarlanıyor, sonra artırılacak
+                    newEntry.setBasePrice(BigDecimal.ZERO); // İlk başta basePrice 0 olarak ayarlanıyor, sonra artırılacak
+                    cart.getCartEntries().add(newEntry);
+                    return newEntry;
+                });
+    
             if (isAdding) {
-                cartEntry.setCart(cart);
-                cartEntry.setProduct(product);
                 cartEntry.setQuantity(cartEntry.getQuantity() + 1);
-                 
-                cart.getCartEntries().add(cartEntry);
+                cartEntry.setBasePrice(cartEntry.getBasePrice().add(BigDecimal.valueOf(product.getPrice())));
             } else {
                 if (cartEntry.getQuantity() > 1) {
                     cartEntry.setQuantity(cartEntry.getQuantity() - 1);
@@ -176,15 +178,18 @@ public class CartService implements CartServiceInterface {
                     cartEntryRepository.delete(cartEntry);
                 }
             }
-
+    
             cartEntryRepository.save(cartEntry);
             updateTotalPrice(cart);
         }, () -> {
             throw new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null);
         });
-
+    
         return mapCartToDTO(cart);
     }
+    
+
+    
 
     private void updateTotalPrice(Cart cart) {
         int totalPrice = (int) cart

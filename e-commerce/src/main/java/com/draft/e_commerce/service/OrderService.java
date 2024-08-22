@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +19,12 @@ import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.DTO.OrderDTO;
+import com.draft.e_commerce.model.DTO.OrderEntryDTO;
 import com.draft.e_commerce.model.Order;
 import com.draft.e_commerce.model.OrderEntry;
+import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.OrderRepository;
 import com.draft.e_commerce.service.interf.OrderServiceInterface;
-
 @Service
 public class OrderService implements OrderServiceInterface {
 
@@ -38,26 +40,25 @@ public class OrderService implements OrderServiceInterface {
 
     @Autowired
     private CartEntryService cartEntryService;
+
+    @Autowired
+    private ProductService productService; // ProductService ekleniyor
     
     @Autowired
-    private DTOMappers               dTOMappers;
+    private DTOMappers dTOMappers;
 
     //#endregion
 
     //#region Methods
 
-    @Transactional
     @Override
     public OrderDTO placeOrder(Long cartId) {
         try {
-
             Cart cart = cartService.findById(cartId);
             Optional.ofNullable(cart).orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
 
-
             Order order = createOrder(cart);
             Optional.ofNullable(order).orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
-    
 
             Set<OrderEntry> orderEntries = processCartEntries(cart, order);
 
@@ -72,18 +73,38 @@ public class OrderService implements OrderServiceInterface {
             throw new CustomException(ErrorCode.ORDER_PLACEMENT_FAILED, e);
         }
     }
-
-
-
+    
+    @Transactional
     @Override
     public OrderDTO getOrderById(Long orderId, Long customerId) {
+        Order order = orderRepository.findById(orderId)
+            .orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
 
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> 
-            new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setId(order.getId());
+        orderDTO.setOrderCode(order.getOrderCode());
+        orderDTO.setCustomerId(order.getCustomer().getId());
+        // Eğer cartId'yi almak istiyorsanız, uygun bir değer kullanın
+        orderDTO.setCartId(null);  // ya da uygun bir değer
+        orderDTO.setTotalPrice(order.getTotalPrice());
 
-        return dTOMappers.mapOrderToDTO(order,cartService.getCartIdByCustomerId(customerId));
+        Set<OrderEntryDTO> orderEntryDTOs = order.getOrderEntries().stream().map(entry -> {
+            OrderEntryDTO dto = new OrderEntryDTO();
+            dto.setId(entry.getId());
+            dto.setOrderId(entry.getOrder().getId());
+            dto.setProductId(entry.getProduct().getId());
+            dto.setQuantity(entry.getQuantity());
+            dto.setBasePrice(entry.getBasePrice());
+            return dto;
+        }).collect(Collectors.toSet());
 
+        orderDTO.setOrderEntries(orderEntryDTOs);
+
+        return orderDTO;
     }
+
+            
+
     //#endregion
 
     //#region Functions
@@ -99,13 +120,10 @@ public class OrderService implements OrderServiceInterface {
         return UUID.randomUUID().toString();
     }
 
-
     private Order createOrder(Cart cart) {
-
         Order order = new Order();
-        order.setOrderCode  (generateOrderCode());
-        //order.setCart       (cartId);
-        order.setCustomer   (cart.getCustomer());
+        order.setOrderCode(generateOrderCode());
+        order.setCustomer(cart.getCustomer());
         return order;
     }
 
@@ -116,6 +134,9 @@ public class OrderService implements OrderServiceInterface {
         for (CartEntry cartEntry : cartEntries) {
             OrderEntry orderEntry = createOrderEntry(cartEntry, order);
             orderEntries.add(orderEntry);
+
+            // Ürün stoklarını güncelle
+            updateProductStock(cartEntry);
         }
 
         return orderEntries;
@@ -130,6 +151,18 @@ public class OrderService implements OrderServiceInterface {
         return orderEntry;
     }
 
+    private void updateProductStock(CartEntry cartEntry) {
+        Product product = cartEntry.getProduct();
+        long newStock = product.getStock() - cartEntry.getQuantity();
+
+        if (newStock < 0) {
+            throw new CustomException(ErrorCode.INSUFFICIENT_STOCK, null); // Stok yetersizse hata fırlat
+        }
+
+        product.setStock(newStock);
+        productService.save(product); // Stok miktarını güncelle ve kaydet
+    }
+
     private long calculateTotalPrice(Set<OrderEntry> orderEntries) {
         return orderEntries.stream()
                 .mapToLong(orderEntry -> orderEntry.getBasePrice().longValue() * orderEntry.getQuantity())
@@ -139,7 +172,6 @@ public class OrderService implements OrderServiceInterface {
     private void finalizeOrder(Order order, Set<OrderEntry> orderEntries, long totalPrice) {
         order.setTotalPrice(totalPrice);
         order.setOrderEntries(orderEntries);
-        //order.setCart(null);
         orderRepository.save(order);
     }
 
@@ -148,5 +180,4 @@ public class OrderService implements OrderServiceInterface {
         cartService.deleteById(cart.getId());
     }
     //#endregion
-
 }
