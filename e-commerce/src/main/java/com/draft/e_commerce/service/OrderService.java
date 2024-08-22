@@ -80,27 +80,7 @@ public class OrderService implements OrderServiceInterface {
         Order order = orderRepository.findById(orderId)
             .orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
 
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(order.getId());
-        orderDTO.setOrderCode(order.getOrderCode());
-        orderDTO.setCustomerId(order.getCustomer().getId());
-        // Eğer cartId'yi almak istiyorsanız, uygun bir değer kullanın
-        orderDTO.setCartId(null);  // ya da uygun bir değer
-        orderDTO.setTotalPrice(order.getTotalPrice());
-
-        Set<OrderEntryDTO> orderEntryDTOs = order.getOrderEntries().stream().map(entry -> {
-            OrderEntryDTO dto = new OrderEntryDTO();
-            dto.setId(entry.getId());
-            dto.setOrderId(entry.getOrder().getId());
-            dto.setProductId(entry.getProduct().getId());
-            dto.setQuantity(entry.getQuantity());
-            dto.setBasePrice(entry.getBasePrice());
-            return dto;
-        }).collect(Collectors.toSet());
-
-        orderDTO.setOrderEntries(orderEntryDTOs);
-
-        return orderDTO;
+        return dTOMappers.convertToOrderDTO(order);
     }
 
             
