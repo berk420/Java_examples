@@ -316,3 +316,15 @@
 2024-08-22T13:47:55.569+03:00  INFO 25524 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
 2024-08-22T13:47:57.477+03:00  INFO 25524 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.882 seconds (process running for 10.31)
 2024-08-22T13:47:59.922+03:00  INFO 25524 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T13:51:08.930+03:00  INFO 24252 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 24252 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-22T13:51:08.933+03:00  INFO 24252 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T13:51:10.742+03:00  INFO 24252 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T13:51:10.743+03:00  INFO 24252 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T13:51:10.821+03:00  INFO 24252 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T13:51:11.661+03:00  INFO 24252 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T13:51:12.529+03:00  INFO 24252 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@38ba8b45
+2024-08-22T13:51:12.531+03:00  INFO 24252 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T13:51:12.622+03:00  WARN 24252 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-22T13:51:16.061+03:00  INFO 24252 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-22T13:51:17.766+03:00  INFO 24252 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.217 seconds (process running for 9.68)
+2024-08-22T13:51:17.832+03:00  INFO 24252 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
