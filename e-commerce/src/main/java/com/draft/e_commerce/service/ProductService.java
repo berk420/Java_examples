@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-import com.draft.e_commerce.Mapper.DTOMappers;
+import com.draft.e_commerce.Mapper.DTOMappersProduct;
 import com.draft.e_commerce.exception.CustomException;
 import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.DTO.ProductDTO;
+import com.draft.e_commerce.model.OrderEntry;
 import com.draft.e_commerce.model.Product;
 import com.draft.e_commerce.repository.ProductRepository;
 import com.draft.e_commerce.service.interf.ProductServiceInterface;
@@ -29,7 +30,14 @@ public class ProductService implements ProductServiceInterface {
     private ApplicationContext applicationContext;
 
     @Autowired
-    private DTOMappers DTOMappers;
+    private OrderEntryService orderEntryService;
+
+    @Autowired
+    private CartEntryService cartEntryService;
+
+
+    @Autowired
+    private DTOMappersProduct dTOMappersProduct;
     //#endregion
 
     //#region Methods
@@ -41,8 +49,7 @@ public class ProductService implements ProductServiceInterface {
                 .findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
                 
-        //return DTOMappers.convertToDTO(product);
-        return DTOMappers.convertToDTO(product);
+        return dTOMappersProduct.convertToDTO(product);
 
 
     }
@@ -50,10 +57,10 @@ public class ProductService implements ProductServiceInterface {
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
 
-        Product product =       DTOMappers.convertToEntity(productDTO);
+        Product product =       dTOMappersProduct.convertToEntity(productDTO);
         Product savedProduct =  productRepository.save(product);
 
-        return DTOMappers.convertToDTO(savedProduct);
+        return dTOMappersProduct.convertToDTO(savedProduct);
     }
 
     @Override
@@ -71,15 +78,25 @@ public class ProductService implements ProductServiceInterface {
         existingProduct.setStock        (productDTO.getStock());
 
         Product updatedProduct = productRepository.save(existingProduct);
-        return DTOMappers.convertToDTO(updatedProduct);
+        return dTOMappersProduct.convertToDTO(updatedProduct);
     }
 
     @Override
     public void deleteProduct(Long id) {
-        productRepository.  findById      (id).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-        productRepository.  deleteById    (id);
+        Product product = productRepository
+                .findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+    
+        boolean isInOrderEntry = orderEntryService.existsByProduct(product);
+        boolean isInCartEntry = cartEntryService.existsByProduct(product);
+    
+        if (isInOrderEntry || isInCartEntry) {
+            throw new CustomException(ErrorCode.PRODUCT_IN_USE, null);
+        }
+    
+        productRepository.deleteById(id);
     }
-
+    
     @Override
     public void listBeans() {
         String[] beanNames = applicationContext.getBeanDefinitionNames();
@@ -102,29 +119,6 @@ public class ProductService implements ProductServiceInterface {
     //#endregion
 
     //#region Functions
-    public  ProductDTO convertToDTO(Product product) {
 
-        productRepository.  findById      (product.getId()).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-
-        return new ProductDTO(
-            product.getId           (),
-            product.getName         (),
-            product.getDescription  (),
-            product.getPrice        (),
-            product.getStock        ()
-        );
-    }
-
-    public  Product convertToEntity(ProductDTO productDTO) {
-
-        productRepository.  findById      (productDTO.getId()).orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-
-        return new Product(
-            productDTO.getName          (),
-            productDTO.getDescription   (),
-            productDTO.getPrice         (),
-            productDTO.getStock         ()
-        );
-    }
     //#endregion
 }

@@ -2,7 +2,6 @@ package com.draft.e_commerce.service;
 
 
 import java.math.BigDecimal;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.draft.e_commerce.Mapper.DTOMappersCart;
 import com.draft.e_commerce.exception.CustomException;
 import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
@@ -40,6 +40,11 @@ public class CartService implements CartServiceInterface {
 
     @Autowired
     private ProductService          productService; 
+
+    
+    @Autowired
+    private DTOMappersCart     dTOMappersCart; 
+
 
 
 
@@ -74,7 +79,7 @@ public class CartService implements CartServiceInterface {
             Customer custom = customerService.findById(customerId).orElseThrow(() ->
                 new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
     
-            Cart updatedCart = cartRepository.save(mapDTOToCart(cartDTO, custom));
+            Cart updatedCart = cartRepository.save(dTOMappersCart.mapDTOToCart(cartDTO, custom));
     
             return mapCartToDTO(updatedCart);
         } catch (Exception e) {
@@ -114,23 +119,27 @@ public class CartService implements CartServiceInterface {
     }
 
 
+    @Transactional
     @Override
-    public CartDTO emptyCart(Long cartId,Long customerId) {
-        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> 
-            new CustomException(ErrorCode.CART_NOT_FOUND, null));
-
-        customerService.findById(customerId).orElseThrow(() -> 
-            new CustomException(ErrorCode.CART_NOT_FOUND, null));
+    public CartDTO emptyCart(Long cartId, Long customerId) {
+        Cart cart = cartRepository.findById(cartId)
+                .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
     
-
+        customerService.findById(customerId)
+                .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
+    
         cart.getCartEntries().clear();
+    
+        cartEntryRepository.deleteByCartId(cartId);
+    
         cart.setTotalPrice(0);
-
+    
         Cart updatedCart = cartRepository.save(cart);
-
+    
         return mapCartToDTO(updatedCart);
     }
-
+    
+    
     @Override
     public CartDTO addProductToCart(Long cartId, Long productId,Long customerId) {
         return updateCartWithProduct(cartId, productId, customerId,true);
@@ -152,55 +161,66 @@ public class CartService implements CartServiceInterface {
         customerService.findById(customerId)
             .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
     
-        productService.findById(productId).ifPresentOrElse(product -> {
-            CartEntry cartEntry = cart.getCartEntries().stream()
-                .filter(entry -> entry.getProduct().getId().equals(product.getId())) // ID bazlı karşılaştırma
-                .findFirst()
-                .orElseGet(() -> { 
-                    // Eğer CartEntry bulunamazsa yeni bir CartEntry oluşturur
-                    CartEntry newEntry = new CartEntry();
-                    newEntry.setCart(cart);
-                    newEntry.setProduct(product);
-                    newEntry.setQuantity(0); // İlk başta quantity 0 olarak ayarlanıyor, sonra artırılacak
-                    newEntry.setBasePrice(BigDecimal.ZERO); // İlk başta basePrice 0 olarak ayarlanıyor, sonra artırılacak
-                    cart.getCartEntries().add(newEntry);
-                    return newEntry;
-                });
+        Product product = productService.findById(productId)
+            .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
     
-            if (isAdding) {
+        CartEntry cartEntry = cart.getCartEntries().stream()
+            .filter(entry -> entry.getProduct().getId().equals(product.getId())) // ID bazlı karşılaştırma
+            .findFirst()
+            .orElse(null);
+    
+        if (isAdding) {
+            if (cartEntry == null) {
+                cartEntry = new CartEntry();
+                cartEntry.setCart(cart);
+                cartEntry.setProduct(product);
+                cartEntry.setQuantity(1);
+                cartEntry.setBasePrice(BigDecimal.valueOf(product.getPrice()));
+                cart.getCartEntries().add(cartEntry);
+            } else {
                 cartEntry.setQuantity(cartEntry.getQuantity() + 1);
                 cartEntry.setBasePrice(cartEntry.getBasePrice().add(BigDecimal.valueOf(product.getPrice())));
-            } else {
+            }
+            cartEntryRepository.save(cartEntry);
+        } else {
+            if (cartEntry != null) {
                 if (cartEntry.getQuantity() > 1) {
                     cartEntry.setQuantity(cartEntry.getQuantity() - 1);
+                    cartEntry.setBasePrice(cartEntry.getBasePrice().subtract(BigDecimal.valueOf(product.getPrice())));
+                    cartEntryRepository.save(cartEntry);
                 } else {
-                    cart.getCartEntries().remove(cartEntry);
-                    cartEntryRepository.delete(cartEntry);
+                    cart.getCartEntries().remove(cartEntry); // Cart'tan siliniyor
+                    cartEntryRepository.deleteById(cartEntry.getId()); // Veri tabanından siliniyor
+                    logger.info("Product with ID " + productId + " removed from cart.");
                 }
+            } else {
+                logger.error("Product with ID " + productId + " is not in the cart.");
             }
+        }
     
-            cartEntryRepository.save(cartEntry);
-            updateTotalPrice(cart);
-        }, () -> {
-            throw new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null);
-        });
+        updateTotalPrice(cart);
+        cartRepository.save(cart);
     
         return mapCartToDTO(cart);
     }
     
-
     
 
     private void updateTotalPrice(Cart cart) {
-        int totalPrice = (int) cart
-            .getCartEntries()
+
+        if (cart.getCartEntries() == null || cart.getCartEntries().isEmpty()) {
+            throw new CustomException(ErrorCode.CART_ENTRY_DELETED, null);
+        }
+    
+        int totalPrice = (int) cart.getCartEntries()
             .stream()
             .mapToLong(entry -> entry.getProduct().getPrice() * entry.getQuantity())
             .sum();
-
+    
         cart.setTotalPrice(totalPrice);
         cartRepository.save(cart);
     }
+    
 
     public Cart findById(Long cartId) {
         return cartRepository.findById(cartId)
@@ -215,72 +235,21 @@ public class CartService implements CartServiceInterface {
         return cartRepository.findCartIdByCustomerId(customerId);
     }
     
-    //#endregion
+    public Long findCartIdByCustomerId(Long customerId) {
+        return cartRepository.findCartIdByCustomerId(customerId);
+    }
 
-    //#region ayır bunları başka yere(funklara ayır)
-    
-        public Long findCartIdByCustomerId(Long customerId) {
-            return cartRepository.findCartIdByCustomerId(customerId);
-        }
-
-        
-        public Cart save(Cart cart) {
-            return cartRepository.save(cart);
-        }
+    public Cart save(Cart cart) {
+        return cartRepository.save(cart);
+    }
 
     //#endregion
 
-    public Cart mapDTOToCart(CartDTO cartDTO,Customer customer) {
-        try {
 
-            if (cartDTO == null) {
-                return null;
-            }
 
-            Cart cart = new Cart();
 
-            cart.setId(cartDTO.getId());
-            cart.setCustomer(customer);
-            cart.setCartEntries(mapCartEntries(cartDTO, cart));
 
-            long totalPrice = cart
-                .getCartEntries()
-                .stream()
-                .mapToLong(entry -> entry.getProduct().getPrice() * entry.getQuantity())
-                .sum();
-        
-            cart.setTotalPrice((int)totalPrice);
-            return cart;
-        } catch (CustomException e) {
-            logger.error("Error setting customer to cart: ", e);
-            throw e;
-        }
-    }
 
-    private  java.util.Set<CartEntry> mapCartEntries(CartDTO cartDTO, Cart cart) {
-    return cartDTO.getCartEntries() != null
-        ? cartDTO.getCartEntries().stream()
-            .map(dto -> {
-                CartEntry entry = new CartEntry();
 
-                Long productId = dto.getProductId();
 
-                Optional<Product> optionalProduct = productService.findById(productId);
-                
-                Product product = optionalProduct.orElseThrow(() -> 
-                    new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-                
-                // Set the product
-                entry.setProduct(product);
-                entry.setQuantity(dto.getQuantity());
-                entry.setCart(cart);
-
-                long basePrice = entry.getProduct().getPrice(); // Assuming product price is a long
-                entry.setBasePrice(BigDecimal.valueOf(basePrice));
-
-                return entry;
-            })
-            .collect(Collectors.toSet())
-        : null;
-    }
 }

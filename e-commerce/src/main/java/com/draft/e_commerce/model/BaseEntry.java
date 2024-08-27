@@ -60,3 +60,5 @@ public abstract class BaseEntry extends BaseEntity {
         this.basePrice = basePrice;
     }
 }
+
+// oop inject spring

@@ -20,7 +20,9 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR           ("INTERNAL_SERVER_ERROR"),
     CART_ALREADY_EXISTS             ("CART_ALREADY_EXISTS"),
     PRODUCT_NOT_FOUND_IN_CART       ("PRODUCT_NOT_FOUND_IN_CART"),
-    INSUFFICIENT_STOCK              ("INSUFFICIENT_STOCK");
+    INSUFFICIENT_STOCK              ("INSUFFICIENT_STOCK"),
+    CART_ENTRY_DELETED              ("CART_ENTRY_DELETED"),
+    PRODUCT_IN_USE                  ("PRODUCT_IN_USE");
     
 
     private final String message;

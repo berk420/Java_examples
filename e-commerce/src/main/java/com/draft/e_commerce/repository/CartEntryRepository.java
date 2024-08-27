@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.draft.e_commerce.model.CartEntry;
+import com.draft.e_commerce.model.Product;
 
 public interface  CartEntryRepository extends JpaRepository<CartEntry, Long> {
 
@@ -16,4 +17,9 @@ public interface  CartEntryRepository extends JpaRepository<CartEntry, Long> {
 
 
     void deleteByCartId(Long cartId);
+
+    boolean existsByProduct(Product product);
+
+
+
 }

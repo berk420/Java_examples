@@ -13,13 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.draft.e_commerce.Mapper.DTOMappers;
+import com.draft.e_commerce.Mapper.DTOMappersOrder;
 import com.draft.e_commerce.exception.CustomException;
 import com.draft.e_commerce.exception.ErrorCode;
 import com.draft.e_commerce.model.Cart;
 import com.draft.e_commerce.model.CartEntry;
 import com.draft.e_commerce.model.DTO.OrderDTO;
-import com.draft.e_commerce.model.DTO.OrderEntryDTO;
 import com.draft.e_commerce.model.Order;
 import com.draft.e_commerce.model.OrderEntry;
 import com.draft.e_commerce.model.Product;
@@ -45,7 +44,7 @@ public class OrderService implements OrderServiceInterface {
     private ProductService productService; // ProductService ekleniyor
     
     @Autowired
-    private DTOMappers dTOMappers;
+    private DTOMappersOrder dTOMappersOrder;
 
     //#endregion
 
@@ -66,7 +65,7 @@ public class OrderService implements OrderServiceInterface {
 
             cleanUpCart(cart, cart.getCartEntries());
 
-            return dTOMappers.mapOrderToDTO(order, cart.getId());
+            return dTOMappersOrder.mapOrderToDTO(order, cart.getId());
 
         } catch (IllegalStateException e) {
             logger.error("Error placing order: ", e);
@@ -80,7 +79,7 @@ public class OrderService implements OrderServiceInterface {
         Order order = orderRepository.findById(orderId)
             .orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
 
-        return dTOMappers.convertToOrderDTO(order);
+        return dTOMappersOrder.convertToOrderDTO(order);
     }
 
             
@@ -88,6 +87,8 @@ public class OrderService implements OrderServiceInterface {
     //#endregion
 
     //#region Functions
+
+
     public Long getCartIdByCustomerId(Long customerId) {
         return cartService.findCartIdByCustomerId(customerId);
     }
@@ -133,15 +134,16 @@ public class OrderService implements OrderServiceInterface {
 
     private void updateProductStock(CartEntry cartEntry) {
         Product product = cartEntry.getProduct();
-        long newStock = product.getStock() - cartEntry.getQuantity();
-
+        long newStock = product.getStock() - cartEntry.getQuantity(); // Stoktan miktarı çıkar
+    
         if (newStock < 0) {
             throw new CustomException(ErrorCode.INSUFFICIENT_STOCK, null); // Stok yetersizse hata fırlat
         }
-
+    
         product.setStock(newStock);
         productService.save(product); // Stok miktarını güncelle ve kaydet
     }
+    
 
     private long calculateTotalPrice(Set<OrderEntry> orderEntries) {
         return orderEntries.stream()
@@ -159,5 +161,22 @@ public class OrderService implements OrderServiceInterface {
         cartEntryService.deleteAll(cartEntries);
         cartService.deleteById(cart.getId());
     }
+
+    public OrderDTO getOrderByOrderCode(String orderCode) {
+        Order order = orderRepository
+            .findByOrderCode(orderCode)
+            .orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND, null));
+
+        return dTOMappersOrder.convertToOrderDTO(order);
+    }
+
+    @Transactional(readOnly = true)
+    public java.util.List<OrderDTO> getOrdersByCustomerId(Long customerId) {
+        java.util.List<Order> orders = orderRepository.findByCustomerId(customerId);
+        return orders.stream()
+                     .map(order -> dTOMappersOrder.convertToOrderDTO(order))
+                     .collect(Collectors.toList());
+    }
+
     //#endregion
 }
