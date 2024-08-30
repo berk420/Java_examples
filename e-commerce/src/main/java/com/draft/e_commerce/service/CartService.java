@@ -2,6 +2,8 @@ package com.draft.e_commerce.service;
 
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -139,54 +141,66 @@ public class CartService implements CartServiceInterface {
         return mapCartToDTO(updatedCart);
     }
     
+    @Override
+    public CartDTO addProductToCart(Long cartId, Long productId, Long customerId, int count) {
+
+        if (cartRepository.existsById(cartId)) {
+            return updateCartWithProduct(cartId, productId, customerId, count, true);
+        } else {
+            return createCartWithProduct(productId, customerId, count);
+        }
+    }
     
     @Override
-    public CartDTO addProductToCart(Long cartId, Long productId,Long customerId) {
-        return updateCartWithProduct(cartId, productId, customerId,true);
-    }
-
-    @Override
-    public CartDTO removeProductFromCart(Long cartId, Long productId,Long customerId) {
-        return updateCartWithProduct(cartId, productId, customerId,false);
+    public CartDTO removeProductFromCart(Long cartId, Long productId, Long customerId, int count) {
+        return updateCartWithProduct(cartId, productId, customerId, count, false);
     }
     //#endregion
 
     //#region Functions
     @Transactional
-    private CartDTO updateCartWithProduct(Long cartId, Long productId, Long customerId, boolean isAdding) {
-        Cart cart = cartRepository
-            .findById(cartId)
-            .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
-    
+    private CartDTO updateCartWithProduct(Long cartId, Long productId, Long customerId, int count, boolean isAdding) {
+        // Müşteri doğrulaması
         customerService.findById(customerId)
             .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
-    
+
+        // Sepetin müşteriye ait olup olmadığını kontrol et
+        Cart cart = cartRepository.findById(cartId)
+            .orElseThrow(() -> new CustomException(ErrorCode.CART_NOT_FOUND, null));
+
+        if (!cart.getCustomer().getId().equals(customerId)) {
+            throw new CustomException(ErrorCode.UNAUTHORIZED_ACCESS, null);
+        }
+
+        // Ürünü bul
         Product product = productService.findById(productId)
             .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
-    
+
+        // Sepet girişini kontrol et ve ekleme/çıkarma işlemlerini yap
         CartEntry cartEntry = cart.getCartEntries().stream()
-            .filter(entry -> entry.getProduct().getId().equals(product.getId())) // ID bazlı karşılaştırma
+            .filter(entry -> entry.getProduct().getId().equals(product.getId()))
             .findFirst()
             .orElse(null);
-    
+
         if (isAdding) {
             if (cartEntry == null) {
                 cartEntry = new CartEntry();
                 cartEntry.setCart(cart);
                 cartEntry.setProduct(product);
-                cartEntry.setQuantity(1);
-                cartEntry.setBasePrice(BigDecimal.valueOf(product.getPrice()));
+                cartEntry.setQuantity(count);
+                cartEntry.setBasePrice(BigDecimal.valueOf(product.getPrice() * count));
                 cart.getCartEntries().add(cartEntry);
             } else {
-                cartEntry.setQuantity(cartEntry.getQuantity() + 1);
-                cartEntry.setBasePrice(cartEntry.getBasePrice().add(BigDecimal.valueOf(product.getPrice())));
+                cartEntry.setQuantity(cartEntry.getQuantity() + count);
+                cartEntry.setBasePrice(cartEntry.getBasePrice().add(BigDecimal.valueOf(product.getPrice() * count)));
             }
             cartEntryRepository.save(cartEntry);
         } else {
             if (cartEntry != null) {
-                if (cartEntry.getQuantity() > 1) {
-                    cartEntry.setQuantity(cartEntry.getQuantity() - 1);
-                    cartEntry.setBasePrice(cartEntry.getBasePrice().subtract(BigDecimal.valueOf(product.getPrice())));
+                int newQuantity = cartEntry.getQuantity() - count;
+                if (newQuantity > 0) {
+                    cartEntry.setQuantity(newQuantity);
+                    cartEntry.setBasePrice(cartEntry.getBasePrice().subtract(BigDecimal.valueOf(product.getPrice() * count)));
                     cartEntryRepository.save(cartEntry);
                 } else {
                     cart.getCartEntries().remove(cartEntry); // Cart'tan siliniyor
@@ -197,14 +211,43 @@ public class CartService implements CartServiceInterface {
                 logger.error("Product with ID " + productId + " is not in the cart.");
             }
         }
-    
+
         updateTotalPrice(cart);
         cartRepository.save(cart);
-    
+
         return mapCartToDTO(cart);
     }
-    
-    
+
+    private CartDTO createCartWithProduct(Long productId, Long customerId, int count) {
+        // Müşteriyi bul
+        Customer customer = customerService.findById(customerId)
+            .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND, null));
+
+        // Ürünü bul
+        Product product = productService.findById(productId)
+            .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND, null));
+
+        // Yeni CartDTO oluştur ve bilgileri set et
+        CartDTO newCartDTO = new CartDTO();
+        newCartDTO.setCustomerId(customerId);
+        
+        // Yeni bir CartEntryDTO oluştur ve bilgileri set et
+        CartEntryDTO cartEntryDTO = new CartEntryDTO();
+        cartEntryDTO.setProductId(productId);
+        cartEntryDTO.setQuantity(count);
+
+        // CartEntryDTO'yu CartDTO'ya ekle
+        Set<CartEntryDTO> cartEntryDTOSet = new HashSet<>();
+        cartEntryDTOSet.add(cartEntryDTO);
+        newCartDTO.setCartEntries(cartEntryDTOSet);
+
+        // Toplam fiyatı hesapla ve set et
+        newCartDTO.setTotalPrice((int) (product.getPrice() * count));
+
+        // Yeni Cart'ı oluştur ve CartDTO olarak döndür
+        CartDTO cartDTO = createCart(newCartDTO, customerId);
+        return addProductToCart(cartDTO.getId(), productId, customerId, count);
+    }
 
     private void updateTotalPrice(Cart cart) {
 

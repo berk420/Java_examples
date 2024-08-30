@@ -22,7 +22,8 @@ public enum ErrorCode {
     PRODUCT_NOT_FOUND_IN_CART       ("PRODUCT_NOT_FOUND_IN_CART"),
     INSUFFICIENT_STOCK              ("INSUFFICIENT_STOCK"),
     CART_ENTRY_DELETED              ("CART_ENTRY_DELETED"),
-    PRODUCT_IN_USE                  ("PRODUCT_IN_USE");
+    PRODUCT_IN_USE                  ("PRODUCT_IN_USE"),
+    UNAUTHORIZED_ACCESS             ("UNAUTHORIZED_ACCESS");
     
 
     private final String message;

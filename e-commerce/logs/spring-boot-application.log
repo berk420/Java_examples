@@ -1,368 +1,138 @@
-2024-08-27T11:59:59.902+03:00  INFO 4832 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 4832 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T11:59:59.908+03:00  INFO 4832 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T12:00:02.054+03:00  INFO 4832 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T12:00:02.055+03:00  INFO 4832 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T12:00:02.128+03:00  INFO 4832 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T12:00:02.953+03:00  INFO 4832 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T12:00:05.911+03:00  INFO 4832 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@30c03473
-2024-08-27T12:00:05.913+03:00  INFO 4832 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T12:00:06.011+03:00  WARN 4832 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T12:00:09.383+03:00  INFO 4832 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T12:00:10.004+03:00  WARN 4832 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cartController': Unsatisfied dependency expressed through field 'cartService': Error creating bean with name 'cartService': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'DTOMappers': Error creating bean with name 'DTOMappers': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Requested bean is currently in creation: Is there an unresolvable circular reference?
-2024-08-27T12:00:10.005+03:00  INFO 4832 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
-2024-08-27T12:00:10.007+03:00  INFO 4832 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-27T12:00:10.567+03:00  INFO 4832 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-08-27T12:00:10.569+03:00  INFO 4832 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-27T12:00:10.596+03:00 ERROR 4832 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-The dependencies of some of the beans in the application context form a cycle:
-
-   cartController (field private com.draft.e_commerce.service.CartService com.draft.e_commerce.controller.CartController.cartService)
-      ?
-   cartService (field private com.draft.e_commerce.service.ProductService com.draft.e_commerce.service.CartService.productService)
-???????
-|  productService (field private com.draft.e_commerce.Mapper.DTOMappers com.draft.e_commerce.service.ProductService.DTOMappers)
-?     ?
-|  DTOMappers (field private com.draft.e_commerce.service.ProductService com.draft.e_commerce.Mapper.DTOMappers.productService)
-???????
-
-
-Action:
-
-Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
-
-2024-08-27T12:38:16.678+03:00  INFO 14344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 14344 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T12:38:16.684+03:00  INFO 14344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T12:38:18.823+03:00  INFO 14344 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T12:38:18.823+03:00  INFO 14344 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T12:38:18.908+03:00  INFO 14344 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T12:38:19.654+03:00  INFO 14344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T12:38:21.070+03:00  INFO 14344 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4f2b1e9f
-2024-08-27T12:38:21.071+03:00  INFO 14344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T12:38:21.187+03:00  WARN 14344 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T12:38:24.626+03:00  INFO 14344 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T12:38:25.280+03:00  WARN 14344 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cartController': Unsatisfied dependency expressed through field 'cartService': Error creating bean with name 'cartService': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'dTOMappersProduct': No qualifying bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-2024-08-27T12:38:25.281+03:00  INFO 14344 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
-2024-08-27T12:38:25.283+03:00  INFO 14344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-27T12:38:25.773+03:00  INFO 14344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-08-27T12:38:25.775+03:00  INFO 14344 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-27T12:38:25.805+03:00 ERROR 14344 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Field dTOMappersProduct in com.draft.e_commerce.service.ProductService required a bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' that could not be found.
-
-The injection point has the following annotations:
-	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-
-
-Action:
-
-Consider defining a bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' in your configuration.
-
-2024-08-27T12:49:55.632+03:00  INFO 14344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 14344 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T12:49:55.637+03:00  INFO 14344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T12:56:00.740+03:00  INFO 14544 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 14544 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T12:56:00.744+03:00  INFO 14544 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T12:56:02.496+03:00  INFO 14544 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T12:56:02.499+03:00  INFO 14544 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T12:56:02.577+03:00  INFO 14544 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T12:56:03.314+03:00  INFO 14544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T12:56:04.709+03:00  INFO 14544 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@26888c31
-2024-08-27T12:56:04.711+03:00  INFO 14544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T12:56:04.816+03:00  WARN 14544 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T12:56:08.173+03:00  INFO 14544 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T12:56:08.971+03:00  WARN 14544 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cartController': Unsatisfied dependency expressed through field 'cartService': Error creating bean with name 'cartService': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'dTOMappersProduct': No qualifying bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-2024-08-27T12:56:08.972+03:00  INFO 14544 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
-2024-08-27T12:56:08.974+03:00  INFO 14544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-27T12:56:09.537+03:00  INFO 14544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-08-27T12:56:09.540+03:00  INFO 14544 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-27T12:56:09.573+03:00 ERROR 14544 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Field dTOMappersProduct in com.draft.e_commerce.service.ProductService required a bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' that could not be found.
-
-The injection point has the following annotations:
-	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-
-
-Action:
-
-Consider defining a bean of type 'com.draft.e_commerce.Mapper.DTOMappersProduct' in your configuration.
-
-2024-08-27T13:06:55.248+03:00  INFO 14528 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 14528 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T13:06:55.252+03:00  INFO 14528 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T13:06:56.876+03:00  INFO 14528 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T13:06:56.877+03:00  INFO 14528 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T13:06:56.941+03:00  INFO 14528 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T13:06:57.661+03:00  INFO 14528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T13:06:58.950+03:00  INFO 14528 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5b74902c
-2024-08-27T13:06:58.954+03:00  INFO 14528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T13:06:59.063+03:00  WARN 14528 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T13:07:02.494+03:00  INFO 14528 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T13:07:03.176+03:00  WARN 14528 --- [e-commerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cartController': Unsatisfied dependency expressed through field 'cartService': Error creating bean with name 'cartService': Unsatisfied dependency expressed through field 'dTOMappersCart': No qualifying bean of type 'com.draft.e_commerce.Mapper.DTOMappersCart' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-2024-08-27T13:07:03.178+03:00  INFO 14528 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager destroy method called
-2024-08-27T13:07:03.180+03:00  INFO 14528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-27T13:07:03.743+03:00  INFO 14528 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-08-27T13:07:03.745+03:00  INFO 14528 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-27T13:07:03.775+03:00 ERROR 14528 --- [e-commerce] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Field dTOMappersCart in com.draft.e_commerce.service.CartService required a bean of type 'com.draft.e_commerce.Mapper.DTOMappersCart' that could not be found.
-
-The injection point has the following annotations:
-	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-
-
-Action:
-
-Consider defining a bean of type 'com.draft.e_commerce.Mapper.DTOMappersCart' in your configuration.
-
-2024-08-27T13:07:34.939+03:00  INFO 12124 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 12124 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T13:07:34.943+03:00  INFO 12124 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T13:07:36.965+03:00  INFO 12124 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T13:07:36.966+03:00  INFO 12124 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T13:07:37.053+03:00  INFO 12124 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T13:07:37.792+03:00  INFO 12124 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T13:07:38.653+03:00  INFO 12124 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ba1c1a2
-2024-08-27T13:07:38.655+03:00  INFO 12124 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T13:07:38.743+03:00  WARN 12124 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T13:07:42.040+03:00  INFO 12124 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T13:07:43.622+03:00  INFO 12124 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.09 seconds (process running for 9.567)
-2024-08-27T13:07:43.768+03:00  INFO 12124 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T13:09:02.544+03:00  INFO 12124 --- [e-commerce] [http-nio-8080-exec-3] c.draft.e_commerce.service.CartService   : Product with ID 1 removed from cart.
-2024-08-27T13:19:30.609+03:00  INFO 10344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 10344 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T13:19:30.613+03:00  INFO 10344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T13:19:32.481+03:00  INFO 10344 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T13:19:32.483+03:00  INFO 10344 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T13:19:32.570+03:00  INFO 10344 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T13:19:33.262+03:00  INFO 10344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T13:19:34.557+03:00  INFO 10344 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d7314b3
-2024-08-27T13:19:34.559+03:00  INFO 10344 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T13:19:34.665+03:00  WARN 10344 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T13:19:38.093+03:00  INFO 10344 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T13:19:39.531+03:00  INFO 10344 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T13:19:39.780+03:00  INFO 10344 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.536 seconds (process running for 9.977)
-2024-08-27T13:34:20.847+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3d7314b3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.850+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4f722a15 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.851+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@71b00bff (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.852+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3afa3c70 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.854+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5a92e3d9 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.856+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@46e581c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.857+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7570449d (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.859+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1e02ffff (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.862+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@53c34bcd (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:34:20.864+03:00  WARN 10344 --- [e-commerce] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@251b4711 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T13:36:31.842+03:00  INFO 21172 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 21172 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T13:36:31.845+03:00  INFO 21172 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T13:36:33.918+03:00  INFO 21172 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T13:36:33.918+03:00  INFO 21172 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T13:36:34.006+03:00  INFO 21172 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T13:36:34.914+03:00  INFO 21172 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T13:36:35.797+03:00  INFO 21172 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@c1f0c7b
-2024-08-27T13:36:35.800+03:00  INFO 21172 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T13:36:35.904+03:00  WARN 21172 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T13:36:39.503+03:00  INFO 21172 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T13:36:41.518+03:00  INFO 21172 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.034 seconds (process running for 10.841)
-2024-08-27T13:36:43.572+03:00  INFO 21172 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T13:38:04.485+03:00  INFO 21172 --- [e-commerce] [http-nio-8080-exec-5] c.draft.e_commerce.service.CartService   : Product with ID 7 removed from cart.
-2024-08-27T13:52:43.629+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 20164 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T13:52:43.635+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T13:52:46.230+03:00  INFO 20164 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T13:52:46.230+03:00  INFO 20164 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T13:52:46.396+03:00  INFO 20164 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T13:52:47.213+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T13:52:48.513+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4a3509b0
-2024-08-27T13:52:48.515+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T13:52:48.631+03:00  WARN 20164 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T13:52:52.330+03:00  INFO 20164 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T13:52:54.071+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.855 seconds (process running for 11.519)
-2024-08-27T13:52:55.413+03:00  INFO 20164 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T13:53:55.243+03:00  INFO 20164 --- [e-commerce] [http-nio-8080-exec-5] c.draft.e_commerce.service.CartService   : Product with ID 7 removed from cart.
-2024-08-27T14:30:21.270+03:00  INFO 15660 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 15660 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T14:30:21.274+03:00  INFO 15660 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T14:30:23.482+03:00  INFO 15660 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T14:30:23.483+03:00  INFO 15660 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T14:30:23.579+03:00  INFO 15660 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T14:30:24.366+03:00  INFO 15660 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T14:30:26.304+03:00  INFO 15660 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6d7556a8
-2024-08-27T14:30:26.306+03:00  INFO 15660 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T14:30:26.416+03:00  WARN 15660 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T14:30:29.977+03:00  INFO 15660 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T14:30:31.629+03:00  INFO 15660 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.732 seconds (process running for 11.156)
-2024-08-27T14:30:33.172+03:00  INFO 15660 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T14:36:46.857+03:00  INFO 27168 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27168 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T14:36:46.863+03:00  INFO 27168 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T14:36:48.719+03:00  INFO 27168 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T14:36:48.720+03:00  INFO 27168 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T14:36:48.804+03:00  INFO 27168 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T14:36:49.556+03:00  INFO 27168 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T14:36:50.491+03:00  INFO 27168 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@563c3aca
-2024-08-27T14:36:50.493+03:00  INFO 27168 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T14:36:50.587+03:00  WARN 27168 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T14:36:53.890+03:00  INFO 27168 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T14:36:55.566+03:00  INFO 27168 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.082 seconds (process running for 9.531)
-2024-08-27T14:36:55.776+03:00  INFO 27168 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T14:37:21.854+03:00  WARN 27168 --- [e-commerce] [http-nio-8080-exec-1] o.s.web.servlet.PageNotFound             : No mapping for DELETE /api/products7
-2024-08-27T14:46:50.262+03:00  INFO 27420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27420 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T14:46:50.265+03:00  INFO 27420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T14:46:52.265+03:00  INFO 27420 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T14:46:52.266+03:00  INFO 27420 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T14:46:52.345+03:00  INFO 27420 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T14:46:53.083+03:00  INFO 27420 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T14:46:54.903+03:00  INFO 27420 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1013871e
-2024-08-27T14:46:54.906+03:00  INFO 27420 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T14:46:55.019+03:00  WARN 27420 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T14:46:58.520+03:00  INFO 27420 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T14:47:01.311+03:00  INFO 27420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.498 seconds (process running for 11.992)
-2024-08-27T14:47:01.645+03:00  INFO 27420 --- [e-commerce] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T14:53:31.543+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1013871e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.546+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5a16cded (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.547+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@471ade33 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.548+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@e199b0b (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.548+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4cfd5942 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.549+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@20689c95 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.550+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@319235ed (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.551+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@73113117 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.552+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5500417e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:53:31.553+03:00  WARN 27420 --- [e-commerce] [http-nio-8080-exec-7] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@31e8f37f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2024-08-27T14:56:04.454+03:00  INFO 21952 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 21952 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T14:56:04.457+03:00  INFO 21952 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T14:56:06.495+03:00  INFO 21952 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T14:56:06.495+03:00  INFO 21952 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T14:56:06.571+03:00  INFO 21952 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T14:56:07.453+03:00  INFO 21952 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T14:56:08.330+03:00  INFO 21952 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ba1c1a2
-2024-08-27T14:56:08.332+03:00  INFO 21952 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T14:56:08.430+03:00  WARN 21952 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T14:56:11.821+03:00  INFO 21952 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T14:56:13.986+03:00  INFO 21952 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.981 seconds (process running for 10.804)
-2024-08-27T14:56:14.392+03:00  INFO 21952 --- [e-commerce] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:01:32.976+03:00  INFO 26060 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 26060 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:01:32.979+03:00  INFO 26060 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:01:35.165+03:00  INFO 26060 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:01:35.166+03:00  INFO 26060 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:01:35.255+03:00  INFO 26060 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:01:36.164+03:00  INFO 26060 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:01:37.754+03:00  INFO 26060 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33568e26
-2024-08-27T15:01:37.756+03:00  INFO 26060 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:01:37.845+03:00  WARN 26060 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:01:42.098+03:00  INFO 26060 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:01:44.880+03:00  INFO 26060 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:01:44.937+03:00  INFO 26060 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 12.389 seconds (process running for 12.889)
-2024-08-27T15:03:16.491+03:00  INFO 15796 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 15796 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:03:16.494+03:00  INFO 15796 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:03:18.818+03:00  INFO 15796 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:03:18.819+03:00  INFO 15796 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:03:18.879+03:00  INFO 15796 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:03:19.640+03:00  INFO 15796 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:03:20.517+03:00  INFO 15796 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1013871e
-2024-08-27T15:03:20.519+03:00  INFO 15796 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:03:20.612+03:00  WARN 15796 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:03:24.051+03:00  INFO 15796 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:03:26.393+03:00  INFO 15796 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.424 seconds (process running for 10.948)
-2024-08-27T15:03:28.235+03:00  INFO 15796 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:12:39.944+03:00  INFO 27996 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27996 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:12:39.947+03:00  INFO 27996 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:12:42.051+03:00  INFO 27996 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:12:42.052+03:00  INFO 27996 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:12:42.151+03:00  INFO 27996 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:12:43.078+03:00  INFO 27996 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:12:47.143+03:00  INFO 27996 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35555145
-2024-08-27T15:12:47.144+03:00  INFO 27996 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:12:47.247+03:00  WARN 27996 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:12:50.795+03:00  INFO 27996 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:12:53.004+03:00  INFO 27996 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 13.51 seconds (process running for 13.957)
-2024-08-27T15:12:54.809+03:00  INFO 27996 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:17:27.790+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 20164 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:17:27.794+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:17:29.811+03:00  INFO 20164 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:17:29.811+03:00  INFO 20164 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:17:29.903+03:00  INFO 20164 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:17:30.736+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:17:31.631+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33568e26
-2024-08-27T15:17:31.632+03:00  INFO 20164 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:17:31.737+03:00  WARN 20164 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:17:35.379+03:00  INFO 20164 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:17:37.584+03:00  INFO 20164 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.367 seconds (process running for 10.898)
-2024-08-27T15:17:39.451+03:00  INFO 20164 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:18:45.356+03:00  INFO 24096 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 24096 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:18:45.359+03:00  INFO 24096 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:18:47.286+03:00  INFO 24096 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:18:47.287+03:00  INFO 24096 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:18:47.366+03:00  INFO 24096 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:18:48.128+03:00  INFO 24096 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:18:49.085+03:00  INFO 24096 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e489ac1
-2024-08-27T15:18:49.087+03:00  INFO 24096 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:18:49.177+03:00  WARN 24096 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:18:52.484+03:00  INFO 24096 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:18:54.264+03:00  INFO 24096 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.305 seconds (process running for 9.767)
-2024-08-27T15:18:54.266+03:00  INFO 24096 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T15:27:42.765+03:00  INFO 28816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 28816 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T15:27:42.773+03:00  INFO 28816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T15:27:44.880+03:00  INFO 28816 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T15:27:44.881+03:00  INFO 28816 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T15:27:44.962+03:00  INFO 28816 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T15:27:45.858+03:00  INFO 28816 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T15:27:47.142+03:00  INFO 28816 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@24010875
-2024-08-27T15:27:47.144+03:00  INFO 28816 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T15:27:47.255+03:00  WARN 28816 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T15:27:50.918+03:00  INFO 28816 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T15:27:53.028+03:00  INFO 28816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.68 seconds (process running for 11.334)
-2024-08-27T15:27:54.508+03:00  INFO 28816 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T16:59:45.793+03:00  INFO 34192 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 34192 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T16:59:45.796+03:00  INFO 34192 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T16:59:47.881+03:00  INFO 34192 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T16:59:47.882+03:00  INFO 34192 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T16:59:47.964+03:00  INFO 34192 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T16:59:48.872+03:00  INFO 34192 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T16:59:52.229+03:00  INFO 34192 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ba1c1a2
-2024-08-27T16:59:52.231+03:00  INFO 34192 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T16:59:52.351+03:00  WARN 34192 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T16:59:56.049+03:00  INFO 34192 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T16:59:58.283+03:00  INFO 34192 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 12.903 seconds (process running for 13.553)
-2024-08-27T17:00:00.653+03:00  INFO 34192 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T17:02:22.489+03:00  INFO 30760 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 30760 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T17:02:22.493+03:00  INFO 30760 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T17:02:24.657+03:00  INFO 30760 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T17:02:24.659+03:00  INFO 30760 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T17:02:24.765+03:00  INFO 30760 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T17:02:25.736+03:00  INFO 30760 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T17:02:26.640+03:00  INFO 30760 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35555145
-2024-08-27T17:02:26.643+03:00  INFO 30760 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T17:02:26.747+03:00  WARN 30760 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T17:02:30.427+03:00  INFO 30760 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T17:02:32.709+03:00  INFO 30760 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.033 seconds (process running for 12.271)
-2024-08-27T17:02:33.264+03:00  INFO 30760 --- [e-commerce] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-27T17:16:52.048+03:00  INFO 31280 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 31280 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
-2024-08-27T17:16:52.052+03:00  INFO 31280 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
-2024-08-27T17:16:54.350+03:00  INFO 31280 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-27T17:16:54.351+03:00  INFO 31280 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-27T17:16:54.439+03:00  INFO 31280 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-27T17:16:55.239+03:00  INFO 31280 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-27T17:16:56.585+03:00  INFO 31280 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@24010875
-2024-08-27T17:16:56.587+03:00  INFO 31280 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-27T17:16:56.696+03:00  WARN 31280 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-27T17:17:00.249+03:00  INFO 31280 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
-2024-08-27T17:17:02.534+03:00  INFO 31280 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.069 seconds (process running for 11.553)
-2024-08-27T17:17:02.741+03:00  INFO 31280 --- [e-commerce] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:12:12.126+03:00  INFO 26140 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 26140 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:12:12.136+03:00  INFO 26140 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:12:14.344+03:00  INFO 26140 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:12:14.354+03:00  INFO 26140 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:12:14.433+03:00  INFO 26140 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:12:15.197+03:00  INFO 26140 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:12:16.131+03:00  INFO 26140 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@669580e2
+2024-08-30T17:12:16.133+03:00  INFO 26140 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:12:16.231+03:00  WARN 26140 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:12:19.656+03:00  INFO 26140 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:12:21.312+03:00  INFO 26140 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.612 seconds (process running for 10.13)
+2024-08-30T17:12:24.051+03:00  INFO 26140 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:14:39.885+03:00  INFO 28684 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 28684 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:14:39.887+03:00  INFO 28684 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:14:41.804+03:00  INFO 28684 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:14:41.805+03:00  INFO 28684 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:14:41.888+03:00  INFO 28684 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:14:42.697+03:00  INFO 28684 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:14:43.590+03:00  INFO 28684 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7a021f49
+2024-08-30T17:14:43.592+03:00  INFO 28684 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:14:43.683+03:00  WARN 28684 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:14:47.253+03:00  INFO 28684 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:14:49.381+03:00  INFO 28684 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.865 seconds (process running for 10.543)
+2024-08-30T17:14:51.693+03:00  INFO 28684 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:15:36.853+03:00  INFO 30420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 30420 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:15:36.857+03:00  INFO 30420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:15:39.290+03:00  INFO 30420 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:15:39.291+03:00  INFO 30420 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:15:39.388+03:00  INFO 30420 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:15:40.440+03:00  INFO 30420 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:15:41.344+03:00  INFO 30420 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@24010875
+2024-08-30T17:15:41.346+03:00  INFO 30420 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:15:41.443+03:00  WARN 30420 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:15:45.227+03:00  INFO 30420 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:15:47.284+03:00  INFO 30420 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.966 seconds (process running for 11.765)
+2024-08-30T17:15:48.447+03:00  INFO 30420 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:21:57.199+03:00  INFO 29816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 29816 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:21:57.202+03:00  INFO 29816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:21:59.065+03:00  INFO 29816 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:21:59.066+03:00  INFO 29816 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:21:59.137+03:00  INFO 29816 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:22:00.086+03:00  INFO 29816 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:22:01.369+03:00  INFO 29816 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d22ed6c
+2024-08-30T17:22:01.371+03:00  INFO 29816 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:22:01.483+03:00  WARN 29816 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:22:04.986+03:00  INFO 29816 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:22:07.248+03:00  INFO 29816 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.404 seconds (process running for 11.142)
+2024-08-30T17:22:08.954+03:00  INFO 29816 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:37:16.255+03:00  INFO 27824 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 27824 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:37:16.257+03:00  INFO 27824 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:37:18.137+03:00  INFO 27824 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:37:18.139+03:00  INFO 27824 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:37:18.209+03:00  INFO 27824 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:37:19.011+03:00  INFO 27824 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:37:20.357+03:00  INFO 27824 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2c2e5e72
+2024-08-30T17:37:20.360+03:00  INFO 27824 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:37:20.482+03:00  WARN 27824 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:37:24.280+03:00  INFO 27824 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:37:26.489+03:00  INFO 27824 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.632 seconds (process running for 11.276)
+2024-08-30T17:37:28.071+03:00  INFO 27824 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:53:47.477+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2c2e5e72 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.507+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@173a0a00 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.526+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7b2b8cb0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.546+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5f9e1d9f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.566+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1cead2e1 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.585+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5bc7a176 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.604+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7c2ef8b2 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.623+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5373604d (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.643+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@19c4cd18 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:47.663+03:00  WARN 27824 --- [e-commerce] [http-nio-8080-exec-6] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7fee0347 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T17:53:53.553+03:00  INFO 32712 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 32712 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:53:53.557+03:00  INFO 32712 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:53:55.425+03:00  INFO 32712 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:53:55.426+03:00  INFO 32712 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:53:55.501+03:00  INFO 32712 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:53:56.256+03:00  INFO 32712 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:53:57.119+03:00  INFO 32712 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d22ed6c
+2024-08-30T17:53:57.121+03:00  INFO 32712 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:53:57.232+03:00  WARN 32712 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:54:00.735+03:00  INFO 32712 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:54:03.316+03:00  INFO 32712 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 10.119 seconds (process running for 10.858)
+2024-08-30T17:54:05.277+03:00  INFO 32712 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T17:54:30.058+03:00  INFO 20628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 20628 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T17:54:30.061+03:00  INFO 20628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T17:54:31.955+03:00  INFO 20628 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T17:54:31.956+03:00  INFO 20628 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T17:54:32.036+03:00  INFO 20628 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T17:54:32.963+03:00  INFO 20628 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T17:54:33.883+03:00  INFO 20628 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5a9051fd
+2024-08-30T17:54:33.885+03:00  INFO 20628 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T17:54:33.978+03:00  WARN 20628 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T17:54:37.490+03:00  INFO 20628 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T17:54:39.276+03:00  INFO 20628 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.594 seconds (process running for 10.413)
+2024-08-30T17:54:41.715+03:00  INFO 20628 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T18:00:19.883+03:00  INFO 10544 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 10544 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T18:00:19.886+03:00  INFO 10544 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T18:00:21.827+03:00  INFO 10544 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T18:00:21.828+03:00  INFO 10544 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T18:00:21.915+03:00  INFO 10544 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T18:00:22.736+03:00  INFO 10544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T18:00:23.667+03:00  INFO 10544 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4535bdc6
+2024-08-30T18:00:23.669+03:00  INFO 10544 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T18:00:23.757+03:00  WARN 10544 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T18:00:27.200+03:00  INFO 10544 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T18:00:29.048+03:00  INFO 10544 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 9.544 seconds (process running for 10.37)
+2024-08-30T18:00:31.513+03:00  INFO 10544 --- [e-commerce] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T18:11:55.599+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4535bdc6 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.624+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5a6fdfd2 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.643+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@23d9a6b8 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.662+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@11c9bd8e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.680+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@45f30bf3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.698+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6146ddd0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.715+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@f445b26 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.733+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@53bda28d (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.762+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@ecc979a (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:11:55.792+03:00  WARN 10544 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@593373ce (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T18:41:23.646+03:00  INFO 31184 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Starting ECommerceApplication using Java 17.0.9 with PID 31184 (C:\Users\berk\Documents\GitHub\Java_examples\e-commerce\target\classes started by berk in C:\Users\berk\Documents\GitHub\Java_examples\e-commerce)
+2024-08-30T18:41:23.649+03:00  INFO 31184 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T18:41:26.118+03:00  INFO 31184 --- [e-commerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T18:41:26.120+03:00  INFO 31184 --- [e-commerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-30T18:41:26.206+03:00  INFO 31184 --- [e-commerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-30T18:41:27.228+03:00  INFO 31184 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-30T18:41:28.566+03:00  INFO 31184 --- [e-commerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1425e531
+2024-08-30T18:41:28.568+03:00  INFO 31184 --- [e-commerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-30T18:41:28.691+03:00  WARN 31184 --- [e-commerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T18:41:32.302+03:00  INFO 31184 --- [e-commerce] [main] c.d.e.b.BeanLifecycleManager             : BeanLifecycleManager afterPropertiesSet method called
+2024-08-30T18:41:34.596+03:00  INFO 31184 --- [e-commerce] [main] c.draft.e_commerce.ECommerceApplication  : Started ECommerceApplication in 11.405 seconds (process running for 11.862)
+2024-08-30T18:41:34.762+03:00  INFO 31184 --- [e-commerce] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-30T19:55:35.810+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@69ea191a (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.812+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@288bf15f (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.813+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@baf988a (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.814+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@32b4622c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.815+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6bb55426 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.815+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1cc34106 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.816+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6b5ff1dc (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.817+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7aeb5b99 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.818+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3bbe2486 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2024-08-30T19:55:35.820+03:00  WARN 31184 --- [e-commerce] [http-nio-8080-exec-4] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3df39986 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
